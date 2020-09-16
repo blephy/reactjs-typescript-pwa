@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "module": "esnext",
+    "target": "es2015",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowJs": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types", "src/@types"],
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@src": ["src/"],
+      "@src/*": ["src/*"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@database": ["src/database"],
+      "@database/*": ["src/database/*"],
+      "@styles": ["src/styles"],
+      "@styles/*": ["src/styles/*"],
+      "@fonts": ["src/fonts"],
+      "@fonts/*": ["src/fonts/*"],
+      "@images": ["src/images"],
+      "@images/*": ["src/images/*"]
+    }
+  },
+  "exclude": ["build", "dist", "stats", "config", "**/node_modules/**"]
+}

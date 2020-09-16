@@ -1,0 +1,7 @@
+# Ignore folders
+/node_modules/*
+/dist/*
+/build/*
+/stats/*
+/server/*
+/config/*

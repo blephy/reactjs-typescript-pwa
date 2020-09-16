@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-standard",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "rule-empty-line-before": ["always", { "except": ["first-nested"] }]
+  }
+}

@@ -1,0 +1,20 @@
+h1 {
+  letter-spacing: 0.4em;
+}
+
+svg {
+  width: 100px;
+
+  path {
+    animation: draw 2s linear forwards;
+    stroke: #fff;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

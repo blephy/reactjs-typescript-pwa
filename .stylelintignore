@@ -1,0 +1,13 @@
+# Ignore folders
+node_modules/
+dist/
+build/
+
+# Stats
+stats/
+stats.json
+
+# Ignore files
+*.map
+package-lock.json
+yarn-lock.json

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="32px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>signature</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="favicon">
+            <g id="Group" transform="translate(-4.000000, 1.000000)">
+                <g id="signature">
+                    <path d="M11,35.3883411 C7,31.3883411 10,27.3883411 12,25.3883411 C20.3038104,17.0845307 19.9349161,-4.63661067 20,0.888341107 C20.190978,17.1004125 23,9.88834111 21,16.3883411 C18.3526785,24.9921358 20.0503186,22.8852209 21,22.4501054 C25.5,20.3883411 23.5,23.3883411 27.1685874,22.4501054 C39.8117776,19.2166287 29.5453999,8.92651847 12.3722651,13.583216 C8.79805518,14.552405 4.67396681,15.9414737 -2.48689958e-14,17.7504219" id="Path" stroke="#131313" stroke-width="1.5"></path>
+                    <circle id="Oval" fill="#131313" fill-rule="evenodd" cx="33.25" cy="23.25" r="1.25"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
