@@ -1,2 +1,5 @@
 # Ignore folders
 /node_modules/
+
+# Ignore files
+LICENCE.md
