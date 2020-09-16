@@ -12,7 +12,7 @@ module.exports = {
   bail: false,
   cache: true,
   entry: {
-    'react-redux-maiia': path.resolve(__dirname, '../src/index.tsx')
+    app: path.resolve(__dirname, '../src/index.tsx')
   },
   output: {
     path: path.resolve(__dirname, '/build'),
