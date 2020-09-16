@@ -1,4 +1,4 @@
-# Portfolio
+# Allan Dollé's portfolio - React starter
 
 This app is running on production at <https://allandolle-portfolio.herokuapp.com/>.
 
@@ -8,7 +8,6 @@ This app is running on production at <https://allandolle-portfolio.herokuapp.com
 
 - npm _>6.14_
 - node _>12.18_
-- git
 
 ```shell
 node -v
@@ -59,6 +58,28 @@ Autofix with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/) a
 
 ```shell
 npm run lint:fix
+```
+
+### Types check your typescript files
+
+```shell
+npm run typescript:check
+```
+
+### Bundle stats
+
+Visualize your bundle stats.
+
+```shell
+npm run stats
+```
+
+### Browserslist
+
+Visualize your bundle browsers targets with browserslist queries. You can change queries on `.browserslistrc` file.
+
+```shell
+npm run browserslist
 ```
 
 ## Contributing
