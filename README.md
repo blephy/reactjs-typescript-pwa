@@ -19,7 +19,7 @@ npm -v
 
 ```shell
 git clone https://github.com/blephy/allandolle-portfolio.git
-cd react-redux
+cd allandolle-portfolio
 npm i
 ```
 
