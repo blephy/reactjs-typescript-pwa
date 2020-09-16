@@ -1,6 +1,6 @@
 module.exports = {
   '*.{js,jsx,ts,tsx}': filenames => [
-    'tsc -p tsconfig.json --noEmit',
+    'npm run typescript:check',
     `eslint --fix ${filenames.join(' ')}`,
     `prettier --write ${filenames.join(' ')}`
   ],
