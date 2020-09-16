@@ -1,6 +1,6 @@
 # Portfolio
 
-This app is running on production at <https://react-redux-maiia.herokuapp.com/>.
+This app is running on production at <https://allandolle-portfolio.herokuapp.com/>.
 
 ## Getting started
 
@@ -18,7 +18,7 @@ npm -v
 ### Installation
 
 ```shell
-git clone https://github.com/blephy/react-redux.git
+git clone https://github.com/blephy/allandolle-portfolio.git
 cd react-redux
 npm i
 ```
