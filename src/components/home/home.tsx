@@ -9,7 +9,6 @@ export default function Home(): React.FunctionComponentElement<IProperties> {
   return (
     <>
       <h1>Allan Doll&eacute;</h1>
-      <h3>Hey !</h3>
       <Signature />
     </>
   )

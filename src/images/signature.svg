@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="31px" height="32px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
     <title>signature</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="favicon">
-            <g id="Group" transform="translate(-4.000000, 1.000000)">
-                <g id="signature">
-                    <path d="M11,35.3883411 C7,31.3883411 10,27.3883411 12,25.3883411 C20.3038104,17.0845307 19.9349161,-4.63661067 20,0.888341107 C20.190978,17.1004125 23,9.88834111 21,16.3883411 C18.3526785,24.9921358 20.0503186,22.8852209 21,22.4501054 C25.5,20.3883411 23.5,23.3883411 27.1685874,22.4501054 C39.8117776,19.2166287 29.5453999,8.92651847 12.3722651,13.583216 C8.79805518,14.552405 4.67396681,15.9414737 -2.48689958e-14,17.7504219" id="Path" stroke="#131313" stroke-width="1.5"></path>
-                    <circle id="Oval" fill="#131313" fill-rule="evenodd" cx="33.25" cy="23.25" r="1.25"></circle>
-                </g>
-            </g>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="signature">
+            <path d="M12.9411765,39.320379 C8.23529412,34.8759346 11.7647059,30.4314901 14.1176471,28.2092679 C23.8868358,18.9828119 23.4528425,-5.15178964 23.5294118,0.987045674 C23.7540917,19.0004583 27.0588235,10.9870457 24.7058824,18.2092679 C21.5913865,27.7690398 23.5886101,25.4280232 24.7058824,24.9445616 C30,22.6537123 27.6470588,25.9870457 31.9630439,24.9445616 C46.8373854,21.3518097 34.759294,9.91835386 14.555606,15.0924622 C10.3506531,16.1693389 5.49878449,17.7127485 -2.48689958e-14,19.722691" id="Path" stroke="#131313" stroke-width="0.5"></path>
+            <ellipse id="Oval" fill="#131313" cx="38.5294118" cy="25.2777778" rx="1" ry="1"></ellipse>
         </g>
     </g>
 </svg>
