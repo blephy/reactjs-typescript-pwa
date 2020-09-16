@@ -3,7 +3,6 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { LoadableComponent } from '@loadable/component'
 import Loader from '@components/loader/loader'
 
-import 'normalize.css'
 import '@src/styles/index.scss'
 
 interface IProperties {

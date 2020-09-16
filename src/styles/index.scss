@@ -9,6 +9,9 @@
   src: url('@fonts/open-sans/OpenSans-Light.ttf') format('truetype');
 }
 
+@import-normalize;
+@import-sanitize;
+
 html,
 body,
 .app-wrapper {

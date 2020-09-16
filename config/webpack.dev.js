@@ -4,6 +4,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const postcssNormalize = require('postcss-normalize')
 
 module.exports = {
   target: 'web',
@@ -118,17 +119,31 @@ module.exports = {
           },
           {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader']
+            use: [
+              'style-loader',
+              { loader: 'css-loader', options: { importLoaders: 1 } },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
+                }
+              }
+            ]
           },
           {
             test: /\.scss$/,
             use: [
               'style-loader',
-              'css-loader',
-              'postcss-loader',
+              { loader: 'css-loader', options: { importLoaders: 1 } },
               {
-                loader: 'sass-loader'
-              }
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
+                }
+              },
+              'sass-loader'
             ]
           },
           {

@@ -10,6 +10,8 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const SitemapPlugin = require('sitemap-webpack-plugin').default
+const postcssNormalize = require('postcss-normalize')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const paths = [
   {
@@ -71,6 +73,17 @@ module.exports = {
           output: {
             comments: false
           }
+        }
+      }),
+      new CssMinimizerPlugin({
+        sourceMap: false,
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true }
+            }
+          ]
         }
       })
     ],
@@ -235,26 +248,28 @@ module.exports = {
             test: /\.css$/,
             use: [
               MiniCssExtractPlugin.loader,
+              { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
               {
-                loader: 'css-loader',
+                loader: 'postcss-loader',
                 options: {
-                  modules: true
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
                 }
-              },
-              'postcss-loader'
+              }
             ]
           },
           {
             test: /\.scss$/,
             use: [
               MiniCssExtractPlugin.loader,
+              { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
               {
-                loader: 'css-loader',
+                loader: 'postcss-loader',
                 options: {
-                  modules: true
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
                 }
               },
-              'postcss-loader',
               'sass-loader'
             ]
           },
