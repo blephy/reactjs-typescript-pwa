@@ -1,5 +1,7 @@
 # Allan Dollé's portfolio - React starter
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 This app is running on production at <https://allandolle-portfolio.herokuapp.com/>.
 
 ## Getting started
