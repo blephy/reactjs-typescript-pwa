@@ -1,0 +1,2 @@
+Contact: security@example.com
+Preferred-Languages: fr, en

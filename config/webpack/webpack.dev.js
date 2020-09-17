@@ -6,6 +6,8 @@ const StylelintPlugin = require('stylelint-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const postcssNormalize = require('postcss-normalize')
 
+const rootDir = path.join(__dirname, '..', '..')
+
 module.exports = {
   target: 'web',
   name: 'development',
@@ -13,10 +15,10 @@ module.exports = {
   bail: false,
   cache: true,
   entry: {
-    app: path.resolve(__dirname, '../src/index.tsx')
+    app: path.resolve(rootDir, 'src/index.tsx')
   },
   output: {
-    path: path.resolve(__dirname, '/build'),
+    path: path.resolve(rootDir, 'ild'),
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     publicPath: '/',
@@ -29,12 +31,12 @@ module.exports = {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.scss'],
     modules: ['src', 'node_modules'],
     alias: {
-      '@src': path.resolve(__dirname, '../src'),
-      '@components': path.resolve(__dirname, '../src', 'components'),
-      '@database': path.resolve(__dirname, '../src', 'database'),
-      '@styles': path.resolve(__dirname, '../src', 'styles'),
-      '@fonts': path.resolve(__dirname, '../src', 'fonts'),
-      '@images': path.resolve(__dirname, '../src', 'images')
+      '@src': path.resolve(rootDir, 'src'),
+      '@components': path.resolve(rootDir, 'src', 'components'),
+      '@database': path.resolve(rootDir, 'src', 'database'),
+      '@styles': path.resolve(rootDir, 'src', 'styles'),
+      '@fonts': path.resolve(rootDir, 'src', 'fonts'),
+      '@images': path.resolve(rootDir, 'src', 'images')
     }
   },
   devServer: {
@@ -43,7 +45,7 @@ module.exports = {
     openPage: '',
     compress: true,
     clientLogLevel: 'info',
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: path.resolve(rootDir, 'dist'),
     watchOptions: {
       ignored: ['node_modules', 'build', 'dist', 'public', 'server', 'config'],
       aggregateTimeout: 200
@@ -79,8 +81,8 @@ module.exports = {
       },
       title: 'Allan Dollé | Web developer',
       preconnect: 'https://allandolle.fr',
-      template: path.join(__dirname, '../public/templates/index.ejs'),
-      favicon: path.join(__dirname, '../public/favicon.png'),
+      template: path.resolve(rootDir, 'public/templates/index.ejs'),
+      favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html'
     }),
     new StylelintPlugin(),

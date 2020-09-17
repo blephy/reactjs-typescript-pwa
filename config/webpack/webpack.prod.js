@@ -23,16 +23,18 @@ const paths = [
   }
 ]
 
+const rootDir = path.join(__dirname, '..', '..')
+
 module.exports = {
   target: 'web',
   name: 'production',
   mode: 'production',
   bail: true,
   entry: {
-    app: path.resolve(__dirname, '../src/index.tsx')
+    app: path.resolve(rootDir, 'src/index.tsx')
   },
   output: {
-    path: path.resolve(__dirname, '../build'),
+    path: path.resolve(rootDir, 'build'),
     filename: '[name].[contenthash].js',
     chunkFilename: 'js/[name].[contenthash].chunk.js',
     publicPath: '/',
@@ -45,12 +47,12 @@ module.exports = {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.scss'],
     modules: ['src', 'node_modules'],
     alias: {
-      '@src': path.resolve(__dirname, '../src'),
-      '@components': path.resolve(__dirname, '../src', 'components'),
-      '@database': path.resolve(__dirname, '../src', 'database'),
-      '@styles': path.resolve(__dirname, '../src', 'styles'),
-      '@fonts': path.resolve(__dirname, '../src', 'fonts'),
-      '@images': path.resolve(__dirname, '../src', 'images')
+      '@src': path.resolve(rootDir, 'src'),
+      '@components': path.resolve(rootDir, 'src', 'components'),
+      '@database': path.resolve(rootDir, 'src', 'database'),
+      '@styles': path.resolve(rootDir, 'src', 'styles'),
+      '@fonts': path.resolve(rootDir, 'src', 'fonts'),
+      '@images': path.resolve(rootDir, 'src', 'images')
     }
   },
   optimization: {
@@ -135,8 +137,8 @@ module.exports = {
       },
       title: 'Allan Dollé | Web developer',
       preconnect: 'https://allandolle.fr',
-      template: path.join(__dirname, '../public/templates/index.ejs'),
-      favicon: path.join(__dirname, '../public/favicon.png'),
+      template: path.resolve(rootDir, 'public/templates/index.ejs'),
+      favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html',
       minify: true,
       xhtml: true,
@@ -181,14 +183,19 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.join(__dirname, '../public', 'humans.txt'),
-          to: path.resolve(__dirname, '../build'),
-          transform: content => `${content}  Last update: ${new Date().toGMTString()}`,
+          from: path.resolve(rootDir, 'public', 'humans.txt'),
+          to: path.resolve(rootDir, 'build'),
+          transform: content => `${content}  Last update: ${new Date().toGMTString()}`
+        },
+        {
+          from: path.resolve(rootDir, 'public', 'robots.txt'),
+          to: path.resolve(rootDir, 'build'),
+          transform: content => `${content}Sitemap: https://allandolle.fr/sitemap.xml`,
           cacheTransform: true
         },
         {
-          from: path.join(__dirname, '../public', 'robots.txt'),
-          to: path.resolve(__dirname, '../build'),
+          from: path.resolve(rootDir, 'public', 'security.txt'),
+          to: path.resolve(rootDir, 'build'),
           cacheTransform: true
         }
       ]
