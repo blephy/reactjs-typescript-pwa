@@ -6,6 +6,7 @@
     "stylelint-config-prettier"
   ],
   "rules": {
-    "rule-empty-line-before": ["always", { "except": ["first-nested"] }]
+    "rule-empty-line-before": ["always", { "except": ["first-nested"] }],
+    "max-nesting-depth": 2
   }
 }
