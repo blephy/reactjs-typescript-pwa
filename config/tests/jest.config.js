@@ -8,7 +8,7 @@ module.exports = {
   testEnvironment: 'node',
   verbose: true,
   rootDir: '..',
-  setupFilesAfterEnv: ['<rootDir>/config/setupTests.js'],
+  setupFilesAfterEnv: ['<rootDir>/config/tests/setupTests.js'],
   testMatch: ['<rootDir>/src/**/*.(spec|test).ts'],
   collectCoverage: true,
   coverageDirectory: 'coverage/',

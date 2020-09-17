@@ -5,9 +5,9 @@
   "main": "src/index.tsx",
   "scripts": {
     "postinstall": "npm run build",
-    "start": "webpack-dashboard -- webpack-dev-server --watch --hot --stdin --config config/webpack.dev.js",
+    "start": "webpack-dashboard -- webpack-dev-server --watch --hot --stdin --config config/webpack/webpack.dev.js",
     "start:prod": "node server/index.ts",
-    "build": "webpack --progress --colors --config config/webpack.prod.js",
+    "build": "webpack --progress --colors --config config/webpack/webpack.prod.js",
     "prestats": "mkdir -p stats && webpack --profile --json --config config/webpack.prod.js > stats/stats.json",
     "stats": "webpack-bundle-analyzer stats/stats.json build/",
     "lint": "npm run eslint && npm run stylelint && npm run markdownlint && npm run prettier",
@@ -22,7 +22,7 @@
     "prettier:fix": "prettier --write .",
     "typescript:check": "tsc -p tsconfig.json --noEmit",
     "browsers": "browserslist",
-    "test": "jest --config config/jest.config.js"
+    "test": "jest --config config/tests/jest.config.js"
   },
   "repository": {
     "type": "git",
