@@ -1,2 +1,2 @@
-Contact: security@example.com
+Contact: hello@allandolle.fr
 Preferred-Languages: fr, en
