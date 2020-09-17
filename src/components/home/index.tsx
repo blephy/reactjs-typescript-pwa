@@ -1,7 +1,8 @@
+import './home.scss'
+
 import React from 'react'
 
-import Signature from '@images/signature.svg'
-import './home.scss'
+import { ReactComponent as Signature } from '@/images/signature.svg'
 
 type IProperties = Record<string, unknown>
 

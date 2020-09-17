@@ -21,7 +21,8 @@ const staticExpressOption = {
   redirect: true
 }
 const corsOptions = {
-  origin: '*'
+  origin: 'https://allandolle.fr',
+  optionsSuccessStatus: 200
 }
 
 /**
@@ -45,7 +46,7 @@ function initServer() {
   server.use(express.static(InstanceDistPathToServe, staticExpressOption))
 
   /**
-   * Fall history for SPA
+   * Fallback history for SPA
    */
   server.use(
     fallback('index.html', {

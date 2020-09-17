@@ -47,12 +47,12 @@ module.exports = {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.scss'],
     modules: ['src', 'node_modules'],
     alias: {
-      '@src': path.resolve(rootDir, 'src'),
-      '@components': path.resolve(rootDir, 'src', 'components'),
-      '@database': path.resolve(rootDir, 'src', 'database'),
-      '@styles': path.resolve(rootDir, 'src', 'styles'),
-      '@fonts': path.resolve(rootDir, 'src', 'fonts'),
-      '@images': path.resolve(rootDir, 'src', 'images')
+      '@': path.resolve(rootDir, 'src'),
+      '@/components': path.resolve(rootDir, 'src', 'components'),
+      '@/database': path.resolve(rootDir, 'src', 'database'),
+      '@/styles': path.resolve(rootDir, 'src', 'styles'),
+      '@/fonts': path.resolve(rootDir, 'src', 'fonts'),
+      '@/images': path.resolve(rootDir, 'src', 'images')
     }
   },
   optimization: {
@@ -305,7 +305,7 @@ module.exports = {
           },
           {
             test: /\.svg$/,
-            use: ['@svgr/webpack']
+            use: ['@svgr/webpack', 'url-loader']
           }
         ]
       }
