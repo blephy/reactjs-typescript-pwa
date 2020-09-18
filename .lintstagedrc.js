@@ -1,11 +1,10 @@
 module.exports = {
   '*.{js,jsx,ts,tsx}': filenames => [
-    'npm run typescript:check',
+    'npm run ts:check',
     `eslint --fix ${filenames.join(' ')}`,
-    `stylelint --fix ${filenames.join(' ')}`,
-    `prettier --write ${filenames.join(' ')}`
+    `stylelint --fix ${filenames.join(' ')}`
   ],
-  '*.{css,scss,less,sass,html}': ['stylelint --fix', 'prettier --write'],
-  '*.md': ['markdownlint --fix', 'prettier --write'],
-  '*.{yaml,yml,graphql,json}': 'prettier --write'
+  '*.{css,scss,less,sass,html}': ['stylelint --fix'],
+  '*.md': ['markdownlint --fix'],
+  '*': 'prettier --write --ignore-unknown'
 }

@@ -1,6 +1,6 @@
-import React from 'react'
-
 import './loader.scss'
+
+import React from 'react'
 
 export default function Loader(): JSX.Element {
   return (

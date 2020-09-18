@@ -1,17 +1,14 @@
+import '@/styles/index.scss'
+
 import React, { ReactNode } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import { LoadableComponent } from '@loadable/component'
-import Loader from '@components/loader/loader'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import '@src/styles/index.scss'
+import Loader from '@/components/loader'
 
-interface IProperties {
-  routes: {
-    name: string
-    exact: boolean
-    path: string
-    component: React.ComponentClass | React.FunctionComponent | LoadableComponent<unknown>
-  }[]
+import { IRoute } from './app.routes'
+
+export interface IProperties {
+  routes: IRoute[]
 }
 
 export default class App extends React.PureComponent<IProperties> {

@@ -6,7 +6,7 @@
         "ignoreBrowserslistConfig": false,
         "useBuiltIns": "usage",
         "corejs": 3,
-        "modules": false
+        "modules": "auto"
       }
     ],
     [
