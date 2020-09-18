@@ -43,7 +43,7 @@ npm run build
 
 ### Start the prodution server
 
-Start the nodejs production server with a SPA fallback. Don't forget to build the app first with `npm run build`.
+Start the nodejs production server with a SPA fallback.
 
 Server is listening on `localhost:3001`.
 
