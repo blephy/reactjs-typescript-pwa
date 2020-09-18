@@ -1,6 +1,10 @@
 # Allan Dollé's portfolio - React starter
 
-![Node.js CI](https://github.com/blephy/allandolle-portfolio/workflows/Node.js%20CI/badge.svg)
+![build](https://github.com/blephy/allandolle-portfolio/workflows/build/badge.svg)
+![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
+![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/blephy/allandolle-portfolio/badge.svg)](https://coveralls.io/github/blephy/allandolle-portfolio)
+
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 This app is running on production at <https://allandolle-portfolio.herokuapp.com/>.
@@ -43,7 +47,7 @@ npm run build
 
 ### Start the prodution server
 
-Start the nodejs production server with a SPA fallback. Don't forget to build the app first with `npm run build`.
+Start the nodejs production server with a SPA fallback.
 
 Server is listening on `localhost:3001`.
 
