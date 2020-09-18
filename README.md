@@ -1,6 +1,9 @@
 # Allan Dollé's portfolio - React starter
 
-![Node.js CI](https://github.com/blephy/allandolle-portfolio/workflows/Node.js%20CI/badge.svg)
+![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
+![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
+![build](https://github.com/blephy/allandolle-portfolio/workflows/build/badge.svg)
+
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 This app is running on production at <https://allandolle-portfolio.herokuapp.com/>.
