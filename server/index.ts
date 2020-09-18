@@ -33,13 +33,59 @@ function initServer() {
 
   server.use(
     bodyParser.json({
-      type: ['json', 'application/csp-report']
+      type: ['json']
     })
   )
+
+  /** Set compression */
   server.use(compression())
-  server.use(helmet())
+
+  /** Set cors */
   server.use(cors(corsOptions))
+
+  /**
+   * Set security
+   */
+  server.use(helmet.ieNoOpen())
+  server.use(helmet.noSniff())
+  server.use(helmet.hidePoweredBy())
+  server.use(helmet.xssFilter())
   server.use(helmet.referrerPolicy({ policy: 'same-origin' }))
+  server.use(
+    helmet.expectCt({
+      reportUri: 'https://allandolle.report-uri.com/r/d/ct/enforce',
+      maxAge: 86400,
+      enforce: true
+    })
+  )
+  server.use(
+    helmet.dnsPrefetchControl({
+      allow: true
+    })
+  )
+  server.use(
+    helmet.frameguard({
+      action: 'deny'
+    })
+  )
+  server.use(
+    helmet.permittedCrossDomainPolicies({
+      permittedPolicies: 'none'
+    })
+  )
+  server.use(
+    helmet.hsts({
+      maxAge: 15552000,
+      includeSubDomains: true,
+      preload: true
+    })
+  )
+  /** Permission policy */
+  server.use((req, res, next) => {
+    res.setHeader('Permissions-Policy', 'geolocation=(self), microphone=(), fullscreen=(self)')
+    next()
+  })
+
   /**
    * Service static files
    */
@@ -58,7 +104,7 @@ function initServer() {
   )
 
   /**
-   * Routes
+   * Permit preflight request
    */
   server.options('*', cors())
 
@@ -66,7 +112,7 @@ function initServer() {
    * Server start
    */
   server.listen(InstancePortToListen, () => {
-    console.log('Node server initiated')
+    console.log('Node server initiated and listening on port:', InstancePortToListen)
   })
 }
 

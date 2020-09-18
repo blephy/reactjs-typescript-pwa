@@ -13,7 +13,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-const paths = [
+const sitemapPaths = [
   {
     path: '/',
     priority: '0.8'
@@ -136,23 +136,31 @@ module.exports = {
         robots: 'noodp'
       },
       title: 'Allan Dollé | Web developer',
-      preconnect: 'https://allandolle.fr',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html',
       minify: true,
       xhtml: true,
+      preconnect: 'https://allandolle.fr',
+      prefetch: ['**/*.js', '**/*.css'],
+      preload: ['**/*.js', '**/*.css'],
       cspPlugin: {
         enabled: true,
         policy: {
           'default-src': ["'self'", 'https:', 'allandolle-portfolio.herokuapp.com', 'locahost'],
-          'font-src': ["'self'", 'https:', 'data:'],
-          'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https:'],
-          'style-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https:'],
-          'base-uri': "'self'",
-          'connect-src': ["'self'", 'https:', 'wss:', 'allandolle-portfolio.herokuapp.com', 'allandolle.fr'],
-          'img-src': ["'self'", 'https:', 'data:'],
-          'object-src': "'self'"
+          'font-src': ["'self'", 'data:'],
+          'script-src': ["'self'"],
+          'style-src': ["'self'"],
+          'base-uri': ["'self'"],
+          'connect-src': ["'none'"],
+          'img-src': ["'self'", 'data:'],
+          'object-src': ["'none'"],
+          'frame-src': ["'none'"],
+          'frame-ancestors': ["'self'"],
+          'report-uri': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
+          'report-to': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
+          'upgrade-insecure-requests': '',
+          'block-all-mixed-content': ''
         },
         hashEnabled: {
           'script-src': true,
@@ -208,7 +216,7 @@ module.exports = {
       },
       defaultAttribute: 'async'
     }),
-    new SitemapPlugin('https://allandolle.fr', paths, {
+    new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
       filename: 'sitemap.xml',
       skipgzip: true,
       lastmod: true,

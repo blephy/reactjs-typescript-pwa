@@ -1,5 +1,6 @@
 # Allan Dollé's portfolio - React starter
 
+![Node.js CI](https://github.com/blephy/allandolle-portfolio/workflows/Node.js%20CI/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 This app is running on production at <https://allandolle-portfolio.herokuapp.com/>.
@@ -8,8 +9,8 @@ This app is running on production at <https://allandolle-portfolio.herokuapp.com
 
 ### Prerequired
 
-- npm _>6.14_
-- node _>12.18_
+- npm _>6_
+- node _>12_
 
 ```shell
 node -v
@@ -26,13 +27,15 @@ npm i
 
 ### Run developement server
 
-Start the development server with live reload and hot module replacement. Will open the app on `localhost:3000`.
+Start the development server with _live reload_ and _hot module replacement_.
+
+Open the app on `localhost:3000`.
 
 ```shell
 npm start
 ```
 
-### Build production ready assets / bundle
+### Build production ready bundle
 
 ```shell
 npm run build
@@ -40,7 +43,9 @@ npm run build
 
 ### Start the prodution server
 
-Start the production ready nodejs server with a SPA fallback. Don't forget to build the app first with `npm run build`. Server is listening on `localhost:3001`.
+Start the nodejs production server with a SPA fallback. Don't forget to build the app first with `npm run build`.
+
+Server is listening on `localhost:3001`.
 
 ```shell
 npm run start:prod
@@ -65,12 +70,12 @@ npm run lint:fix
 ### Types check your typescript files
 
 ```shell
-npm run typescript:check
+npm run ts:check
 ```
 
 ### Bundle stats
 
-Visualize your bundle stats.
+Visualize your bundle stats with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
 
 ```shell
 npm run stats
@@ -88,4 +93,4 @@ npm run browserslist
 
 ### Install VSCode extensions
 
-In order to lint and format your code while you are typing, please install extension below `.vscode/extensions.json`. Go to the extension panel and type `@recommended`.
+In order to lint and format your code while you are typing in VSCode, please install extensions below `.vscode/extensions.json`. Go to the VSCode extensions panel and type `@recommended`.
