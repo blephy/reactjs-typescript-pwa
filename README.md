@@ -1,4 +1,4 @@
-# Allan Dollé's portfolio - React starter
+# Strict React starter
 
 ![build](https://github.com/blephy/allandolle-portfolio/workflows/build/badge.svg)
 ![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
@@ -6,6 +6,7 @@
 [![codecov](https://codecov.io/gh/blephy/allandolle-portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/blephy/allandolle-portfolio)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 
 ## Getting started
 
@@ -55,7 +56,8 @@ npm run start:prod
 
 ### Lint and format the code
 
-Lint with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/) and [markdownlint](https://github.com/igorshubovych/markdownlint-cli). Format with [prettier](https://prettier.io/).
+Lint with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/), [markdownlint](https://github.com/igorshubovych/markdownlint-cli) and [htmlhint](https://htmlhint.com/).
+Format with [prettier](https://prettier.io/).
 
 ```shell
 npm run lint
@@ -63,10 +65,25 @@ npm run lint
 
 ### Autofix lint and format the code
 
-Autofix with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/) and [markdownlint](https://github.com/igorshubovych/markdownlint-cli). Format with [prettier](https://prettier.io/).
+Autofix with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/) and [markdownlint](https://github.com/igorshubovych/markdownlint-cli).
+Format with [prettier](https://prettier.io/).
 
 ```shell
 npm run lint:fix
+```
+
+### Test the application
+
+Run [Jest](https://jestjs.io/) with [Enzyme](https://github.com/enzymejs/enzyme/) to test the React application. Collect coverage under `coverage/` folder.
+
+```shell
+npm run test
+```
+
+Run Jest in watch mode without collecting coverage.
+
+```shell
+npm run test:watch
 ```
 
 ### Types check your typescript files
@@ -88,11 +105,11 @@ npm run stats
 Visualize your bundle browsers targets with browserslist queries. You can change queries on `.browserslistrc` file.
 
 ```shell
-npm run browserslist
+npm run browsers
 ```
 
 ## Contributing
 
 ### Install VSCode extensions
 
-In order to lint and format your code while you are typing in VSCode, please install extensions below `.vscode/extensions.json`. Go to the VSCode extensions panel and type `@recommended`.
+In order to lint and format your code while you are typing in VSCode, please install extensions in `.vscode/extensions.json`. Alternatively, go to the VSCode extensions panel and type `@recommended`.
