@@ -59,6 +59,18 @@ function initServer() {
     })
   )
   server.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'", 'https:', 'allandolle.fr', 'locahost'],
+        frameAncestors: "'none'",
+        reportUri: ['https://allandolle.report-uri.com/r/d/csp/enforce'],
+        reportTo: ['https://allandolle.report-uri.com/r/d/csp/enforce'],
+        upgradeInsecureRequests: '',
+        blockAllMixedContent: ''
+      }
+    })
+  )
+  server.use(
     helmet.dnsPrefetchControl({
       allow: true
     })

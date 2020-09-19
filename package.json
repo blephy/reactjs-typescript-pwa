@@ -5,7 +5,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "start": "webpack-dev-server --color --watch --hot --stdin --config config/webpack/webpack.dev.js",
-    "start:prod": "npm run build && node server/index.ts",
+    "start:prod": "node server/index.ts",
     "build": "webpack --progress --colors --config config/webpack/webpack.prod.js",
     "test": "jest --colors --config config/tests/jest.config.js",
     "test:watch": "jest --collectCoverage=false --colors --watch --config config/tests/jest.config.js",
@@ -39,7 +39,6 @@
     "webpack",
     "postcss",
     "babel",
-    "heroku",
     "lint-staged",
     "commitlint",
     "husky",
@@ -137,7 +136,8 @@
     "webpack": "^4.44.1",
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-subresource-integrity": "^1.4.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",

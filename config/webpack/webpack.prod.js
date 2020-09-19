@@ -8,6 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
+const SubresourceIntegrityPlugin = require('webpack-subresource-integrity')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
@@ -17,9 +18,6 @@ const sitemapPaths = [
   {
     path: '/',
     priority: '0.8'
-  },
-  {
-    path: '/loader/'
   }
 ]
 
@@ -139,8 +137,9 @@ module.exports = {
       preconnect: 'https://allandolle.fr',
       cspPlugin: {
         enabled: true,
+        hashingMethod: 'sha512',
         policy: {
-          'default-src': ["'self'", 'https:', 'allandolle-portfolio.herokuapp.com', 'locahost'],
+          'default-src': ["'self'", 'https:', 'allandolle.fr', 'locahost'],
           'font-src': ["'self'", 'data:'],
           'script-src': ["'self'"],
           'style-src': ["'self'"],
@@ -149,8 +148,6 @@ module.exports = {
           'img-src': ["'self'", 'data:'],
           'object-src': ["'none'"],
           'frame-src': ["'none'"],
-          'report-uri': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
-          'report-to': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
           'upgrade-insecure-requests': '',
           'block-all-mixed-content': ''
         },
@@ -201,14 +198,11 @@ module.exports = {
       ]
     }),
     new ScriptExtHtmlWebpackPlugin({
-      custom: {
-        test: /\.js$/,
-        attribute: 'crossorigin',
-        value: 'anonymous'
-      },
+      sync: /^(runtime|app).*\.js$/,
       defaultAttribute: 'async',
-      prefetch: ['**/*.js', '**/*.css'],
-      preload: ['**/*.js', '**/*.css']
+      prefetch: {
+        test: [/^(?!runtime|app).*\.js$/]
+      }
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
       filename: 'sitemap.xml',
@@ -218,6 +212,10 @@ module.exports = {
       changefreq: 'monthly'
     }),
     new CspHtmlWebpackPlugin(),
+    new SubresourceIntegrityPlugin({
+      hashFuncNames: ['sha512', 'sha256'],
+      enabled: true
+    }),
     new StylelintPlugin()
   ],
   module: {

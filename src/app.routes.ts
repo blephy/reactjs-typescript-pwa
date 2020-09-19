@@ -1,6 +1,6 @@
 import loadable, { LoadableComponent } from '@loadable/component'
 
-const Home = loadable(() => import(/* webpackChunkName: 'home', webpackPrefetch: true */ '@/components/home'))
+const Home = loadable(() => import(/* webpackChunkName: 'home', webpackPreload: true */ '@/components/home'))
 
 export interface IRoute {
   name?: string
