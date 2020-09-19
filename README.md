@@ -3,7 +3,7 @@
 ![build](https://github.com/blephy/allandolle-portfolio/workflows/build/badge.svg)
 ![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
 ![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/blephy/allandolle-portfolio/badge.svg)](https://coveralls.io/github/blephy/allandolle-portfolio)
+[![Coverage Status](https://coveralls.io/repos/github/blephy/allandolle-portfolio/badge.svg?branch=master)](https://coveralls.io/github/blephy/allandolle-portfolio?branch=master)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
