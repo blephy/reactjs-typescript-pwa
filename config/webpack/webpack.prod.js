@@ -134,7 +134,7 @@ module.exports = {
       filename: 'index.html',
       minify: true,
       xhtml: true,
-      preconnect: 'https://allandolle.fr',
+      preconnect: 'https://allandolle.fr/',
       cspPlugin: {
         enabled: true,
         hashingMethod: 'sha512',
