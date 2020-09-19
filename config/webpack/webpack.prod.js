@@ -137,8 +137,6 @@ module.exports = {
       minify: true,
       xhtml: true,
       preconnect: 'https://allandolle.fr',
-      prefetch: ['**/*.js', '**/*.css'],
-      preload: ['**/*.js', '**/*.css'],
       cspPlugin: {
         enabled: true,
         policy: {
@@ -151,7 +149,6 @@ module.exports = {
           'img-src': ["'self'", 'data:'],
           'object-src': ["'none'"],
           'frame-src': ["'none'"],
-          'frame-ancestors': ["'self'"],
           'report-uri': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
           'report-to': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
           'upgrade-insecure-requests': '',
@@ -209,7 +206,9 @@ module.exports = {
         attribute: 'crossorigin',
         value: 'anonymous'
       },
-      defaultAttribute: 'async'
+      defaultAttribute: 'async',
+      prefetch: ['**/*.js', '**/*.css'],
+      preload: ['**/*.js', '**/*.css']
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
       filename: 'sitemap.xml',
