@@ -198,11 +198,12 @@ module.exports = {
       ]
     }),
     new ScriptExtHtmlWebpackPlugin({
-      sync: /^(runtime|app).*\.js$/,
-      defaultAttribute: 'async',
-      prefetch: {
-        test: [/^(?!runtime|app).*\.js$/]
-      }
+      sync: /^runtime.*\.js$/,
+      defaultAttribute: 'async'
+      // prefetch: {
+      //   test: /\.js$/,
+      //   chunks: 'async'
+      // }
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
       filename: 'sitemap.xml',
@@ -255,7 +256,7 @@ module.exports = {
             test: /\.css$/,
             use: [
               MiniCssExtractPlugin.loader,
-              { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
+              { loader: 'css-loader', options: { importLoaders: 1 } },
               {
                 loader: 'postcss-loader',
                 options: {
@@ -269,7 +270,7 @@ module.exports = {
             test: /\.scss$/,
             use: [
               MiniCssExtractPlugin.loader,
-              { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
+              { loader: 'css-loader', options: { importLoaders: 1 } },
               {
                 loader: 'postcss-loader',
                 options: {
