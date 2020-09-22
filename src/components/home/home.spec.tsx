@@ -10,7 +10,7 @@ describe('Home', () => {
     expect(wrapper.exists()).toBeTruthy()
   })
 
-  it('should include a h1', () => {
+  it('should include an h1 element', () => {
     const wrapper = shallow(<Home />)
     const element = wrapper.find('h1')
 
