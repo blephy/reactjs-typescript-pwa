@@ -187,12 +187,12 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}Sitemap: /sitemap.xml`,
+          transform: content => `${content}\r\n# Sitemap\r\nSitemap: /.well-known/sitemap.xml`,
           cacheTransform: true
         },
         {
           from: path.resolve(rootDir, 'public', 'security.txt'),
-          to: path.resolve(rootDir, 'build'),
+          to: path.resolve(rootDir, 'build/.well-known'),
           cacheTransform: true
         }
       ]
@@ -206,7 +206,7 @@ module.exports = {
       // }
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
-      filename: 'sitemap.xml',
+      filename: '.well-known/sitemap.xml',
       skipgzip: true,
       lastmod: true,
       priority: 0.5,
