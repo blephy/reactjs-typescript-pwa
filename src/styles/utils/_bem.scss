@@ -1,0 +1,34 @@
+/// https://css-tricks.com/snippets/sass/bem-mixins/
+/// https://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+/// -------------------------------------------------------------
+/// Block Element
+/// @param {String} $element - Element's name
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// Alias block element
+/// @alias element Alias for element mixin
+@mixin e($element) {
+  @include element($element) {
+    @content;
+  }
+}
+
+/// Block Modifier
+/// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/// Alias block element
+/// @alias modifier Alias for modifier mixin
+@mixin m($modifier) {
+  @include modifier($modifier) {
+    @content;
+  }
+}
