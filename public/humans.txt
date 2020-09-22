@@ -8,7 +8,7 @@
 	Language: English
   Xhtml: Compatible
 	Doctype: HTML5
-  Standards: HTML5, CSS3, JAVASCRIPT,
-  Generator: Webpack 5
+  Standards: HTML5, CSS3, JAVASCRIPT
+  Generator: Webpack 4
   Polyfill: Babel 7
 	IDE: Visual Studio Code

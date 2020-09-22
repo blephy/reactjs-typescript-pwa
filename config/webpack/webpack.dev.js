@@ -17,7 +17,7 @@ module.exports = {
     app: path.resolve(rootDir, 'src/index.tsx')
   },
   output: {
-    path: path.resolve(rootDir, 'ild'),
+    path: path.resolve(rootDir, 'build'),
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     publicPath: '/',

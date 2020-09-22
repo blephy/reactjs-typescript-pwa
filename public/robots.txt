@@ -1,5 +1,3 @@
-# Sitemap
-
 # Robots permissions
 User-agent: *
 Allow: /

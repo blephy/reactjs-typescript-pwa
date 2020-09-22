@@ -1,9 +1,9 @@
-import loadable, { LoadableComponent } from '@loadable/component'
+import { LoadableComponent } from '@loadable/component'
 
-const Home = loadable(() => import(/* webpackChunkName: 'home', webpackPrefetch: true */ '@/components/home'))
+import { Home, Loader, NotFound } from '@/components'
 
 export interface IRoute {
-  name?: string
+  name: string
   exact?: boolean
   path: string
   component: React.ComponentClass | React.FunctionComponent | LoadableComponent<unknown>
@@ -15,6 +15,17 @@ const routes: IRoute[] = [
     exact: true,
     path: '/',
     component: Home
+  },
+  {
+    name: 'loader',
+    exact: true,
+    path: '/loader',
+    component: Loader
+  },
+  {
+    name: 'notFound',
+    path: '*',
+    component: NotFound
   }
 ]
 

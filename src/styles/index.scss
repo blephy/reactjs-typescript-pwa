@@ -1,16 +1,21 @@
-@font-face {
-  font-family: 'Open Sans Light';
-  src: url('@/fonts/open-sans/OpenSans-Light.ttf') format('truetype');
-}
-
+/// Normalize and sanitize css with browserslist
+/// https://www.npmjs.com/package/postcss-normalize
 @import-normalize;
-@import-sanitize;
+@import-sanitize "*";
+
+@import 'theme';
 
 html,
-body,
-.app-wrapper {
-  background: #131313;
-  color: #fff;
+body {
+  background-color: $background-color;
+  color: $color;
   font-family: 'Open Sans Light', 'Source Code Pro Medium', sans-serif;
-  margin: 36px;
+  font-size: 100%;
+  height: 100%;
+}
+
+.app-wrapper {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 2rem;
 }

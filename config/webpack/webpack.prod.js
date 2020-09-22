@@ -8,6 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
+const SubresourceIntegrityPlugin = require('webpack-subresource-integrity')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
@@ -17,9 +18,6 @@ const sitemapPaths = [
   {
     path: '/',
     priority: '0.8'
-  },
-  {
-    path: '/loader/'
   }
 ]
 
@@ -136,13 +134,12 @@ module.exports = {
       filename: 'index.html',
       minify: true,
       xhtml: true,
-      preconnect: 'https://allandolle.fr',
-      prefetch: ['**/*.js', '**/*.css'],
-      preload: ['**/*.js', '**/*.css'],
+      preconnect: 'https://allandolle.fr/',
       cspPlugin: {
         enabled: true,
+        hashingMethod: 'sha512',
         policy: {
-          'default-src': ["'self'", 'https:', 'allandolle-portfolio.herokuapp.com', 'locahost'],
+          'default-src': ["'self'", 'https:', 'allandolle.fr', 'locahost'],
           'font-src': ["'self'", 'data:'],
           'script-src': ["'self'"],
           'style-src': ["'self'"],
@@ -151,9 +148,6 @@ module.exports = {
           'img-src': ["'self'", 'data:'],
           'object-src': ["'none'"],
           'frame-src': ["'none'"],
-          'frame-ancestors': ["'self'"],
-          'report-uri': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
-          'report-to': ['https://allandolle.report-uri.com/r/d/csp/enforce'],
           'upgrade-insecure-requests': '',
           'block-all-mixed-content': ''
         },
@@ -193,32 +187,36 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}Sitemap: https://allandolle.fr/sitemap.xml`,
+          transform: content => `${content}\r\n# Sitemap\r\nSitemap: /.well-known/sitemap.xml`,
           cacheTransform: true
         },
         {
           from: path.resolve(rootDir, 'public', 'security.txt'),
-          to: path.resolve(rootDir, 'build'),
+          to: path.resolve(rootDir, 'build/.well-known'),
           cacheTransform: true
         }
       ]
     }),
     new ScriptExtHtmlWebpackPlugin({
-      custom: {
-        test: /\.js$/,
-        attribute: 'crossorigin',
-        value: 'anonymous'
-      },
+      sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
+      // prefetch: {
+      //   test: /\.js$/,
+      //   chunks: 'async'
+      // }
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
-      filename: 'sitemap.xml',
+      filename: '.well-known/sitemap.xml',
       skipgzip: true,
       lastmod: true,
       priority: 0.5,
       changefreq: 'monthly'
     }),
     new CspHtmlWebpackPlugin(),
+    new SubresourceIntegrityPlugin({
+      hashFuncNames: ['sha512', 'sha256'],
+      enabled: true
+    }),
     new StylelintPlugin()
   ],
   module: {
@@ -258,7 +256,7 @@ module.exports = {
             test: /\.css$/,
             use: [
               MiniCssExtractPlugin.loader,
-              { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
+              { loader: 'css-loader', options: { importLoaders: 1 } },
               {
                 loader: 'postcss-loader',
                 options: {
@@ -272,7 +270,7 @@ module.exports = {
             test: /\.scss$/,
             use: [
               MiniCssExtractPlugin.loader,
-              { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
+              { loader: 'css-loader', options: { importLoaders: 1 } },
               {
                 loader: 'postcss-loader',
                 options: {
