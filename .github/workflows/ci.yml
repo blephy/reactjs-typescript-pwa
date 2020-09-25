@@ -40,12 +40,12 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    with:
+      path: ~/.npm
+      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
       - name: Lint codebase
         run: npm run lint
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
 
   build:
     needs: install
@@ -53,12 +53,12 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    with:
+      path: ~/.npm
+      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
       - name: Build application
         run: npm run build
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
 
   test:
     needs: install
@@ -66,12 +66,12 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    with:
+      path: ~/.npm
+      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
       - name: Test application
         run: npm run test
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
         env:
           CI: true
 
@@ -81,12 +81,12 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    with:
+      path: ~/.npm
+      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
       - name: Lint reports
         run: npm run lint:report
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
