@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [11.x, 12.x, 14.x]
+        node-version: [12.x, 14.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,3 +43,6 @@ jobs:
           directory: ./coverage
           flags: unittests
           fail_ci_if_error: true
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1.4

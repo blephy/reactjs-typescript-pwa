@@ -7,7 +7,7 @@ module.exports = {
       tsConfig: '<rootDir>/tsconfig.spec.json'
     }
   },
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   verbose: true,
   setupFilesAfterEnv: ['<rootDir>/config/tests/setupTests.js'],
   testMatch: ['<rootDir>/src/**/*.(spec|test).(ts|tsx)'],
@@ -30,5 +30,6 @@ module.exports = {
     '!<rootDir>/src/**/*.d.ts',
     '!<rootDir>/src/**/*.spec.ts',
     '!<rootDir>/src/**/*.test.ts'
-  ]
+  ],
+  testResultsProcessor: 'jest-sonar-reporter'
 }
