@@ -23,15 +23,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache Node.js modules
+        id: cache-node-modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: |
+            **/node_modules
+            ~/.npm
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
 
       - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
 
   lint:
@@ -47,7 +51,9 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: |
+            **/node_modules
+            ~/.npm
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
@@ -68,7 +74,9 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: |
+            **/node_modules
+            ~/.npm
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
@@ -90,7 +98,9 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: |
+            **/node_modules
+            ~/.npm
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
@@ -116,7 +126,9 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: |
+            **/node_modules
+            ~/.npm
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
