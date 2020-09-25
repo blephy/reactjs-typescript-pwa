@@ -1,12 +1,12 @@
-name: tests
+name: ci
 
 on:
   push:
-    branches: [master]
+    branches: [master, develop]
   pull_request:
 
 jobs:
-  tests:
+  install:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -15,7 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node-version }}
@@ -35,17 +34,47 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Lint codebase
+        run: npm run lint
+
+  build:
+    needs: install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Build application
+        run: npm run build
+
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
       - name: Test application
         run: npm run test
         env:
           CI: true
 
-      - name: Codecov upload
-        uses: codecov/codecov-action@v1
-        with:
-          directory: ./coverage
-          flags: unittests
-          fail_ci_if_error: true
+  reports:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Lint reports
+        run: npm run lint:report
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
