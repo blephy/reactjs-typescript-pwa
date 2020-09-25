@@ -40,10 +40,18 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-    with:
-      path: ~/.npm
-      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
       - name: Lint codebase
         run: npm run lint
 
@@ -53,10 +61,19 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-    with:
-      path: ~/.npm
-      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
       - name: Build application
         run: npm run build
 
@@ -66,10 +83,19 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-    with:
-      path: ~/.npm
-      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
       - name: Test application
         run: npm run test
         env:
@@ -81,10 +107,21 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-    with:
-      path: ~/.npm
-      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
       - name: Lint reports
         run: npm run lint:report
 
