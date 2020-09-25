@@ -111,6 +111,12 @@ jobs:
         env:
           CI: true
 
+      - name: Upload coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage
+
   reports:
     needs: test
     runs-on: ubuntu-latest
@@ -136,6 +142,11 @@ jobs:
 
       - name: Lint reports
         run: npm run lint:report
+
+      - name: Download coverage
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
