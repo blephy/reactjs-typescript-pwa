@@ -8,6 +8,7 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
+[![HitCount](http://hits.dwyl.com/blephy/allandolle-portfolio.svg)](http://hits.dwyl.com/blephy/allandolle-portfolio)
 
 ## Getting started
 
