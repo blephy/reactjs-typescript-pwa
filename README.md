@@ -4,9 +4,11 @@
 ![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
 ![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
 [![codecov](https://codecov.io/gh/blephy/allandolle-portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/blephy/allandolle-portfolio)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d96022d830524fa69b77243647c286a8)](https://www.codacy.com/manual/hello_104/allandolle-portfolio/dashboard)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
+[![HitCount](http://hits.dwyl.com/blephy/allandolle-portfolio.svg)](http://hits.dwyl.com/blephy/allandolle-portfolio)
 
 ## Getting started
 
