@@ -1,9 +1,6 @@
 # Strict React starter
 
-![build](https://github.com/blephy/allandolle-portfolio/workflows/build/badge.svg)
-![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
-![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
-[![codecov](https://codecov.io/gh/blephy/allandolle-portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/blephy/allandolle-portfolio)
+![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=security_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)

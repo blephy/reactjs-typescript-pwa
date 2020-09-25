@@ -15,6 +15,9 @@
 /stats/
 stats.json
 
+# reports
+/reports/
+
 # misc
 .DS_Store
 

@@ -21,5 +21,16 @@
       "@/*": ["./src/*"]
     }
   },
-  "exclude": ["build", "dist", "stats", "config", "coverage", "server", ".vscode", ".github", "**/node_modules/**"]
+  "exclude": [
+    "build",
+    "dist",
+    "stats",
+    "reports",
+    "config",
+    "coverage",
+    "server",
+    ".vscode",
+    ".github",
+    "**/node_modules/**"
+  ]
 }

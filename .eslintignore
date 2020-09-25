@@ -3,6 +3,7 @@
 /dist/*
 /build/*
 /stats/*
+/reports/*
 /server/*
 /config/*
 /coverage/*
