@@ -4,11 +4,21 @@
 ![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
 ![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
 [![codecov](https://codecov.io/gh/blephy/allandolle-portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/blephy/allandolle-portfolio)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d96022d830524fa69b77243647c286a8)](https://www.codacy.com/manual/hello_104/allandolle-portfolio/dashboard)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=security_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=coverage)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=bugs)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=code_smells)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_index)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=ncloc)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
-[![HitCount](http://hits.dwyl.com/blephy/allandolle-portfolio.svg)](http://hits.dwyl.com/blephy/allandolle-portfolio)
 
 ## Getting started
 

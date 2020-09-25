@@ -113,6 +113,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "jest-css-modules-transform": "^4.0.1",
+    "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^10.3.0",
     "markdownlint-cli": "^0.23.2",
     "mini-css-extract-plugin": "^0.11.0",
@@ -156,5 +157,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "sonarq-report.xml",
+    "indent": 4
   }
 }

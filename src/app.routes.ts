@@ -6,7 +6,7 @@ export interface IRoute {
   name: string
   exact?: boolean
   path: string
-  component: React.ComponentClass | React.FunctionComponent | LoadableComponent<unknown>
+  component: LoadableComponent<unknown>
 }
 
 const routes: IRoute[] = [
