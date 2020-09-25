@@ -116,6 +116,7 @@ jobs:
         with:
           name: coverage
           path: coverage
+          if-no-files-found: error
 
   reports:
     needs: test
@@ -147,6 +148,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage
+          path: coverage
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
