@@ -3,6 +3,7 @@
 ![build](https://github.com/blephy/allandolle-portfolio/workflows/build/badge.svg)
 ![lint](https://github.com/blephy/allandolle-portfolio/workflows/lint/badge.svg)
 ![tests](https://github.com/blephy/allandolle-portfolio/workflows/tests/badge.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/747027e7eb744b46a6a68953dffca32f)](https://app.codacy.com/manual/hello_104/allandolle-portfolio?utm_source=github.com&utm_medium=referral&utm_content=blephy/allandolle-portfolio&utm_campaign=Badge_Grade_Settings)
 [![codecov](https://codecov.io/gh/blephy/allandolle-portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/blephy/allandolle-portfolio)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
