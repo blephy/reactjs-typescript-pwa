@@ -27,7 +27,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
     modules: ['src', 'node_modules'],
     alias: {
       '@': path.resolve(rootDir, 'src')
