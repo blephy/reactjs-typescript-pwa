@@ -13,7 +13,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
-const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin')
+const { RelativeCiAgentWebpackPlugin } = require('@relative-ci/agent')
 
 const sitemapPaths = [
   {
@@ -28,12 +28,12 @@ module.exports = {
   target: 'web',
   name: 'production',
   mode: 'production',
+  context: path.resolve(rootDir, 'src'),
   bail: true,
   entry: {
     app: path.resolve(rootDir, 'src/index.tsx')
   },
   stats: {
-    // context: '../../src',
     assets: true,
     entrypoints: true,
     chunks: true,
@@ -224,11 +224,7 @@ module.exports = {
     }),
     new CspHtmlWebpackPlugin(),
     new StylelintPlugin(),
-    new BundleStatsWebpackPlugin({
-      html: false,
-      json: true,
-      outDir: '../stats/'
-    })
+    new RelativeCiAgentWebpackPlugin()
   ],
   module: {
     rules: [
