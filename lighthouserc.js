@@ -5,7 +5,13 @@ module.exports = {
       startServerCommand: 'npm run start:prod'
     },
     assert: {
-      preset: 'lighthouse:recommended'
+      preset: 'lighthouse:no-pwa',
+      assertions: {
+        'uses-rel-preload': 'off',
+        'uses-rel-preconnect': 'off',
+        'render-blocking-resources': 'off',
+        'robots-txt': 'off'
+      }
     }
   }
 }
