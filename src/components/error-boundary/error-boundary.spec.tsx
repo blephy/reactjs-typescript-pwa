@@ -19,28 +19,38 @@ describe('ErrorBoundary when no JS errors are caught in a child component', () =
   })
 
   it('should render the child component', () => {
-    expect(ErrorBoundaryComponent.find(() => Something)).toBeTruthy()
+    expect(ErrorBoundaryComponent.find(Something).exists()).toBeTruthy()
+  })
+
+  it('should have property "hasError" to false', () => {
+    expect(ErrorBoundaryComponent.state()).toHaveProperty('hasError', false)
   })
 })
 
-// describe('ErrorBoundary when a JS error is caught in a child component', () => {
-//   beforeAll(() => {
-//     ErrorBoundaryComponent = mount(
-//       <ErrorBoundary>
-//         <Something />
-//       </ErrorBoundary>
-//     )
-//     const error = new Error('Oops')
+describe('ErrorBoundary when a JS error is caught in a child component', () => {
+  const errorMessage = 'Oops an error occured'
 
-//     ErrorBoundaryComponent.find(() => Something).simulateError(error)
-//     ErrorBoundaryComponent.update()
-//   })
+  beforeEach(() => {
+    ErrorBoundaryComponent = mount(
+      <ErrorBoundary>
+        <Something />
+      </ErrorBoundary>
+    )
+    const error = new Error(errorMessage)
 
-//   it('should update the state to indicate an error', () => {
-//     expect(ErrorBoundaryComponent.state('hasError')).toEqual(true)
-//   })
+    ErrorBoundaryComponent.find(Something).simulateError(error)
+    ErrorBoundaryComponent.update()
+  })
 
-//   it('should not render the child component', () => {
-//     expect(ErrorBoundaryComponent.find(() => Something).exists()).toBeFalsy()
-//   })
-// })
+  it('should not render the child component', () => {
+    expect(ErrorBoundaryComponent.find(Something).exists()).toBeFalsy()
+  })
+
+  it('should update the state to indicate an error', () => {
+    expect(ErrorBoundaryComponent.state()).toHaveProperty('hasError', true)
+  })
+
+  it('should print the error to user', () => {
+    expect(ErrorBoundaryComponent.text()).toContain(errorMessage)
+  })
+})

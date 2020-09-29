@@ -8,11 +8,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
-const SubresourceIntegrityPlugin = require('webpack-subresource-integrity')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const PreloadWebpackPlugin = require('preload-webpack-plugin')
 
 const sitemapPaths = [
   {
@@ -187,7 +187,7 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}\r\n# Sitemap\r\nSitemap: /.well-known/sitemap.xml`,
+          transform: content => `${content}\r\n# Sitemap\r\nSitemap: https://allandolle.fr/.well-known/sitemap.xml\r\n`,
           cacheTransform: true
         },
         {
@@ -196,6 +196,10 @@ module.exports = {
           cacheTransform: true
         }
       ]
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'initial'
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
@@ -213,10 +217,6 @@ module.exports = {
       changefreq: 'monthly'
     }),
     new CspHtmlWebpackPlugin(),
-    new SubresourceIntegrityPlugin({
-      hashFuncNames: ['sha512', 'sha256'],
-      enabled: true
-    }),
     new StylelintPlugin()
   ],
   module: {

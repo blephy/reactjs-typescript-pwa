@@ -1,7 +1,7 @@
 /// Normalize and sanitize css with browserslist
 /// https://www.npmjs.com/package/postcss-normalize
 @import-normalize;
-@import-sanitize "*";
+@import-sanitize;
 
 @import 'theme';
 
