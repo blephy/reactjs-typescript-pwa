@@ -204,10 +204,6 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
-      // prefetch: {
-      //   test: /\.js$/,
-      //   chunks: 'async'
-      // }
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
       filename: '.well-known/sitemap.xml',
@@ -260,8 +256,10 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  postcssOptions: {
+                    ident: 'postcss',
+                    plugins: () => [postcssNormalize()]
+                  }
                 }
               }
             ]
@@ -274,8 +272,10 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  postcssOptions: {
+                    ident: 'postcss',
+                    plugins: () => [postcssNormalize()]
+                  }
                 }
               },
               'sass-loader'

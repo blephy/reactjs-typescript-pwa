@@ -120,8 +120,10 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  postcssOptions: {
+                    ident: 'postcss',
+                    plugins: () => [postcssNormalize()]
+                  }
                 }
               }
             ]
@@ -134,8 +136,10 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  postcssOptions: {
+                    ident: 'postcss',
+                    plugins: () => [postcssNormalize()]
+                  }
                 }
               },
               'sass-loader'
