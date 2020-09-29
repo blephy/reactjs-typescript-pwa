@@ -103,14 +103,6 @@ npm run test:watch
 npm run ts:check
 ```
 
-### Bundle stats
-
-Visualize your bundle stats with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
-
-```shell
-npm run stats
-```
-
 ### Browserslist
 
 Visualize your bundle browsers targets with browserslist queries. You can change queries on `.browserslistrc` file.
