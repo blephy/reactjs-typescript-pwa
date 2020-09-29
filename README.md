@@ -15,6 +15,7 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_index)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 
+[![RelativeCI](https://badges.relative-ci.com/badges/BqwiakvXGr2mt0cQMEql?branch=master)](https://app.relative-ci.com/projects/BqwiakvXGr2mt0cQMEql)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 

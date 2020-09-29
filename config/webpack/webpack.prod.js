@@ -13,6 +13,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin')
 
 const sitemapPaths = [
   {
@@ -30,6 +31,15 @@ module.exports = {
   bail: true,
   entry: {
     app: path.resolve(rootDir, 'src/index.tsx')
+  },
+  stats: {
+    // context: '../../src',
+    assets: true,
+    entrypoints: true,
+    chunks: true,
+    modules: true,
+    builtAt: true,
+    hash: true
   },
   output: {
     path: path.resolve(rootDir, 'build'),
@@ -213,7 +223,12 @@ module.exports = {
       changefreq: 'monthly'
     }),
     new CspHtmlWebpackPlugin(),
-    new StylelintPlugin()
+    new StylelintPlugin(),
+    new BundleStatsWebpackPlugin({
+      html: false,
+      json: true,
+      outDir: '../stats/'
+    })
   ],
   module: {
     rules: [
