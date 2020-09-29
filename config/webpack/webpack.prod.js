@@ -13,6 +13,7 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const { RelativeCiAgentWebpackPlugin } = require('@relative-ci/agent')
 
 const sitemapPaths = [
   {
@@ -27,9 +28,18 @@ module.exports = {
   target: 'web',
   name: 'production',
   mode: 'production',
+  context: path.resolve(rootDir, 'src'),
   bail: true,
   entry: {
     app: path.resolve(rootDir, 'src/index.tsx')
+  },
+  stats: {
+    assets: true,
+    entrypoints: true,
+    chunks: true,
+    modules: true,
+    builtAt: true,
+    hash: true
   },
   output: {
     path: path.resolve(rootDir, 'build'),
@@ -204,10 +214,6 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
-      // prefetch: {
-      //   test: /\.js$/,
-      //   chunks: 'async'
-      // }
     }),
     new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
       filename: '.well-known/sitemap.xml',
@@ -217,7 +223,8 @@ module.exports = {
       changefreq: 'monthly'
     }),
     new CspHtmlWebpackPlugin(),
-    new StylelintPlugin()
+    new StylelintPlugin(),
+    new RelativeCiAgentWebpackPlugin()
   ],
   module: {
     rules: [
@@ -260,8 +267,10 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  postcssOptions: {
+                    ident: 'postcss',
+                    plugins: () => [postcssNormalize()]
+                  }
                 }
               }
             ]
@@ -274,8 +283,10 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  postcssOptions: {
+                    ident: 'postcss',
+                    plugins: () => [postcssNormalize()]
+                  }
                 }
               },
               'sass-loader'

@@ -8,6 +8,7 @@
     "jsx": "react",
     "checkJs": true,
     "allowJs": true,
+    "outDir": "$$ts-jest$$",
     "importHelpers": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,

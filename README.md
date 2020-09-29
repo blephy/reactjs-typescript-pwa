@@ -6,6 +6,7 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 
+[![RelativeCI](https://badges.relative-ci.com/badges/BqwiakvXGr2mt0cQMEql?branch=master)](https://app.relative-ci.com/projects/BqwiakvXGr2mt0cQMEql)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=coverage)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=ncloc)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 
@@ -100,14 +101,6 @@ npm run test:watch
 
 ```shell
 npm run ts:check
-```
-
-### Bundle stats
-
-Visualize your bundle stats with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
-
-```shell
-npm run stats
 ```
 
 ### Browserslist
