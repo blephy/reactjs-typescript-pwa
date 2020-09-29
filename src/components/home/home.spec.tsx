@@ -12,8 +12,7 @@ describe('Home', () => {
 
   it('should include an h1 element', () => {
     const wrapper = shallow(<Home />)
-    const element = wrapper.find('h1')
 
-    expect(element.length).toBe(1)
+    expect(wrapper.find('h1')).toHaveLength(1)
   })
 })

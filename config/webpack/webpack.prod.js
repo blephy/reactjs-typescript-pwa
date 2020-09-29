@@ -187,7 +187,7 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}\r\n# Sitemap\r\nSitemap: /.well-known/sitemap.xml`,
+          transform: content => `${content}\r\n# Sitemap\r\nSitemap: https://allandolle.fr/.well-known/sitemap.xml\r\n`,
           cacheTransform: true
         },
         {

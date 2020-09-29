@@ -124,7 +124,7 @@ function initServer() {
    * Server start
    */
   server.listen(InstancePortToListen, () => {
-    console.log('Node server initiated and listening on port:', InstancePortToListen)
+    console.log('Listening on port:', InstancePortToListen)
   })
 }
 
