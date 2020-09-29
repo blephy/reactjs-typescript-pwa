@@ -185,6 +185,9 @@ jobs:
   lhci:
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -213,5 +216,5 @@ jobs:
 
       - name: run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.4.x
+          npm install @lhci/cli@0.5.0
           lhci autorun
