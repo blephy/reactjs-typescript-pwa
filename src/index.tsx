@@ -6,7 +6,7 @@ import App from '@/app'
 
 import routes from './app.routes'
 
-const DOM_NODE: HTMLElement = document.querySelector('.app-wrapper')
+const DOM_NODE: HTMLElement = document.querySelector('.appWrapper')
 
 render(<App routes={routes} />, DOM_NODE)
 
