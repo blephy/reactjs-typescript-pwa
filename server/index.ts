@@ -5,6 +5,7 @@ const compression = require('compression')
 const helmet = require('helmet')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const hpp = require('hpp')
 
 /**
  * Instance configuration. Needed by express
@@ -33,9 +34,12 @@ function initServer() {
 
   server.use(
     bodyParser.json({
-      type: ['json']
+      type: ['application/json']
     })
   )
+
+  /** Set HTTP parameter pollution */
+  server.use(hpp())
 
   /** Set compression */
   server.use(compression())
