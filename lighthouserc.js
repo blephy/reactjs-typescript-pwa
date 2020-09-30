@@ -10,7 +10,7 @@ module.exports = {
     assert: {
       preset: 'lighthouse:no-pwa',
       assertions: {
-        'robots-txt': 'off'
+        canonical: 'off'
       }
     }
   }
