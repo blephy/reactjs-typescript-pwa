@@ -18,7 +18,7 @@ const routes: IRoute[] = [
   },
   {
     name: 'notFound',
-    path: '*',
+    path: '/404',
     component: NotFound
   }
 ]

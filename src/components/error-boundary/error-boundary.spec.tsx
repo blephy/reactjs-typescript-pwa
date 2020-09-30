@@ -53,4 +53,8 @@ describe('ErrorBoundary when a JS error is caught in a child component', () => {
   it('should print the error to user', () => {
     expect(ErrorBoundaryComponent.text()).toContain(errorMessage)
   })
+
+  it('should include an h1 element', () => {
+    expect(ErrorBoundaryComponent.find('h1')).toHaveLength(1)
+  })
 })

@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const hpp = require('hpp')
+const { HOST, CT_REPORT_URI, CSP_REPORT_URI, API_URL } = require('../config')
 
 /**
  * Instance configuration. Needed by express
@@ -22,7 +23,7 @@ const staticExpressOption = {
   redirect: true
 }
 const corsOptions = {
-  origin: 'https://allandolle.fr',
+  origin: `https://${HOST}`,
   optionsSuccessStatus: 200
 }
 
@@ -57,7 +58,7 @@ function initServer() {
   server.use(helmet.referrerPolicy({ policy: 'same-origin' }))
   server.use(
     helmet.expectCt({
-      reportUri: 'https://allandolle.report-uri.com/r/d/ct/enforce',
+      reportUri: CT_REPORT_URI,
       maxAge: 86400,
       enforce: true
     })
@@ -65,10 +66,18 @@ function initServer() {
   server.use(
     helmet.contentSecurityPolicy({
       directives: {
-        defaultSrc: ["'self'", 'https:', 'allandolle.fr', 'locahost'],
-        frameAncestors: "'none'",
-        reportUri: ['https://allandolle.report-uri.com/r/d/csp/enforce'],
-        reportTo: ['https://allandolle.report-uri.com/r/d/csp/enforce'],
+        defaultSrc: ["'self'", 'https:'],
+        fontSrc: ["'self'", 'data:'],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'"],
+        baseUri: ["'self'"],
+        connectSrc: ["'self'", 'https:', 'wss:', API_URL],
+        imgSrc: ["'self'", 'data:'],
+        objectSrc: ["'none'"],
+        frameSrc: ["'none'"],
+        frameAncestors: ["'none'"],
+        reportUri: [CSP_REPORT_URI],
+        reportTo: [CSP_REPORT_URI],
         upgradeInsecureRequests: '',
         blockAllMixedContent: ''
       }

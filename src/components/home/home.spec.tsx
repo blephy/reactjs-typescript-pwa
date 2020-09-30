@@ -1,5 +1,6 @@
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import Home from '.'
 import styles from './home.module.scss'
@@ -9,6 +10,13 @@ describe('Home', () => {
     const wrapper = shallow(<Home />)
 
     expect(wrapper.exists()).toBeTruthy()
+  })
+
+  it('should render a title', () => {
+    mount(<Home />)
+    const helmet = Helmet.peek()
+
+    expect(helmet.title).toEqual('Analyst developer')
   })
 
   it('should include an h1 element', () => {

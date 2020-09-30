@@ -111,6 +111,12 @@ Visualize your bundle browsers targets with browserslist queries. You can change
 npm run browsers
 ```
 
+Alternatively, you can have more informations with
+
+```shell
+npm run autoprefixer
+```
+
 ## Contributing
 
 ### Install VSCode extensions

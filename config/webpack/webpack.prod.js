@@ -7,13 +7,13 @@ const CircularDependencyPlugin = require('circular-dependency-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const { RelativeCiAgentWebpackPlugin } = require('@relative-ci/agent')
+const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
 
 const sitemapPaths = [
   {
@@ -133,43 +133,24 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new HtmlWebPackPlugin({
       meta: {
-        description:
-          "French web developer and formely medecin student. I'm doing things in javascript. Checkout my portfolio",
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
         robots: 'noodp'
       },
-      title: 'Allan Dollé | Web developer',
+      title: TITLE,
+      preconnect: `https://${HOST}`,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html',
       minify: true,
-      xhtml: true,
-      preconnect: 'https://allandolle.fr/',
-      cspPlugin: {
-        enabled: true,
-        hashingMethod: 'sha512',
-        policy: {
-          'default-src': ["'self'", 'https:', 'allandolle.fr', 'locahost'],
-          'font-src': ["'self'", 'data:'],
-          'script-src': ["'self'"],
-          'style-src': ["'self'"],
-          'base-uri': ["'self'"],
-          'connect-src': ["'none'"],
-          'img-src': ["'self'", 'data:'],
-          'object-src': ["'none'"],
-          'frame-src': ["'none'"],
-          'upgrade-insecure-requests': '',
-          'block-all-mixed-content': ''
-        },
-        hashEnabled: {
-          'script-src': true,
-          'style-src': true
-        },
-        nonceEnabled: {
-          'script-src': true,
-          'style-src': true
-        }
-      }
+      xhtml: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+      'process.env.HOST': JSON.stringify(process.env.HOST || HOST),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL || API_URL),
+      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI || CT_REPORT_URI),
+      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI || CSP_REPORT_URI),
+      'process.env.TITLE': JSON.stringify(process.env.TITLE || TITLE)
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
@@ -197,7 +178,7 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}\r\n# Sitemap\r\nSitemap: https://allandolle.fr/.well-known/sitemap.xml\r\n`,
+          transform: content => `${content}\r\n# Sitemap\r\nSitemap: https://${HOST}/.well-known/sitemap.xml\r\n`,
           cacheTransform: true
         },
         {
@@ -215,14 +196,13 @@ module.exports = {
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
     }),
-    new SitemapPlugin('https://allandolle.fr', sitemapPaths, {
+    new SitemapPlugin(`https://${HOST}`, sitemapPaths, {
       filename: '.well-known/sitemap.xml',
       skipgzip: true,
       lastmod: true,
       priority: 0.5,
       changefreq: 'monthly'
     }),
-    new CspHtmlWebpackPlugin(),
     new StylelintPlugin(),
     new RelativeCiAgentWebpackPlugin()
   ],

@@ -1,9 +1,11 @@
 const path = require('path')
+const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
+const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
 
 const rootDir = path.join(__dirname, '..', '..')
 
@@ -68,16 +70,22 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       meta: {
-        description:
-          "French web developer and formely medecin student. I'm doing things in javascript. Checkout my portfolio",
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
         robots: 'noodp'
       },
-      title: 'Allan Dollé | Web developer',
-      preconnect: 'https://allandolle.fr',
+      title: TITLE,
+      preconnect: `https://${HOST}`,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+      'process.env.HOST': JSON.stringify(process.env.HOST || HOST),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL || API_URL),
+      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI || CT_REPORT_URI),
+      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI || CSP_REPORT_URI),
+      'process.env.TITLE': JSON.stringify(process.env.TITLE || TITLE)
     }),
     new StylelintPlugin()
   ],
