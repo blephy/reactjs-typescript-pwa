@@ -41,7 +41,9 @@ describe('Application routes', () => {
 
   it('should have at least one item for 404 page', () => {
     const array = appRoutes.map(route => {
-      return route.path === '*'
+      const { path } = route
+
+      return path === '*' || path === '/404'
     })
 
     expect(array).toContain(true)

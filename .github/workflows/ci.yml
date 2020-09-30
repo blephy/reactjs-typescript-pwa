@@ -93,9 +93,6 @@ jobs:
 
       - name: Build application
         run: npm run build
-        env:
-          CI: true
-          RELATIVE_CI_KEY: ${{ secrets.RELATIVE_CI_KEY }}
 
       - name: Upload coverage
         uses: actions/upload-artifact@v2
@@ -194,6 +191,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1

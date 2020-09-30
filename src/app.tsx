@@ -1,10 +1,12 @@
 import '@/styles/index.scss'
 
 import React, { ReactNode } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import ErrorBoundary from '@/components/error-boundary'
 import Loader from '@/components/loader'
+import myStructuredData from '@/database/rich-snippets/me.json'
 
 import { IRoute } from './app.routes'
 
@@ -23,6 +25,9 @@ export default class App extends React.PureComponent<IProperties> {
     return (
       <>
         <ErrorBoundary>
+          <Helmet defaultTitle={process.env.TITLE} titleTemplate={`%s | ${process.env.TITLE}`}>
+            <script type='application/ld+json'>{JSON.stringify(myStructuredData)}</script>
+          </Helmet>
           <Router>
             <Switch>
               {routes.map(({ component: Component, ...rest }) => (
@@ -33,6 +38,7 @@ export default class App extends React.PureComponent<IProperties> {
                   render={routeProperties => <Component {...routeProperties} fallback={<Loader />} />}
                 />
               ))}
+              <Redirect to='/404' />
             </Switch>
           </Router>
         </ErrorBoundary>
