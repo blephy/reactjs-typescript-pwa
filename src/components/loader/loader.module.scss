@@ -1,6 +1,8 @@
-.loader-container {
+@import '@/styles/theme';
+
+.loaderContainer {
   align-items: center;
-  background: #131313;
+  background: $background-color;
   display: flex;
   height: 100%;
   justify-content: center;

@@ -24,7 +24,8 @@
     "htmlhint": "htmlhint --config .htmlhintrc --ignore node_modules/ **/*.ejs **/*.html",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "browsers": "browserslist"
+    "browsers": "browserslist",
+    "clean": "rm -rf stats && rm -rf reports && rm -rf coverage && rm -rf build"
   },
   "repository": {
     "type": "git",
@@ -154,6 +155,7 @@
     "express": "^4.17.1",
     "express-history-api-fallback": "^2.2.1",
     "helmet": "^4.1.1",
+    "hpp": "^0.2.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
