@@ -24,7 +24,8 @@
     "htmlhint": "htmlhint --config .htmlhintrc --ignore node_modules/ **/*.ejs **/*.html",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "browsers": "browserslist"
+    "browsers": "browserslist",
+    "clean": "rm -rf stats && rm -rf reports && rm -rf coverage && rm -rf build"
   },
   "repository": {
     "type": "git",
