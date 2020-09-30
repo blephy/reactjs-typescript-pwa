@@ -12,7 +12,6 @@ const SitemapPlugin = require('sitemap-webpack-plugin').default
 const postcssNormalize = require('postcss-normalize')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
-const { RelativeCiAgentWebpackPlugin } = require('@relative-ci/agent')
 const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
 
 const sitemapPaths = [
@@ -203,8 +202,7 @@ module.exports = {
       priority: 0.5,
       changefreq: 'monthly'
     }),
-    new StylelintPlugin(),
-    new RelativeCiAgentWebpackPlugin()
+    new StylelintPlugin()
   ],
   module: {
     rules: [
