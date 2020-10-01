@@ -153,3 +153,8 @@ npm run browsers:autoprefixer
 ### Install VSCode extensions
 
 In order to lint and format your code while you are typing in VSCode, please install extensions in `.vscode/extensions.json`. Alternatively, go to the VSCode extensions panel and type `@recommended`.
+
+## Links
+
+- [Structured data linter](http://linter.structured-data.org/)
+- [Structured data testing tool](https://search.google.com/structured-data/testing-tool/)
