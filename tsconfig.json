@@ -31,7 +31,6 @@
     ".vscode",
     ".github",
     "**/node_modules/**",
-    "**/mocks/**",
     "config/test/**"
   ]
 }

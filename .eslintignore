@@ -6,5 +6,4 @@
 /reports/*
 /server/*
 /coverage/*
-**/__mocks__/**
-/config/test/**
+/config/test/*
