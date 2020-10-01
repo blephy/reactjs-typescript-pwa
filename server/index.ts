@@ -22,7 +22,7 @@ const staticExpressOption = {
   redirect: true
 }
 const corsOptions = {
-  origin: JSON.parse(process.env.HTTPS) ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`,
+  origin: process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`,
   optionsSuccessStatus: 200
 }
 
