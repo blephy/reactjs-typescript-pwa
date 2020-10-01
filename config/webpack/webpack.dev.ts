@@ -1,11 +1,12 @@
-const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CircularDependencyPlugin = require('circular-dependency-plugin')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin')
-const postcssNormalize = require('postcss-normalize')
-const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
+import CircularDependencyPlugin from 'circular-dependency-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import HtmlWebPackPlugin from 'html-webpack-plugin'
+import path from 'path'
+import postcssNormalize from 'postcss-normalize'
+import StylelintPlugin from 'stylelint-webpack-plugin'
+import webpack from 'webpack'
+
+import { API_URL, CSP_REPORT_URI, CT_REPORT_URI, HOST, TITLE } from '..'
 
 const rootDir = path.join(__dirname, '..', '..')
 

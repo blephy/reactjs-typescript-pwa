@@ -1,18 +1,19 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const CircularDependencyPlugin = require('circular-dependency-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin')
-const SitemapPlugin = require('sitemap-webpack-plugin').default
-const postcssNormalize = require('postcss-normalize')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const PreloadWebpackPlugin = require('preload-webpack-plugin')
-const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
+import CircularDependencyPlugin from 'circular-dependency-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import HtmlWebPackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import path from 'path'
+import postcssNormalize from 'postcss-normalize'
+import PreloadWebpackPlugin from 'preload-webpack-plugin'
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
+import SitemapPlugin from 'sitemap-webpack-plugin'
+import StylelintPlugin from 'stylelint-webpack-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
+import webpack from 'webpack'
+
+import { API_URL, CSP_REPORT_URI, CT_REPORT_URI, HOST, TITLE } from '..'
 
 const sitemapPaths = [
   {
@@ -64,7 +65,7 @@ module.exports = {
     namedChunks: true,
     namedModules: true,
     runtimeChunk: {
-      name: entrypoint => `runtime~${entrypoint.name}`
+      name: (entrypoint: { name: string }) => `runtime~${entrypoint.name}`
     },
     minimize: true,
     minimizer: [
@@ -153,31 +154,20 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
-      chunkFilename: 'css/[id].[contenthash].chunk.css',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: false,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
+      chunkFilename: 'css/[id].[contenthash].chunk.css'
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}  Last update: ${new Date().toGMTString()}`
+          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`
         },
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}\r\n# Sitemap\r\nSitemap: https://${HOST}/.well-known/sitemap.xml\r\n`,
+          transform: (content: Buffer) =>
+            `${content.toString()}\r\n# Sitemap\r\nSitemap: https://${HOST}/.well-known/sitemap.xml\r\n`,
           cacheTransform: true
         },
         {
