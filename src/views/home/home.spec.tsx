@@ -35,7 +35,6 @@ describe('Home', () => {
   it('should style the h1 element', () => {
     const wrapper = shallow(<Home {...fakeProps} />)
 
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(wrapper.find(styles.title).exists).toBeTruthy()
+    expect(wrapper.find(styles.title).exists()).toBeTruthy()
   })
 })

@@ -14,14 +14,12 @@ describe('Loader', () => {
   it('should include a styled container', () => {
     const wrapper = shallow(<Loader />)
 
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(wrapper.find(styles.loaderContainer).exists).toBeTruthy()
+    expect(wrapper.find(styles.loaderContainer).exists()).toBeTruthy()
   })
 
   it('should include a styled loader', () => {
     const wrapper = shallow(<Loader />)
 
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(wrapper.find(styles.loader).exists).toBeTruthy()
+    expect(wrapper.find(styles.loader).exists()).toBeTruthy()
   })
 })
