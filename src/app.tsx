@@ -25,7 +25,7 @@ export default class App extends React.PureComponent<IProperties> {
     return (
       <>
         <ErrorBoundary>
-          <Helmet defaultTitle={process.env.TITLE} titleTemplate={`%s | ${process.env.TITLE}`}>
+          <Helmet defaultTitle={process.env.APP_TITLE} titleTemplate={`%s | ${process.env.APP_TITLE}`}>
             <script type='application/ld+json'>{JSON.stringify(myStructuredData)}</script>
           </Helmet>
           <Router>

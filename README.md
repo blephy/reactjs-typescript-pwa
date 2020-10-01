@@ -6,7 +6,6 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 
-[![RelativeCI](https://badges.relative-ci.com/badges/BqwiakvXGr2mt0cQMEql?branch=master)](https://app.relative-ci.com/projects/BqwiakvXGr2mt0cQMEql)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=coverage)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=ncloc)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
 
@@ -33,10 +32,31 @@ npm -v
 
 ### Installation
 
+Fetch sources.
+
 ```shell
 git clone https://github.com/blephy/allandolle-portfolio.git
 cd allandolle-portfolio
 npm i
+```
+
+Create a `.env` file in the root directory.
+
+```shell
+touch .env
+```
+
+Add these lines and save.
+
+```txt
+API_URL=http://localhost:3001/api/v1
+DOMAIN_NAME=localhost:3001
+HOST=localhost
+PORT=3001
+CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
+CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
+APP_TITLE=Allan Dollé
+HTTPS=false
 ```
 
 ### Run developement server
@@ -59,7 +79,7 @@ npm run build
 
 Start the nodejs production server with a SPA fallback.
 
-Server is listening on `localhost:3001`.
+Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env`
 
 ```shell
 npm run start:prod
@@ -119,10 +139,13 @@ Visualize your bundle browsers targets with browserslist queries. You can change
 npm run browsers
 ```
 
-Alternatively, you can have more informations with
+Alternatively, you can have more informations with :
 
 ```shell
-npm run autoprefixer
+# See targeted users in the world
+npm run browsers:coverage
+# See autoprefixer rules
+npm run browsers:autoprefixer
 ```
 
 ## Contributing

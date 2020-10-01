@@ -1,5 +1,0 @@
-export const API_URL = 'allandolle.fr/api/v1'
-export const HOST = 'allandolle.fr'
-export const CT_REPORT_URI = 'https://allandolle.report-uri.com/r/d/ct/enforce'
-export const CSP_REPORT_URI = 'https://allandolle.report-uri.com/r/d/csp/enforce'
-export const TITLE = 'Allan Dollé'

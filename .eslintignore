@@ -7,3 +7,4 @@
 /server/*
 /coverage/*
 **/__mocks__/**
+/config/test/**

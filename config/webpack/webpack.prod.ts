@@ -2,6 +2,7 @@ import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import { config } from 'dotenv'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
@@ -13,7 +14,9 @@ import StylelintPlugin from 'stylelint-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
 
-import { API_URL, CSP_REPORT_URI, CT_REPORT_URI, HOST, TITLE } from '..'
+config()
+
+const serverBaseUrl = process.env.HTTPS ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 
 const sitemapPaths = [
   {
@@ -136,8 +139,8 @@ module.exports = {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
         robots: 'noodp'
       },
-      title: TITLE,
-      preconnect: `https://${HOST}`,
+      title: process.env.TITLE,
+      preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html',
@@ -146,11 +149,14 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
-      'process.env.HOST': JSON.stringify(process.env.HOST || HOST),
-      'process.env.API_URL': JSON.stringify(process.env.API_URL || API_URL),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI || CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI || CSP_REPORT_URI),
-      'process.env.TITLE': JSON.stringify(process.env.TITLE || TITLE)
+      'process.env.HOST': JSON.stringify(process.env.HOST),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+      'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
+      'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
+      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
+      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
+      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
@@ -167,7 +173,7 @@ module.exports = {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
           transform: (content: Buffer) =>
-            `${content.toString()}\r\n# Sitemap\r\nSitemap: https://${HOST}/.well-known/sitemap.xml\r\n`,
+            `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
           cacheTransform: true
         },
         {
@@ -185,7 +191,7 @@ module.exports = {
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
     }),
-    new SitemapPlugin(`https://${HOST}`, sitemapPaths, {
+    new SitemapPlugin(serverBaseUrl, sitemapPaths, {
       filename: '.well-known/sitemap.xml',
       skipgzip: true,
       lastmod: true,
