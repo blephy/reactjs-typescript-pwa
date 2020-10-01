@@ -9,9 +9,8 @@ import webpack from 'webpack'
 
 config()
 
-const serverBaseUrl = JSON.parse(process.env.HTTPS)
-  ? `https://${process.env.DOMAIN_NAME}`
-  : `http://${process.env.DOMAIN_NAME}`
+const serverBaseUrl =
+  process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 const rootDir = path.join(__dirname, '..', '..')
 
 module.exports = {

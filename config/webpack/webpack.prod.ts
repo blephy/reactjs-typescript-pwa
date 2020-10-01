@@ -16,7 +16,8 @@ import webpack from 'webpack'
 
 config()
 
-const serverBaseUrl = process.env.HTTPS ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
+const serverBaseUrl =
+  process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 
 const sitemapPaths = [
   {
@@ -167,19 +168,20 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`
+          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`,
+          cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
           transform: (content: Buffer) =>
             `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
-          cacheTransform: true
+          cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'security.txt'),
           to: path.resolve(rootDir, 'build/.well-known'),
-          cacheTransform: true
+          cacheTransform: false
         }
       ]
     }),
