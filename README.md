@@ -1,4 +1,4 @@
-# Strict React starter
+# Strict optimized React starter
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -35,8 +35,8 @@ npm -v
 Fetch sources.
 
 ```shell
-git clone https://github.com/blephy/allandolle-portfolio.git
-cd allandolle-portfolio
+git clone https://github.com/blephy/strict-optimized-react-starter.git
+cd strict-optimized-react-starter
 npm i
 ```
 
@@ -55,7 +55,7 @@ HOST=localhost
 PORT=3001
 CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
-APP_TITLE=Allan Dollé
+APP_TITLE=My application html title
 HTTPS=false
 ```
 
@@ -79,7 +79,7 @@ npm run build
 
 Start the nodejs production server with a SPA fallback.
 
-Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env`
+Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env` file.
 
 ```shell
 npm run start:prod
