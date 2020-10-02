@@ -137,50 +137,6 @@ jobs:
         env:
           CI: true
 
-      - name: Upload coverage
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-          path: coverage
-          if-no-files-found: error
-
-  reports:
-    needs: test
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            **/node_modules
-            ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
-
-      - name: Lint reports
-        run: npm run lint:report
-
-      - name: Download coverage
-        uses: actions/download-artifact@v2
-        with:
-          name: coverage
-          path: coverage
-
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
