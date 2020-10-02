@@ -5,6 +5,11 @@ on:
     branches: [master, develop]
   pull_request:
 
+env:
+  PORT: 3001
+  DOMAIN_NAME: localhost:3001
+  API_URL: http://localhost:3001/api/v1
+
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -222,6 +227,3 @@ jobs:
           npx lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          PORT: 3001
-          DOMAIN_NAME: localhost:3001
-          API_URL: http://localhost:3001/api/v1
