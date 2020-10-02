@@ -8,7 +8,7 @@
   width: 100px;
 
   path {
-    animation: draw 3.3s ease-in-out forwards;
+    animation: draw-path 3.3s ease-in-out forwards;
     stroke: #fff;
     stroke-dasharray: 450;
     stroke-dashoffset: 450;
@@ -19,11 +19,12 @@
   }
 }
 
-@keyframes draw {
+@keyframes draw-path {
   to {
     stroke-dashoffset: 0;
   }
 }
+
 @keyframes draw-circle {
   from {
     fill: #fff;

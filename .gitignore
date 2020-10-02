@@ -20,6 +20,7 @@ stats.json
 
 # misc
 .DS_Store
+.env
 
 # log
 npm-debug.log*

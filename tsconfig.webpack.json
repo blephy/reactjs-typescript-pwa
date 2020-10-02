@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "commonjs",
+    "target": "es5",
+    "esModuleInterop": true,
+    "typeRoots": ["./config/@types", "./node_modules/@types"]
+  }
+}

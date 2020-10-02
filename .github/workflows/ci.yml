@@ -5,6 +5,11 @@ on:
     branches: [master, develop]
   pull_request:
 
+env:
+  PORT: 3001
+  DOMAIN_NAME: localhost:3001
+  API_URL: http://localhost:3001/api/v1
+
 jobs:
   install:
     runs-on: ubuntu-latest

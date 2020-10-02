@@ -3,12 +3,11 @@
     "baseUrl": "./",
     "sourceMap": true,
     "module": "esnext",
-    "target": "es2015",
+    "target": "es6",
     "moduleResolution": "node",
     "jsx": "react",
     "checkJs": true,
     "allowJs": true,
-    "outDir": "$$ts-jest$$",
     "importHelpers": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
@@ -16,8 +15,8 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
     "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -27,11 +26,11 @@
     "dist",
     "stats",
     "reports",
-    "config",
     "coverage",
     "server",
     ".vscode",
     ".github",
-    "**/node_modules/**"
+    "**/node_modules/**",
+    "config/test/**"
   ]
 }

@@ -1,12 +1,16 @@
-const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CircularDependencyPlugin = require('circular-dependency-plugin')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin')
-const postcssNormalize = require('postcss-normalize')
-const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
+import CircularDependencyPlugin from 'circular-dependency-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import { config } from 'dotenv'
+import HtmlWebPackPlugin from 'html-webpack-plugin'
+import path from 'path'
+import postcssNormalize from 'postcss-normalize'
+import StylelintPlugin from 'stylelint-webpack-plugin'
+import webpack from 'webpack'
 
+config()
+
+const serverBaseUrl =
+  process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 const rootDir = path.join(__dirname, '..', '..')
 
 module.exports = {
@@ -73,19 +77,22 @@ module.exports = {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
         robots: 'noodp'
       },
-      title: TITLE,
-      preconnect: `https://${HOST}`,
+      title: process.env.APP_TITLE,
+      preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
-      'process.env.HOST': JSON.stringify(process.env.HOST || HOST),
-      'process.env.API_URL': JSON.stringify(process.env.API_URL || API_URL),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI || CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI || CSP_REPORT_URI),
-      'process.env.TITLE': JSON.stringify(process.env.TITLE || TITLE)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.HOST': JSON.stringify(process.env.HOST),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+      'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
+      'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
+      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
+      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
+      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
     }),
     new StylelintPlugin()
   ],

@@ -9,6 +9,7 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   verbose: true,
+  setupFiles: ['dotenv/config'],
   setupFilesAfterEnv: ['<rootDir>/config/tests/setupTests.js'],
   testMatch: ['<rootDir>/src/**/*.(spec|test).(ts|tsx)'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
@@ -16,7 +17,7 @@ module.exports = {
   moduleNameMapper: {
     '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)$': '<rootDir>/config/tests/__mocks__/file.mock.js',
-    '.+\\.(svg)$': '<rootDir>/config/tests/__mocks__/svgr.mock.js',
+    '.+\\.(svg)$': '<rootDir>/config/tests/__mocks__/svgr.mock.jsx',
     '^@/(.*)$': '<rootDir>/src/$1'
   },
   transform: {
@@ -27,6 +28,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/src/index.tsx',
+    '!<rootDir>/src/views/index.tsx',
     '!<rootDir>/src/**/*.d.ts',
     '!<rootDir>/src/**/*.spec.ts',
     '!<rootDir>/src/**/*.test.ts'

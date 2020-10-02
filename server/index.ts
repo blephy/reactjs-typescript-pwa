@@ -6,13 +6,12 @@ const helmet = require('helmet')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const hpp = require('hpp')
-const { HOST, CT_REPORT_URI, CSP_REPORT_URI, API_URL } = require('../config')
+require('dotenv').config()
 
 /**
  * Instance configuration. Needed by express
  */
 const InstanceDistPathToServe = path.resolve(__dirname, '../build')
-const InstancePortToListen = process.env.PORT || '3001'
 const staticExpressOption = {
   dotfiles: 'ignore',
   etag: false,
@@ -23,7 +22,7 @@ const staticExpressOption = {
   redirect: true
 }
 const corsOptions = {
-  origin: `https://${HOST}`,
+  origin: process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`,
   optionsSuccessStatus: 200
 }
 
@@ -58,7 +57,7 @@ function initServer() {
   server.use(helmet.referrerPolicy({ policy: 'same-origin' }))
   server.use(
     helmet.expectCt({
-      reportUri: CT_REPORT_URI,
+      reportUri: process.env.CT_REPORT_URI,
       maxAge: 86400,
       enforce: true
     })
@@ -66,18 +65,18 @@ function initServer() {
   server.use(
     helmet.contentSecurityPolicy({
       directives: {
-        defaultSrc: ["'self'", 'https:'],
+        defaultSrc: ["'self'", 'https:', process.env.DOMAIN_NAME],
         fontSrc: ["'self'", 'data:'],
         scriptSrc: ["'self'"],
         styleSrc: ["'self'"],
         baseUri: ["'self'"],
-        connectSrc: ["'self'", 'https:', 'wss:', API_URL],
+        connectSrc: ["'self'", 'https:', 'wss:', process.env.API_URL],
         imgSrc: ["'self'", 'data:'],
         objectSrc: ["'none'"],
         frameSrc: ["'none'"],
         frameAncestors: ["'none'"],
-        reportUri: [CSP_REPORT_URI],
-        reportTo: [CSP_REPORT_URI],
+        reportUri: [process.env.CSP_REPORT_URI],
+        reportTo: [process.env.CSP_REPORT_URI],
         upgradeInsecureRequests: '',
         blockAllMixedContent: ''
       }
@@ -136,8 +135,8 @@ function initServer() {
   /**
    * Server start
    */
-  server.listen(InstancePortToListen, () => {
-    console.log('Listening on port:', InstancePortToListen)
+  server.listen(process.env.PORT, () => {
+    console.log('Listening on port:', process.env.PORT)
   })
 }
 

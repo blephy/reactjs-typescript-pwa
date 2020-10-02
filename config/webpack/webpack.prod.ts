@@ -1,18 +1,23 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const CircularDependencyPlugin = require('circular-dependency-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const StylelintPlugin = require('stylelint-webpack-plugin')
-const SitemapPlugin = require('sitemap-webpack-plugin').default
-const postcssNormalize = require('postcss-normalize')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const PreloadWebpackPlugin = require('preload-webpack-plugin')
-const { HOST, API_URL, TITLE, CT_REPORT_URI, CSP_REPORT_URI } = require('..')
+import CircularDependencyPlugin from 'circular-dependency-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import { config } from 'dotenv'
+import HtmlWebPackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import path from 'path'
+import postcssNormalize from 'postcss-normalize'
+import PreloadWebpackPlugin from 'preload-webpack-plugin'
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
+import SitemapPlugin from 'sitemap-webpack-plugin'
+import StylelintPlugin from 'stylelint-webpack-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
+import webpack from 'webpack'
+
+config()
+
+const serverBaseUrl =
+  process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 
 const sitemapPaths = [
   {
@@ -64,7 +69,7 @@ module.exports = {
     namedChunks: true,
     namedModules: true,
     runtimeChunk: {
-      name: entrypoint => `runtime~${entrypoint.name}`
+      name: (entrypoint: { name: string }) => `runtime~${entrypoint.name}`
     },
     minimize: true,
     minimizer: [
@@ -135,8 +140,8 @@ module.exports = {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
         robots: 'noodp'
       },
-      title: TITLE,
-      preconnect: `https://${HOST}`,
+      title: process.env.TITLE,
+      preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html',
@@ -145,57 +150,51 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
-      'process.env.HOST': JSON.stringify(process.env.HOST || HOST),
-      'process.env.API_URL': JSON.stringify(process.env.API_URL || API_URL),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI || CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI || CSP_REPORT_URI),
-      'process.env.TITLE': JSON.stringify(process.env.TITLE || TITLE)
+      'process.env.HOST': JSON.stringify(process.env.HOST),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+      'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
+      'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
+      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
+      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
+      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
-      chunkFilename: 'css/[id].[contenthash].chunk.css',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: false,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
+      chunkFilename: 'css/[id].[contenthash].chunk.css'
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}  Last update: ${new Date().toGMTString()}`
+          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`,
+          cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: content => `${content}\r\n# Sitemap\r\nSitemap: https://${HOST}/.well-known/sitemap.xml\r\n`,
-          cacheTransform: true
+          transform: (content: Buffer) =>
+            `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
+          cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'security.txt'),
           to: path.resolve(rootDir, 'build/.well-known'),
-          cacheTransform: true
+          cacheTransform: false
         }
       ]
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
-      include: 'initial'
+      include: 'allAssets',
+      fileBlacklist: [/^(?!.*(runtime|home|app))/]
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
     }),
-    new SitemapPlugin(`https://${HOST}`, sitemapPaths, {
+    new SitemapPlugin(serverBaseUrl, sitemapPaths, {
       filename: '.well-known/sitemap.xml',
       skipgzip: true,
       lastmod: true,
