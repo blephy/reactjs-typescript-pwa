@@ -145,12 +145,23 @@ module.exports = {
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.png'),
       filename: 'index.html',
-      minify: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+        html5: true
+      },
       xhtml: true
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
-      'process.env.HOST': JSON.stringify(process.env.HOST),
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
       'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
       'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
@@ -244,10 +255,8 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  postcssOptions: {
-                    ident: 'postcss',
-                    plugins: () => [postcssNormalize()]
-                  }
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
                 }
               }
             ]
@@ -260,10 +269,8 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  postcssOptions: {
-                    ident: 'postcss',
-                    plugins: () => [postcssNormalize()]
-                  }
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
                 }
               },
               'sass-loader'
