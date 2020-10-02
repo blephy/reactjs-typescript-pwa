@@ -157,3 +157,7 @@ In order to lint and format your code while you are typing in VSCode, please ins
 
 - [Structured data linter](http://linter.structured-data.org/)
 - [Structured data testing tool](https://search.google.com/structured-data/testing-tool/)
+
+## Known issues
+
+- Changing `browserslist` queries are not reflected by `babel`. This is a `babel-loader` cache [issue](https://github.com/babel/babel-loader/issues/690). You can remove yourself `node_modules/.cache/babel-loader/` to clean the cache.

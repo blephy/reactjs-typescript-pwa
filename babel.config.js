@@ -4,7 +4,6 @@ module.exports = {
       '@babel/preset-env',
       {
         ignoreBrowserslistConfig: false,
-        browserslistEnv: process.env.NODE_ENV,
         useBuiltIns: 'usage',
         corejs: 3,
         modules: 'auto',
