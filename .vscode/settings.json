@@ -1,4 +1,5 @@
 {
+  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
   "css.validate": false,
