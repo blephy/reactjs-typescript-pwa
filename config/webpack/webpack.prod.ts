@@ -187,7 +187,8 @@ module.exports = {
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
-      include: 'initial'
+      include: 'allAssets',
+      fileBlacklist: [/^(?!.*(runtime|home))/]
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
