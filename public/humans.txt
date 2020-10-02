@@ -10,5 +10,5 @@
 	Doctype: HTML5
   Standards: HTML5, CSS3, JAVASCRIPT
   Generator: Webpack 4
-  Polyfill: Babel 7
+  Polyfill: Babel 7, Corejs 3
 	IDE: Visual Studio Code

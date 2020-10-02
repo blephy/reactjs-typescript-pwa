@@ -84,8 +84,7 @@ module.exports = {
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-      'process.env.HOST': JSON.stringify(process.env.HOST),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
       'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
       'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
@@ -135,10 +134,8 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  postcssOptions: {
-                    ident: 'postcss',
-                    plugins: () => [postcssNormalize()]
-                  }
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
                 }
               }
             ]
@@ -151,10 +148,8 @@ module.exports = {
               {
                 loader: 'postcss-loader',
                 options: {
-                  postcssOptions: {
-                    ident: 'postcss',
-                    plugins: () => [postcssNormalize()]
-                  }
+                  ident: 'postcss',
+                  plugins: () => [postcssNormalize()]
                 }
               },
               'sass-loader'

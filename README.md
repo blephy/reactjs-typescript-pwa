@@ -1,4 +1,4 @@
-# Strict React starter
+# Strict optimized React starter
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -35,8 +35,8 @@ npm -v
 Fetch sources.
 
 ```shell
-git clone https://github.com/blephy/allandolle-portfolio.git
-cd allandolle-portfolio
+git clone https://github.com/blephy/strict-optimized-react-starter.git
+cd strict-optimized-react-starter
 npm i
 ```
 
@@ -51,11 +51,10 @@ Add these lines and save.
 ```txt
 API_URL=http://localhost:3001/api/v1
 DOMAIN_NAME=localhost:3001
-HOST=localhost
 PORT=3001
 CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
-APP_TITLE=Allan Dollé
+APP_TITLE=My application html title
 HTTPS=false
 ```
 
@@ -79,7 +78,7 @@ npm run build
 
 Start the nodejs production server with a SPA fallback.
 
-Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env`
+Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env` file.
 
 ```shell
 npm run start:prod
@@ -158,3 +157,7 @@ In order to lint and format your code while you are typing in VSCode, please ins
 
 - [Structured data linter](http://linter.structured-data.org/)
 - [Structured data testing tool](https://search.google.com/structured-data/testing-tool/)
+
+## Known issues
+
+- Changing `browserslist` queries are not reflected by `babel`. This is a `babel-loader` cache [issue](https://github.com/babel/babel-loader/issues/690). You can remove yourself `node_modules/.cache/babel-loader/` to clean the cache.
