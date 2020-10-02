@@ -51,7 +51,6 @@ Add these lines and save.
 ```txt
 API_URL=http://localhost:3001/api/v1
 DOMAIN_NAME=localhost:3001
-HOST=localhost
 PORT=3001
 CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
