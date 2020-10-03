@@ -1,6 +1,7 @@
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
+import ESLintPlugin from 'eslint-webpack-plugin'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import postcssNormalize from 'postcss-normalize'
@@ -48,7 +49,7 @@ module.exports = {
     contentBase: path.resolve(rootDir, 'dist'),
     watchOptions: {
       ignored: ['node_modules', 'build', 'dist', 'server', 'config', 'coverage', 'stats', '.vscode', '.github'],
-      aggregateTimeout: 200
+      aggregateTimeout: 50
     },
     overlay: {
       warnings: false,
@@ -93,16 +94,13 @@ module.exports = {
       'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
       'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
     }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx']
+    }),
     new StylelintPlugin()
   ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
-        use: 'eslint-loader'
-      },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
