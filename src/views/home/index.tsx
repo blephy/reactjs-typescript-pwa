@@ -15,15 +15,16 @@ export default function Home({
 }: RouteComponentProps<TMatch>): React.FunctionComponentElement<RouteComponentProps> {
   const { path } = match
   const canonicalUrl = `${process.env.SERVER_BASE_URL}${path}`
+  const description = 'A fast and secure progressive web app with every best practices for SEO an web performances'
 
   return (
     <>
       <Helmet>
-        <title>Analyst developer</title>
+        <title>Home</title>
         <link rel='canonical' href={canonicalUrl} />
-        <meta name='description' content='Welcome to my portfolio' />
+        <meta name='description' content={description} />
       </Helmet>
-      <h1 className={styles.title}>Allan Doll&eacute;</h1>
+      <h1 className={styles.title}>ReactJS Progressive Web App</h1>
       <Signature className={styles.signature} />
     </>
   )

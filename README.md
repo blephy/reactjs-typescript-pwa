@@ -59,7 +59,7 @@ PORT=3001
 HTTPS=false
 CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
-APP_TITLE=My application html title
+APP_TITLE=ReactJS Progressive Web App
 ```
 
 ### Run developement server
@@ -165,3 +165,4 @@ In order to lint and format your code while you are typing in VSCode, please ins
 ## Known issues
 
 - Changing `browserslist` queries are not reflected by `babel`. This is a `babel-loader` cache [issue](https://github.com/babel/babel-loader/issues/690). You can remove yourself `node_modules/.cache/babel-loader/` to clean the cache.
+- Webpack pwa manifest not compatible with typescript. If you set a property `purpose` on an icon, typescript complain about type checking.

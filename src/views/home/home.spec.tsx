@@ -23,7 +23,7 @@ describe('Home', () => {
     mount(<Home {...fakeProps} />)
     const helmet = Helmet.peek()
 
-    expect(helmet.title).toEqual('Analyst developer')
+    expect(helmet.title).toEqual('Home')
   })
 
   it('should include an h1 element', () => {

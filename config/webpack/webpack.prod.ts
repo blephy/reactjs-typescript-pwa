@@ -14,6 +14,7 @@ import SitemapPlugin, { ISitemapPath } from 'sitemap-webpack-plugin'
 import StylelintPlugin from 'stylelint-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
+import WebpackPwaManifest from 'webpack-pwa-manifest'
 
 config()
 
@@ -149,7 +150,7 @@ module.exports = {
       title: process.env.TITLE,
       preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon.png'),
+      favicon: path.resolve(rootDir, 'public/assets/favicon.32x32.png'),
       filename: 'index.html',
       minify: {
         removeComments: true,
@@ -210,6 +211,28 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
+    }),
+    new WebpackPwaManifest({
+      name: 'ReactJS Progressive Web App',
+      short_name: 'ReactPWA',
+      orientation: 'portrait',
+      description: 'A fast and secure progressive web app with every best practices for SEO an web performances',
+      background_color: '#131313',
+      theme_color: '#131313',
+      crossorigin: 'anonymous',
+      display: 'fullscreen',
+      inject: true,
+      fingerprints: true,
+      start_url: '.',
+      ios: true,
+      icons: [
+        {
+          src: path.resolve(rootDir, 'public/assets/react-icon.1024x909.png'),
+          destination: 'images/pwa',
+          sizes: [16, 32, 64, 96, 128, 192, 256, 384, 512],
+          ios: true
+        }
+      ]
     }),
     new SitemapPlugin(serverBaseUrl, sitemapPaths, {
       filename: '.well-known/sitemap.xml',

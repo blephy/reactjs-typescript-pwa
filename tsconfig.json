@@ -16,7 +16,7 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "typeRoots": ["./src/@types", "./node_modules/@types", "./config/@types"],
     "paths": {
       "@/*": ["./src/*"]
     }
