@@ -78,7 +78,8 @@
     "import/no-duplicates": "error",
     "react/static-property-placement": ["warn", "static public field"],
     "react/jsx-uses-react": "error",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-floating-promises": "off"
   },
   "globals": {
     "window": true,
