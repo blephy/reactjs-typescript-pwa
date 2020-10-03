@@ -1,7 +1,25 @@
 declare module 'sitemap-webpack-plugin' {
-  class SitemapPlugin {
-    constructor(baseUrl: string, sitemapPaths: Record<string, unknown>[], options: Record<string, unknown>)
+  export type TChangefreq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+
+  export interface ISitemapPath {
+    path: string
+    priority?: number
+    lastmod?: string
+    changefreq?: TChangefreq
   }
 
-  export = SitemapPlugin
+  export interface ISitemapOptions {
+    filename?: string
+    skipgzip?: boolean
+    formatter?: () => void
+    lastmod?: string | boolean
+    priority?: number
+    changefreq?: TChangefreq
+  }
+
+  class SitemapPlugin {
+    constructor(baseUrl: string, sitemapPaths: ISitemapPath[], options: ISitemapOptions)
+  }
+
+  export default SitemapPlugin
 }
