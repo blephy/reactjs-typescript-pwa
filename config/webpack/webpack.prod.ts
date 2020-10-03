@@ -3,13 +3,14 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { config } from 'dotenv'
+import ESLintPlugin from 'eslint-webpack-plugin'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
 import postcssNormalize from 'postcss-normalize'
 import PreloadWebpackPlugin from 'preload-webpack-plugin'
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
-import SitemapPlugin from 'sitemap-webpack-plugin'
+import SitemapPlugin, { ISitemapPath } from 'sitemap-webpack-plugin'
 import StylelintPlugin from 'stylelint-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
@@ -19,10 +20,15 @@ config()
 const serverBaseUrl =
   process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 
-const sitemapPaths = [
+const sitemapPaths: ISitemapPath[] = [
   {
     path: '/',
-    priority: '0.8'
+    priority: 0.8
+  },
+  {
+    path: '/404',
+    priority: 0.2,
+    changefreq: 'yearly'
   }
 ]
 
@@ -212,16 +218,14 @@ module.exports = {
       priority: 0.5,
       changefreq: 'monthly'
     }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      failOnError: true
+    }),
     new StylelintPlugin()
   ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
-        use: 'eslint-loader'
-      },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
