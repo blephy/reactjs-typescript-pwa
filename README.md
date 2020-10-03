@@ -1,6 +1,6 @@
-# Strict optimized React starter
+<div align="center">
 
-<p align="center">
+<h1>Strict optimized React starter</h1>
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -20,7 +20,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 
-</p>
+</div>
 
 ## Getting started
 
@@ -53,13 +53,13 @@ touch .env
 Add these lines and save.
 
 ```txt
-API_URL=http://localhost:3001/api/v1
+API_URL=localhost:3001/api/v1
 DOMAIN_NAME=localhost:3001
 PORT=3001
+HTTPS=false
 CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
 APP_TITLE=My application html title
-HTTPS=false
 ```
 
 ### Run developement server
