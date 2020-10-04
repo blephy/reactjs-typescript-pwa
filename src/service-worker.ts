@@ -59,7 +59,9 @@ registerRoute(defaultNavigationRoute)
  */
 const DAY_IN_SECONDS = 24 * 60 * 60
 const MONTH_IN_SECONDS = DAY_IN_SECONDS * 30
+const YEAR_IN_SECONDS = DAY_IN_SECONDS * 365
 
+/** Scripts cache */
 registerRoute(
   new RegExp('.*.js'),
   new StaleWhileRevalidate({
@@ -74,6 +76,7 @@ registerRoute(
     ]
   })
 )
+/** Stylesheets cache */
 registerRoute(
   new RegExp('.*.css'),
   new StaleWhileRevalidate({
@@ -88,6 +91,7 @@ registerRoute(
     ]
   })
 )
+/** Images cache */
 registerRoute(
   new RegExp('.*.(png|gif|jpg|jpeg|svg|ico)'),
   new CacheFirst({
@@ -98,7 +102,24 @@ registerRoute(
       }),
       new ExpirationPlugin({
         maxEntries: 250,
-        maxAgeSeconds: 30 * MONTH_IN_SECONDS,
+        maxAgeSeconds: MONTH_IN_SECONDS,
+        purgeOnQuotaError: true
+      })
+    ]
+  })
+)
+/** Fonts cache */
+registerRoute(
+  new RegExp('.*.(woff|woff2|ttf|eot|otf)'),
+  new CacheFirst({
+    cacheName: 'font-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200]
+      }),
+      new ExpirationPlugin({
+        maxEntries: 10,
+        maxAgeSeconds: YEAR_IN_SECONDS,
         purgeOnQuotaError: true
       })
     ]
