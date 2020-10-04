@@ -247,8 +247,8 @@ module.exports = {
         {
           src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
           sizes: [270, 512],
-          destination: 'images/pwa',
-          purpose: 'maskable'
+          destination: 'images/pwa'
+          // purpose: 'maskable' Waiting for the plugin to update his declaration files
         }
       ]
     }),
