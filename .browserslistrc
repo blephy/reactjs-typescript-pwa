@@ -1,9 +1,8 @@
 [production]
-Chrome >= 61
-Safari >= 11
-iOS >= 11
-Firefox >= 60
-Edge >= 16
+>2%
+not dead
+not op_mini all
 
 [development]
 last 1 chrome version
+last 1 firefox version
