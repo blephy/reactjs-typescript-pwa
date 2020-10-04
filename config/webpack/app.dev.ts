@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
@@ -48,8 +49,8 @@ module.exports = {
     clientLogLevel: 'info',
     contentBase: path.resolve(rootDir, 'build'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'server', 'config', 'coverage', 'stats', '.vscode', '.github'],
-      aggregateTimeout: 50
+      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github'],
+      aggregateTimeout: 150
     },
     overlay: {
       warnings: false,
@@ -80,8 +81,8 @@ module.exports = {
       },
       title: process.env.APP_TITLE,
       preconnect: serverBaseUrl,
-      template: path.resolve(rootDir, 'src', 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'src', 'public/favicon-32x32.png'),
+      template: path.resolve(rootDir, 'public/templates/index.ejs'),
+      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({
@@ -102,7 +103,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/i,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -114,7 +115,7 @@ module.exports = {
       {
         oneOf: [
           {
-            test: /\.html$/,
+            test: /\.html$/i,
             use: [
               {
                 loader: 'html-loader',
@@ -125,7 +126,7 @@ module.exports = {
             ]
           },
           {
-            test: /\.css$/,
+            test: /\.css$/i,
             use: [
               'style-loader',
               { loader: 'css-loader', options: { importLoaders: 1 } },
@@ -139,7 +140,7 @@ module.exports = {
             ]
           },
           {
-            test: /\.scss$/,
+            test: /\.scss$/i,
             use: [
               'style-loader',
               { loader: 'css-loader', options: { importLoaders: 1 } },
@@ -154,7 +155,7 @@ module.exports = {
             ]
           },
           {
-            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            test: /\.(woff|woff2|eot|ttf|otf)$/i,
             use: {
               loader: 'file-loader',
               options: {
@@ -164,20 +165,36 @@ module.exports = {
               }
             }
           },
+          // {
+          //   test: /\.(png|jp(e*)g|gif|webp)$/,
+          //   use: {
+          //     loader: 'url-loader',
+          //     options: {
+          //       limit: 8192,
+          //       emitFile: true,
+          //       outputPath: 'images/',
+          //       name: '[name].[hash].[ext]'
+          //     }
+          //   }
+          // },
           {
-            test: /\.(png|jp(e*)g|gif|webp)$/,
+            test: /\.(jpe?g|png|webp)$/i,
             use: {
-              loader: 'url-loader',
+              loader: 'responsive-loader',
               options: {
-                limit: 8192,
-                emitFile: true,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                adapter: require('responsive-loader/sharp'),
+                name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                name: '[name].[hash].[ext]'
+                sizes: [320, 640, 960, 1200, 1800, 2400],
+                quality: 75,
+                format: 'webp',
+                emitFile: true
               }
             }
           },
           {
-            test: /\.svg$/,
+            test: /\.svg$/i,
             use: ['@svgr/webpack', 'url-loader']
           }
         ]

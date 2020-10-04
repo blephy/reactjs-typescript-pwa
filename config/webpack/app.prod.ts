@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -149,8 +150,8 @@ module.exports = {
       },
       title: process.env.TITLE,
       preconnect: serverBaseUrl,
-      template: path.resolve(rootDir, 'src', 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'src', 'public/favicon-32x32.png'),
+      template: path.resolve(rootDir, 'public/templates/index.ejs'),
+      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
       filename: 'index.html',
       minify: {
         removeComments: true,
@@ -184,20 +185,20 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(rootDir, 'src', 'public', 'humans.txt'),
+          from: path.resolve(rootDir, 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
           transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`,
           cacheTransform: false
         },
         {
-          from: path.resolve(rootDir, 'src', 'public', 'robots.txt'),
+          from: path.resolve(rootDir, 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
           transform: (content: Buffer) =>
             `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
           cacheTransform: false
         },
         {
-          from: path.resolve(rootDir, 'src', 'public', 'security.txt'),
+          from: path.resolve(rootDir, 'public', 'security.txt'),
           to: path.resolve(rootDir, 'build/.well-known'),
           cacheTransform: false
         }
@@ -228,7 +229,7 @@ module.exports = {
       ios: true,
       icons: [
         {
-          src: path.resolve(rootDir, 'src', 'public/pwa-logo-1024x386.png'),
+          src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
           destination: 'images/pwa',
           sizes: [64, 96, 128, 192, 256, 384, 512, 1024],
           ios: true
@@ -312,15 +313,31 @@ module.exports = {
               }
             }
           },
+          // {
+          //   test: /\.(png|jp(e*)g|gif|webp)$/,
+          //   use: {
+          //     loader: 'url-loader',
+          //     options: {
+          //       limit: 8192,
+          //       emitFile: true,
+          //       outputPath: 'images/',
+          //       name: '[name].[hash].[ext]'
+          //     }
+          //   }
+          // },
           {
-            test: /\.(png|jp(e*)g|gif|webp)$/,
+            test: /\.(jpe?g|png|webp)$/i,
             use: {
-              loader: 'url-loader',
+              loader: 'responsive-loader',
               options: {
-                limit: 8192,
-                emitFile: true,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                adapter: require('responsive-loader/sharp'),
+                name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                name: '[name].[hash].[ext]'
+                sizes: [320, 640, 960, 1200, 1800, 2400],
+                quality: 75,
+                format: 'webp',
+                emitFile: true
               }
             }
           },
