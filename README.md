@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/blephy/strict-optimized-react-starter/blob/pwa-compatibility/src/images/pwa-react-512x392.png?raw=true" width="512" height="392" alt="ReactJS Progressive Web App">
+<img src="https://user-images.githubusercontent.com/24233935/95027324-d9de8780-0697-11eb-983e-52c187ba1e62.png" width="440" height="auto" alt="ReactJS Progressive Web App">
 
 <h1>ReactJS Progressive Web App</h1>
 
@@ -170,9 +170,9 @@ npm run browsers:autoprefixer
 ### Importing svg files
 
 ```ts
-import { ReactComponent as Signature } from '@/images/signature.svg'
+import { ReactComponent as MySvg } from '@/images/signature.svg'
 
-const MyComponent: ReactNode = () => <Signature />
+const MyComponent: ReactNode = () => <MySvg />
 ```
 
 ## Contributing
