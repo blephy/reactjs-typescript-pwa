@@ -221,18 +221,33 @@ module.exports = {
       background_color: '#FFFFFF',
       theme_color: '#5A0FC8',
       crossorigin: 'anonymous',
-      display: 'fullscreen',
+      display: 'standalone',
       lang: 'en',
       inject: true,
       fingerprints: true,
       start_url: '.',
-      ios: true,
+      ios: {
+        'apple-mobile-web-app-title': 'ReactPWA',
+        'apple-mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-status-bar-style': 'black'
+      },
       icons: [
         {
           src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
-          destination: 'images/pwa',
-          sizes: [32, 64, 96, 128, 192, 256, 384, 512, 1024],
+          destination: 'images/pwa/ios',
+          sizes: [152, 167, 180, 192],
           ios: true
+        },
+        {
+          src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
+          size: 1024,
+          destination: 'images/pwa',
+          ios: 'startup'
+        },
+        {
+          src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
+          sizes: [270, 512],
+          destination: 'images/pwa'
         }
       ]
     }),

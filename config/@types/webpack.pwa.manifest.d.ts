@@ -44,7 +44,7 @@ declare module 'webpack-pwa-manifest' {
   export interface IIcon {
     src: string
     sizes?: number[]
-    size?: string
+    size?: number
     destination?: string
     ios?: boolean | 'startup'
     purpose?: TPurpose
