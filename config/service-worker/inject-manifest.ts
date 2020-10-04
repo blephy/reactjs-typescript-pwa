@@ -3,7 +3,12 @@ import { injectManifest } from 'workbox-build'
 
 import workboxConfig from './workbox-config'
 
+console.info('*****************************************************')
+console.info('**     Injecting manifest into service worker      **')
+console.info('*****************************************************')
+console.info('')
 console.info('Workbox configuration: ', workboxConfig)
+console.info('')
 
 injectManifest(workboxConfig).then(
   ({ count, size }) => {
