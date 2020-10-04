@@ -2,7 +2,7 @@
 
 <img src="https://github.com/blephy/strict-optimized-react-starter/blob/pwa-compatibility/src/images/pwa-react-512x392.png?raw=true" width="512" height="392" alt="ReactJS Progressive Web App">
 
-<h1 align=center>ReactJS Progressive Web App</h1>
+<h1>ReactJS Progressive Web App</h1>
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -76,9 +76,19 @@ npm start
 
 ### Build production ready bundle
 
+This will compile your app and the server worker for production
+
 ```shell
 npm run build
 ```
+
+If you want to debug your service worker (don't use this in production, but only in local)
+
+```shell
+npm run build:local
+```
+
+You can now launch the production server locally
 
 ### Start the prodution server
 
