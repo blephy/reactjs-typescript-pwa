@@ -41,19 +41,24 @@ registerRoute(defaultNavigationRoute)
  */
 /**
  * NetworkFirst
- * This will try and get a request from the network first. If it receives a response, it’ll pass that to the browser and also save it to a cache. If the network request fails, the last cached response will be used.
+ * This will try and get a request from the network first. If it receives a response, it’ll pass that to the browser
+ * and also save it to a cache. If the network request fails, the last cached response will be used.
  */
 /**
  * CacheFirst
- * This strategy will check the cache for a response first and use that if one is available. If the request isn’t in the cache, the network will be used and any valid response will be added to the cache before being passed to the browser.
+ * This strategy will check the cache for a response first and use that if one is available. If the request isn’t in
+ * the cache, the network will be used and any valid response will be added to the cache before being passed to the
+ * browser.
  */
 /**
  * stale-while-revalidate
- * This strategy will use a cached response for a request if it is available and update the cache in the background with a response form the network. (If it’s not cached it will wait for the network response and use that). This is a fairly safe strategy as it means users are regularly updating their cache. The downside of this strategy is that it’s always requesting an asset from the network, using up the user’s bandwidth
+ * This strategy will use a cached response for a request if it is available and update the cache in the background
+ * with a response form the network. (If it’s not cached it will wait for the network response and use that). This
+ * is a fairly safe strategy as it means users are regularly updating their cache. The downside of this strategy is
+ * that it’s always requesting an asset from the network, using up the user’s bandwidth
  */
 const DAY_IN_SECONDS = 24 * 60 * 60
 const MONTH_IN_SECONDS = DAY_IN_SECONDS * 30
-// const YEAR_IN_SECONDS = DAY_IN_SECONDS * 365
 
 registerRoute(
   new RegExp('.*.js'),
