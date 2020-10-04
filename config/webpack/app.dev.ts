@@ -96,7 +96,8 @@ module.exports = {
       'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
     }),
     new ESLintWebpackPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx']
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      lintDirtyModulesOnly: true
     }),
     new StylelintPlugin()
   ],
