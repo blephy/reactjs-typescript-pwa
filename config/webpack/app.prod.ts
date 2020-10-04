@@ -1,9 +1,10 @@
+/* eslint-disable global-require */
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { config } from 'dotenv'
-import ESLintPlugin from 'eslint-webpack-plugin'
+import ESLintWebpackPlugin from 'eslint-webpack-plugin'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
@@ -14,6 +15,7 @@ import SitemapPlugin, { ISitemapPath } from 'sitemap-webpack-plugin'
 import StylelintPlugin from 'stylelint-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
+import WebpackPwaManifest from 'webpack-pwa-manifest'
 
 config()
 
@@ -36,7 +38,7 @@ const rootDir = path.join(__dirname, '..', '..')
 
 module.exports = {
   target: 'web',
-  name: 'production',
+  name: 'app-production',
   mode: 'production',
   context: path.resolve(rootDir, 'src'),
   bail: true,
@@ -62,7 +64,7 @@ module.exports = {
   },
   devtool: 'none',
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
     modules: ['src', 'node_modules'],
     alias: {
       '@': path.resolve(rootDir, 'src')
@@ -143,13 +145,13 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new HtmlWebPackPlugin({
       meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
+        viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
       title: process.env.TITLE,
       preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon.png'),
+      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
       filename: 'index.html',
       minify: {
         removeComments: true,
@@ -205,11 +207,50 @@ module.exports = {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'allAssets',
-      fileBlacklist: [/^(?!.*(runtime|home|app))/]
+      fileBlacklist: [/^(?!.*(runtime|app|home|fonts))/]
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
       defaultAttribute: 'async'
+    }),
+    new WebpackPwaManifest({
+      name: 'ReactJS Progressive Web App',
+      short_name: 'ReactPWA',
+      orientation: 'portrait',
+      description: 'A fast and secure progressive web app with every best practices for SEO and web performances',
+      background_color: '#FFFFFF',
+      theme_color: '#5A0FC8',
+      crossorigin: 'anonymous',
+      display: 'standalone',
+      lang: 'en',
+      inject: true,
+      fingerprints: true,
+      start_url: '.',
+      ios: {
+        'apple-mobile-web-app-title': 'ReactPWA',
+        'apple-mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-status-bar-style': 'black'
+      },
+      icons: [
+        {
+          src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
+          destination: 'images/pwa/ios',
+          sizes: [152, 167, 180, 192],
+          ios: true
+        },
+        {
+          src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
+          size: 1024,
+          destination: 'images/pwa',
+          ios: 'startup'
+        },
+        {
+          src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
+          sizes: [270, 512],
+          destination: 'images/pwa'
+          // purpose: 'maskable' Waiting for the plugin to update his declaration files
+        }
+      ]
     }),
     new SitemapPlugin(serverBaseUrl, sitemapPaths, {
       filename: '.well-known/sitemap.xml',
@@ -218,11 +259,17 @@ module.exports = {
       priority: 0.5,
       changefreq: 'monthly'
     }),
-    new ESLintPlugin({
+    new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
+      emitError: true,
+      emitWarning: true,
       failOnError: true
     }),
-    new StylelintPlugin()
+    new StylelintPlugin({
+      emitError: true,
+      emitWarning: true,
+      failOnError: true
+    })
   ],
   module: {
     rules: [
@@ -230,10 +277,7 @@ module.exports = {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
-          }
+          loader: 'babel-loader'
         }
       },
       {
@@ -291,15 +335,31 @@ module.exports = {
               }
             }
           },
+          // {
+          //   test: /\.(png|jp(e*)g|gif|webp)$/,
+          //   use: {
+          //     loader: 'url-loader',
+          //     options: {
+          //       limit: 8192,
+          //       emitFile: true,
+          //       outputPath: 'images/',
+          //       name: '[name].[hash].[ext]'
+          //     }
+          //   }
+          // },
           {
-            test: /\.(png|jp(e*)g|gif)$/,
+            test: /\.(jpe?g|png|webp)$/i,
             use: {
-              loader: 'url-loader',
+              loader: 'responsive-loader',
               options: {
-                limit: 8192,
-                emitFile: true,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                adapter: require('responsive-loader/sharp'),
+                name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                name: '[name].[hash].[ext]'
+                sizes: [320, 720, 1024, 1280, 1600, 1920, 3840],
+                quality: 75,
+                format: 'webp',
+                emitFile: true
               }
             }
           },

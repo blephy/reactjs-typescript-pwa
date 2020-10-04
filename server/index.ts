@@ -11,7 +11,7 @@ require('dotenv').config()
 /**
  * Instance configuration. Needed by express
  */
-const InstanceDistPathToServe = path.resolve(__dirname, '../build')
+const distPathToServe = path.resolve(__dirname, '../build')
 const staticExpressOption = {
   dotfiles: 'ignore',
   etag: false,
@@ -81,7 +81,7 @@ function initServer() {
       directives: {
         defaultSrc: ["'self'", 'https:', process.env.DOMAIN_NAME],
         fontSrc: ["'self'", 'data:'],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'"],
         styleSrc: ["'self'"],
         baseUri: ["'self'"],
         connectSrc: ["'self'", 'https:', 'wss:', process.env.API_URL],
@@ -89,6 +89,8 @@ function initServer() {
         objectSrc: ["'none'"],
         frameSrc: ["'none'"],
         frameAncestors: ["'none'"],
+        workerSrc: ["'self'"],
+        manifestSrc: ["'self'"],
         reportUri: [process.env.CSP_REPORT_URI],
         reportTo: [process.env.CSP_REPORT_URI],
         upgradeInsecureRequests: '',
@@ -136,7 +138,7 @@ function initServer() {
   /**
    * Serve static files
    */
-  server.use(express.static(InstanceDistPathToServe, staticExpressOption))
+  server.use(express.static(distPathToServe, staticExpressOption))
 
   /**
    * Fallback history for SPA
@@ -145,7 +147,7 @@ function initServer() {
    */
   server.use(
     fallback('index.html', {
-      root: InstanceDistPathToServe,
+      root: distPathToServe,
       lastModified: staticExpressOption.lastModified,
       maxAge: staticExpressOption.maxAge,
       dotfiles: staticExpressOption.dotfiles

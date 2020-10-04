@@ -1,6 +1,8 @@
-# Strict optimized React starter
+<div align="center">
 
-<p align="center">
+<img src="https://user-images.githubusercontent.com/24233935/95027324-d9de8780-0697-11eb-983e-52c187ba1e62.png" width="440" height="auto" alt="ReactJS Progressive Web App">
+
+<h1>ReactJS Progressive Web App</h1>
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -20,7 +22,9 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 
-</p>
+</div>
+
+A fast and secure progressive web app with every best practices for SEO and web performances
 
 ## Getting started
 
@@ -53,13 +57,13 @@ touch .env
 Add these lines and save.
 
 ```txt
-API_URL=http://localhost:3001/api/v1
+API_URL=localhost:3001/api/v1
 DOMAIN_NAME=localhost:3001
 PORT=3001
+HTTPS=false
 CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
-APP_TITLE=My application html title
-HTTPS=false
+APP_TITLE=ReactJS Progressive Web App
 ```
 
 ### Run developement server
@@ -74,9 +78,19 @@ npm start
 
 ### Build production ready bundle
 
+This will compile your app and the server worker for production
+
 ```shell
 npm run build
 ```
+
+If you want to debug your service worker (don't use this in production, but only in local)
+
+```shell
+npm run build:local
+```
+
+You can now launch the production server locally
 
 ### Start the prodution server
 
@@ -151,6 +165,16 @@ npm run browsers:coverage
 npm run browsers:autoprefixer
 ```
 
+## How to
+
+### Importing svg files
+
+```ts
+import { ReactComponent as MySvg } from '@/images/signature.svg'
+
+const MyComponent: ReactNode = () => <MySvg />
+```
+
 ## Contributing
 
 ### Install VSCode extensions
@@ -165,3 +189,5 @@ In order to lint and format your code while you are typing in VSCode, please ins
 ## Known issues
 
 - Changing `browserslist` queries are not reflected by `babel`. This is a `babel-loader` cache [issue](https://github.com/babel/babel-loader/issues/690). You can remove yourself `node_modules/.cache/babel-loader/` to clean the cache.
+- Webpack pwa manifest not compatible with typescript. If you set a property `purpose` on an icon, typescript complain about type checking. [issue](https://github.com/arthurbergmz/webpack-pwa-manifest/issues/139)
+- When using css module (`my-module.module.scss`), and insert a `@keyframe`, `css-loader` don't produce an hash very well to the keyframe name. Just rename your keyframe from `draw` to `my-draw`. [issue](https://github.com/webpack-contrib/css-loader/issues/1200)
