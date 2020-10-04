@@ -11,7 +11,8 @@ module.exports = {
     assert: {
       preset: 'lighthouse:recommended',
       assertions: {
-        'maskable-icon': 'warn'
+        'maskable-icon': 'warn',
+        'maskable-icon-audit': 'warn'
       }
     }
   }
