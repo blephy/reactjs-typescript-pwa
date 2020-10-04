@@ -24,6 +24,8 @@
 
 </div>
 
+A fast and secure progressive web app with every best practices for SEO and web performances
+
 ## Getting started
 
 ### Prerequired

@@ -1,14 +1,13 @@
 import ESLintWebpackPlugin from 'eslint-webpack-plugin'
 import path from 'path'
-import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
 
 const rootDir = path.join(__dirname, '..', '..')
 
 module.exports = {
   target: 'web',
-  name: 'service-worker-production',
-  mode: 'production',
+  name: 'service-worker-development',
+  mode: 'development',
   devtool: 'none',
   entry: {
     index: path.join(rootDir, 'src', 'service-worker.ts')
@@ -23,22 +22,6 @@ module.exports = {
   output: {
     path: path.join(rootDir, 'build'),
     filename: 'service-worker.js'
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false,
-        extractComments: false,
-        terserOptions: {
-          output: {
-            comments: false
-          }
-        }
-      })
-    ]
   },
   module: {
     rules: [

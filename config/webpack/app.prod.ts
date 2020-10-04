@@ -37,7 +37,7 @@ const rootDir = path.join(__dirname, '..', '..')
 
 module.exports = {
   target: 'web',
-  name: 'production',
+  name: 'app-production',
   mode: 'production',
   context: path.resolve(rootDir, 'src'),
   bail: true,
@@ -221,6 +221,7 @@ module.exports = {
       theme_color: '#5A0FC8',
       crossorigin: 'anonymous',
       display: 'fullscreen',
+      lang: 'en',
       inject: true,
       fingerprints: true,
       start_url: '.',

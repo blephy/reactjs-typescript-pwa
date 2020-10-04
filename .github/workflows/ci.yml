@@ -97,9 +97,7 @@ jobs:
             ${{ runner.OS }}-
 
       - name: Build application
-        run: |
-          npm run build
-          npm run build:sw
+        run: npm run build
 
       - name: Upload build
         uses: actions/upload-artifact@v2

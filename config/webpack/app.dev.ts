@@ -16,7 +16,7 @@ const rootDir = path.join(__dirname, '..', '..')
 
 module.exports = {
   target: 'web',
-  name: 'development',
+  name: 'app-development',
   mode: 'development',
   bail: false,
   cache: true,

@@ -3,11 +3,13 @@ import { injectManifest } from 'workbox-build'
 
 import workboxConfig from './workbox-config'
 
-console.log('Workbox configuration: ', workboxConfig)
+console.info('Workbox configuration: ', workboxConfig)
 
 injectManifest(workboxConfig).then(
   ({ count, size }) => {
-    console.log(`Generated ${workboxConfig.swDest}, which will precache ${count} files (${size} bytes)`)
+    console.info(
+      `Generated ${workboxConfig.swDest}, which will precache ${count} files (${size} bytes or ${size / 1000} Ko)`
+    )
   },
   ({ message }) => {
     console.error('An error occured while injecting manifest in service worker.', message)
