@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/blephy/strict-optimized-react-starter/tree/pwa-compatibility/src/images/pwa-react-512x392.png?raw=true" width="512" height="392" alt="ReactJS Progressive Web App">
+<img src="https://github.com/blephy/strict-optimized-react-starter/blob/pwa-compatibility/src/images/pwa-react-512x392.png?raw=true" width="512" height="392" alt="ReactJS Progressive Web App">
 
 <h1 align=center>ReactJS Progressive Web App</h1>
 
