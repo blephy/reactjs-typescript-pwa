@@ -313,7 +313,7 @@ module.exports = {
             }
           },
           {
-            test: /\.(png|jp(e*)g|gif)$/,
+            test: /\.(png|jp(e*)g|gif|webp)$/,
             use: {
               loader: 'url-loader',
               options: {
