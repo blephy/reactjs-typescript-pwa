@@ -81,7 +81,7 @@ function initServer() {
       directives: {
         defaultSrc: ["'self'", 'https:', process.env.DOMAIN_NAME],
         fontSrc: ["'self'", 'data:'],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'"],
         styleSrc: ["'self'"],
         baseUri: ["'self'"],
         connectSrc: ["'self'", 'https:', 'wss:', process.env.API_URL],
@@ -89,6 +89,8 @@ function initServer() {
         objectSrc: ["'none'"],
         frameSrc: ["'none'"],
         frameAncestors: ["'none'"],
+        workerSrc: ["'self'"],
+        manifestSrc: ["'self'"],
         reportUri: [process.env.CSP_REPORT_URI],
         reportTo: [process.env.CSP_REPORT_URI],
         upgradeInsecureRequests: '',
