@@ -15,7 +15,7 @@ export default function Home({
 }: RouteComponentProps<TMatch>): React.FunctionComponentElement<RouteComponentProps> {
   const { path } = match
   const canonicalUrl = `${process.env.SERVER_BASE_URL}${path}`
-  const description = 'A fast and secure progressive web app with every best practices for SEO an web performances'
+  const description = 'A fast and secure progressive web app with every best practices for SEO and web performances'
 
   return (
     <>

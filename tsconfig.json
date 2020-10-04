@@ -1,9 +1,14 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "baseUrl": "./",
     "sourceMap": true,
     "module": "esnext",
-    "target": "es6",
+    "target": "es2017",
     "moduleResolution": "node",
     "jsx": "react",
     "checkJs": false,
@@ -16,14 +21,13 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./src/@types", "./node_modules/@types", "./config/@types"],
+    "typeRoots": ["./node_modules/@types", "./src/@types", "./config/@types"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "exclude": [
     "build",
-    "dist",
     "stats",
     "reports",
     "coverage",

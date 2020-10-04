@@ -11,7 +11,7 @@ require('dotenv').config()
 /**
  * Instance configuration. Needed by express
  */
-const InstanceDistPathToServe = path.resolve(__dirname, '../build')
+const distPathToServe = path.resolve(__dirname, '../build')
 const staticExpressOption = {
   dotfiles: 'ignore',
   etag: false,
@@ -136,7 +136,7 @@ function initServer() {
   /**
    * Serve static files
    */
-  server.use(express.static(InstanceDistPathToServe, staticExpressOption))
+  server.use(express.static(distPathToServe, staticExpressOption))
 
   /**
    * Fallback history for SPA
@@ -145,7 +145,7 @@ function initServer() {
    */
   server.use(
     fallback('index.html', {
-      root: InstanceDistPathToServe,
+      root: distPathToServe,
       lastModified: staticExpressOption.lastModified,
       maxAge: staticExpressOption.maxAge,
       dotfiles: staticExpressOption.dotfiles

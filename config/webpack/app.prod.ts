@@ -3,7 +3,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { config } from 'dotenv'
-import ESLintPlugin from 'eslint-webpack-plugin'
+import ESLintWebpackPlugin from 'eslint-webpack-plugin'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
@@ -63,7 +63,7 @@ module.exports = {
   },
   devtool: 'none',
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
     modules: ['src', 'node_modules'],
     alias: {
       '@': path.resolve(rootDir, 'src')
@@ -149,8 +149,8 @@ module.exports = {
       },
       title: process.env.TITLE,
       preconnect: serverBaseUrl,
-      template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/assets/favicon.32x32.png'),
+      template: path.resolve(rootDir, 'src', 'public/templates/index.ejs'),
+      favicon: path.resolve(rootDir, 'src', 'public/favicon-32x32.png'),
       filename: 'index.html',
       minify: {
         removeComments: true,
@@ -184,20 +184,20 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(rootDir, 'public', 'humans.txt'),
+          from: path.resolve(rootDir, 'src', 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
           transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`,
           cacheTransform: false
         },
         {
-          from: path.resolve(rootDir, 'public', 'robots.txt'),
+          from: path.resolve(rootDir, 'src', 'public', 'robots.txt'),
           to: path.resolve(rootDir, 'build'),
           transform: (content: Buffer) =>
             `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
           cacheTransform: false
         },
         {
-          from: path.resolve(rootDir, 'public', 'security.txt'),
+          from: path.resolve(rootDir, 'src', 'public', 'security.txt'),
           to: path.resolve(rootDir, 'build/.well-known'),
           cacheTransform: false
         }
@@ -216,9 +216,9 @@ module.exports = {
       name: 'ReactJS Progressive Web App',
       short_name: 'ReactPWA',
       orientation: 'portrait',
-      description: 'A fast and secure progressive web app with every best practices for SEO an web performances',
-      background_color: '#131313',
-      theme_color: '#131313',
+      description: 'A fast and secure progressive web app with every best practices for SEO and web performances',
+      background_color: '#FFFFFF',
+      theme_color: '#5A0FC8',
       crossorigin: 'anonymous',
       display: 'fullscreen',
       inject: true,
@@ -227,9 +227,9 @@ module.exports = {
       ios: true,
       icons: [
         {
-          src: path.resolve(rootDir, 'public/assets/react-icon.1024x909.png'),
+          src: path.resolve(rootDir, 'src', 'public/pwa-logo-1024x386.png'),
           destination: 'images/pwa',
-          sizes: [16, 32, 64, 96, 128, 192, 256, 384, 512],
+          sizes: [64, 96, 128, 192, 256, 384, 512, 1024],
           ios: true
         }
       ]
@@ -241,7 +241,7 @@ module.exports = {
       priority: 0.5,
       changefreq: 'monthly'
     }),
-    new ESLintPlugin({
+    new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       failOnError: true
     }),

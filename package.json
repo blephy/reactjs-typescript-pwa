@@ -4,12 +4,14 @@
   "description": "Full typescript react webpack starter with strict development process. Secure NodeJs assets server. All web best practices implemented to have well performed SPA.",
   "main": "src/index.tsx",
   "scripts": {
-    "start": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"development\" webpack-dev-server --color --watch --hot --stdin --config config/webpack/webpack.dev.ts",
+    "start": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"development\" webpack-dev-server --color --watch --hot --stdin --config config/webpack/app.dev.ts",
     "start:prod": "cross-env NODE_ENV=\"production\" node server/index.ts",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"production\" webpack --progress --colors --config config/webpack/webpack.prod.ts",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"production\" webpack --progress --colors --config config/webpack/app.prod.ts",
+    "build:sw": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"production\" webpack --progress --colors --config config/webpack/service-worker.prod.ts",
+    "postbuild:sw": "ts-node config/service-worker/inject-manifest.ts",
     "test": "jest --colors --config config/tests/jest.config.js",
     "test:watch": "jest --collectCoverage=false --colors --watch --config config/tests/jest.config.js",
-    "ts:check": "tsc -p tsconfig.json --noEmit",
+    "ts:check": "tsc -p tsconfig.json --noEmit --skipLibCheck",
     "lint": "npm run eslint && npm run stylelint && npm run markdownlint && npm run prettier && npm run htmlhint",
     "lint:fix": "npm run eslint:fix && npm run stylelint:fix && npm run markdownlint:fix && npm run prettier:fix",
     "eslint": "eslint --color --ext .jsx --ext .js --ext .ts --ext .tsx src/",
@@ -24,7 +26,7 @@
     "browsers": "browserslist",
     "browsers:coverage": "browserslist --coverage",
     "browsers:autoprefixer": "autoprefixer --info",
-    "prestats": "mkdir -p stats && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"production\" webpack --profile --json --config config/webpack/webpack.prod.ts > stats/stats.json",
+    "prestats": "mkdir -p stats && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"production\" webpack --profile --json --config config/webpack/app.prod.ts > stats/stats.json",
     "stats": "webpack-bundle-analyzer stats/stats.json build/",
     "clean": "rm -rf stats && rm -rf reports && rm -rf coverage && rm -rf build"
   },
@@ -99,6 +101,12 @@
     "@types/webpack": "^4.41.22",
     "@types/webpack-dev-server": "^3.11.0",
     "@types/webpack-env": "^1.15.3",
+    "@types/workbox-build": "^5.0.0",
+    "@types/workbox-cacheable-response": "^4.3.0",
+    "@types/workbox-expiration": "^4.3.0",
+    "@types/workbox-precaching": "^4.3.0",
+    "@types/workbox-strategies": "^4.3.0",
+    "@types/workbox-window": "^4.3.3",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "autoprefixer": "^9.8.6",
@@ -165,7 +173,8 @@
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-pwa-manifest": "^4.2.0"
+    "webpack-pwa-manifest": "^4.2.0",
+    "workbox-build": "^5.1.4"
   },
   "dependencies": {
     "@loadable/component": "5.13.1",
@@ -180,7 +189,14 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "workbox-cacheable-response": "^5.1.4",
+    "workbox-core": "^5.1.4",
+    "workbox-expiration": "^5.1.4",
+    "workbox-precaching": "^5.1.4",
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4",
+    "workbox-window": "^5.1.4"
   },
   "jestSonar": {
     "reportPath": "coverage",

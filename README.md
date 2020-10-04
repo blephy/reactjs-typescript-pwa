@@ -1,6 +1,8 @@
 <div align="center">
 
-<h1>Strict optimized React starter</h1>
+<img src="https://github.com/blephy/strict-optimized-react-starter/tree/pwa-compatibility/src/images/pwa-react-512x392.png" width="512" height="392" alt="ReactJS Progressive Web App">
+
+<h1 align=center>ReactJS Progressive Web App</h1>
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -165,4 +167,5 @@ In order to lint and format your code while you are typing in VSCode, please ins
 ## Known issues
 
 - Changing `browserslist` queries are not reflected by `babel`. This is a `babel-loader` cache [issue](https://github.com/babel/babel-loader/issues/690). You can remove yourself `node_modules/.cache/babel-loader/` to clean the cache.
-- Webpack pwa manifest not compatible with typescript. If you set a property `purpose` on an icon, typescript complain about type checking.
+- Webpack pwa manifest not compatible with typescript. If you set a property `purpose` on an icon, typescript complain about type checking. [issue](https://github.com/arthurbergmz/webpack-pwa-manifest/issues/139)
+- When using css module (`my-module.module.scss`), and insert a `@keyframe`, `css-loader` don't produce an hash very well to the keyframe name. Just rename your keyframe from `draw` to `my-draw`. [issue](https://github.com/webpack-contrib/css-loader/issues/1200)

@@ -1,7 +1,7 @@
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
-import ESLintPlugin from 'eslint-webpack-plugin'
+import ESLintWebpackPlugin from 'eslint-webpack-plugin'
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import postcssNormalize from 'postcss-normalize'
@@ -34,7 +34,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
     modules: ['src', 'node_modules'],
     alias: {
       '@': path.resolve(rootDir, 'src')
@@ -46,9 +46,9 @@ module.exports = {
     openPage: '',
     compress: true,
     clientLogLevel: 'info',
-    contentBase: path.resolve(rootDir, 'dist'),
+    contentBase: path.resolve(rootDir, 'build'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'dist', 'server', 'config', 'coverage', 'stats', '.vscode', '.github'],
+      ignored: ['node_modules', 'build', 'server', 'config', 'coverage', 'stats', '.vscode', '.github'],
       aggregateTimeout: 50
     },
     overlay: {
@@ -80,8 +80,8 @@ module.exports = {
       },
       title: process.env.APP_TITLE,
       preconnect: serverBaseUrl,
-      template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon.png'),
+      template: path.resolve(rootDir, 'src', 'public/templates/index.ejs'),
+      favicon: path.resolve(rootDir, 'src', 'public/favicon-32x32.png'),
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({
@@ -94,7 +94,7 @@ module.exports = {
       'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
       'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
     }),
-    new ESLintPlugin({
+    new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx']
     }),
     new StylelintPlugin()
