@@ -99,7 +99,9 @@ module.exports = {
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       lintDirtyModulesOnly: true
     }),
-    new StylelintPlugin()
+    new StylelintPlugin({
+      lintDirtyModulesOnly: true
+    })
   ],
   module: {
     rules: [

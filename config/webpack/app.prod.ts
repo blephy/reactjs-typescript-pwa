@@ -261,9 +261,15 @@ module.exports = {
     }),
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
+      emitError: true,
+      emitWarning: true,
       failOnError: true
     }),
-    new StylelintPlugin()
+    new StylelintPlugin({
+      emitError: true,
+      emitWarning: true,
+      failOnError: true
+    })
   ],
   module: {
     rules: [

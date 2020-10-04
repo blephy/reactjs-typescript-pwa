@@ -55,6 +55,8 @@ module.exports = {
     }),
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
+      emitError: true,
+      emitWarning: true,
       failOnError: true
     })
   ]

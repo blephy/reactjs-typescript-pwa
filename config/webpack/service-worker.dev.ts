@@ -38,7 +38,7 @@ module.exports = {
     }),
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
-      failOnError: true
+      lintDirtyModulesOnly: true
     })
   ]
 }
