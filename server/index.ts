@@ -11,6 +11,7 @@ require('dotenv').config()
 /**
  * Instance configuration. Needed by express
  */
+const serverPort = process.env.PORT || 3001
 const distPathToServe = path.resolve(__dirname, '../build')
 const staticExpressOption = {
   dotfiles: 'ignore',
@@ -162,8 +163,8 @@ function initServer() {
   /**
    * Server start
    */
-  server.listen(process.env.PORT, () => {
-    console.log('Listening on port:', process.env.PORT)
+  server.listen(serverPort, () => {
+    console.log('Listening on port:', serverPort)
   })
 }
 

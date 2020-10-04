@@ -22,9 +22,16 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 
+<hr>
+
+A fast and secure progressive web app with every best practices for SEO and web performances.
+
 </div>
 
-A fast and secure progressive web app with every best practices for SEO and web performances
+<p align=center>
+
+<img width="550" height="auto" alt="Lighthouse report PWA ReacJS" src="https://user-images.githubusercontent.com/24233935/95028011-4f008b80-069d-11eb-9fae-62ed7efb5192.png">
+</p>
 
 ## Getting started
 
@@ -96,13 +103,13 @@ You can now launch the production server locally
 
 Start the nodejs production server with a SPA fallback.
 
-Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env` file.
+Server is listening on `localhost:3001` by default. Port depending on `PORT` informed in your `.env` file.
 
 ```shell
 npm run start:prod
 ```
 
-### Lint and format the code
+### Lint and format codebase
 
 Lint with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/), [markdownlint](https://github.com/igorshubovych/markdownlint-cli) and [htmlhint](https://htmlhint.com/).
 Format with [prettier](https://prettier.io/).
@@ -111,7 +118,7 @@ Format with [prettier](https://prettier.io/).
 npm run lint
 ```
 
-### Autofix lint and format the code
+### Autofix lint and format codebase
 
 Autofix with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/) and [markdownlint](https://github.com/igorshubovych/markdownlint-cli).
 Format with [prettier](https://prettier.io/).
@@ -120,15 +127,15 @@ Format with [prettier](https://prettier.io/).
 npm run lint:fix
 ```
 
-### Test the application
+### Run tests
 
-Run [Jest](https://jestjs.io/) with [Enzyme](https://github.com/enzymejs/enzyme/) to test the React application. Collect coverage under `coverage/` folder.
+Run [Jest](https://jestjs.io/) with [Enzyme](https://github.com/enzymejs/enzyme/) to test the ReactJS application. This will collect coverage under `coverage/` folder.
 
 ```shell
 npm run test
 ```
 
-Run Jest in watch mode without collecting coverage.
+Run tests in watch mode without collecting coverage. Usefull when you are working on tests.
 
 ```shell
 npm run test:watch
@@ -142,7 +149,7 @@ npm run ts:check
 
 ### Bundle stats
 
-Visualize your bundle stats with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+Visualize your production bundle stats with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
 
 ```shell
 npm run stats
@@ -167,12 +174,80 @@ npm run browsers:autoprefixer
 
 ## How to
 
-### Importing svg files
+### Use alias in your path
+
+By default, you can use `@/` in your path to resolve `src` folder. Even in `url` directive in `scss` files.
+
+```scss
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans Light';
+  src: url('@/fonts/open-sans/OpenSans-Light.woff2') format('woff2'); // Resolve src/fonts/...
+}
+```
 
 ```ts
+import App from '@/app' // Resolve src/app.tsx
+```
+
+### Use css module
+
+You can convert an `.scss` into a css module simply by suffixing it's name with `module.scss`.
+
+### Use svg files
+
+SVG files can be imported as mentioned below. Note that all svg files are optimized with [svgo](https://github.com/svg/svgo). You can configure svgo in the `.svgo.yml` file.
+
+```tsx
+import React from 'react'
+
 import { ReactComponent as MySvg } from '@/images/signature.svg'
 
-const MyComponent: ReactNode = () => <MySvg />
+import styles from './styles.module.scss'
+
+const MyComponent: React.ReactNode = () => <MySvg className={styles.mySvg} />
+```
+
+```scss
+.mySvg {
+  width: 80px;
+
+  path {
+    stroke: #fff;
+  }
+
+  circle {
+    animation: draw-circle 0.25s ease-in 1.5s forwards;
+  }
+}
+```
+
+### Use images files
+
+You can import `.png` and `.jpe?g` as mentioned below. Note that all this files are processed with [responsive-loader](https://github.com/dazuaz/responsive-loader). This will convert files in optimized web format `webp`, and automatically create multiple sizes for responsive images. Read the responsive-loader documentation.
+
+```tsx
+// Automatic way
+import PwaReact from '@/images/pwa-react-uhd-trans.png'
+// Custom way
+import PwaReact from '@/images/pwa-react-uhd-trans.png?sizes[]=300,sizes[]=600,sizes[]=1024,sizes[]=2048&format=webp'
+// do not convert into webp
+import PwaReact from '@/images/pwa-react-uhd-trans.png?sizes[]=300,sizes[]=600,sizes[]=1024,sizes[]=2048'
+
+import styles from './styles.module.scss'
+
+const MyComponent: React.ReactNode = () => (
+  <img
+    className={styles.image}
+    src={PwaReact.src}
+    srcSet={PwaReact.srcSet}
+    sizes='(max-width: 1024px) 320px,
+      500px'
+    width={PwaReact.width}
+    height={PwaReact.height}
+    alt='Pwa React'
+  />
+)
 ```
 
 ## Contributing
