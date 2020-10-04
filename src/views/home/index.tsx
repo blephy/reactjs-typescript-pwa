@@ -29,10 +29,13 @@ export default function Home({
       <div className={styles.container}>
         <h1 className={styles.title}>{appTitle}</h1>
         <img
+          className={styles.image}
           src={PwaReact.src}
           srcSet={PwaReact.srcSet}
           sizes='(max-width: 1024px) 320px,
             500px'
+          width={PwaReact.width}
+          height={PwaReact.height}
           alt='Pwa React'
         />
       </div>

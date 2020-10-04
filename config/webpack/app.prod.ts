@@ -207,7 +207,7 @@ module.exports = {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'allAssets',
-      fileBlacklist: [/^(?!.*(runtime|app|fonts))/]
+      fileBlacklist: [/^(?!.*(runtime|app|home|fonts))/]
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
