@@ -1,19 +1,19 @@
 declare module '*.png' {
-  interface IImage {
+  interface IResponsiveLoaderAssetsImage {
     height: number
     width: number
     path: string
   }
-  interface IPng extends HTMLElement {
+  interface IResponsiveLoaderAssets extends HTMLElement {
     src: string
     srcSet: string
     width: string
     height: string
     placeholder: string
-    images: IImage[]
+    images: IResponsiveLoaderAssetsImage[]
   }
 
-  const content: IPng
+  const content: IResponsiveLoaderAssets
 
-  export default content
+  export = content
 }

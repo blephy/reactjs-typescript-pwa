@@ -1,4 +1,4 @@
-declare module '*.webp' {
+declare module '*.jpg' {
   interface IResponsiveLoaderAssetsImage {
     height: number
     width: number

@@ -145,7 +145,7 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new HtmlWebPackPlugin({
       meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
+        viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
       title: process.env.TITLE,
@@ -207,7 +207,7 @@ module.exports = {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'allAssets',
-      fileBlacklist: [/^(?!.*(runtime|home|app))/]
+      fileBlacklist: [/^(?!.*(runtime|app|fonts))/]
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: /^runtime.*\.js$/,
@@ -231,7 +231,7 @@ module.exports = {
         {
           src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
           destination: 'images/pwa',
-          sizes: [64, 96, 128, 192, 256, 384, 512, 1024],
+          sizes: [32, 64, 96, 128, 192, 256, 384, 512, 1024],
           ios: true
         }
       ]
@@ -334,7 +334,7 @@ module.exports = {
                 adapter: require('responsive-loader/sharp'),
                 name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                sizes: [320, 640, 960, 1200, 1800, 2400],
+                sizes: [320, 720, 1024, 1280, 1600, 1920, 3840],
                 quality: 75,
                 format: 'webp',
                 emitFile: true

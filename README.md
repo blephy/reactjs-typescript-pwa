@@ -165,6 +165,16 @@ npm run browsers:coverage
 npm run browsers:autoprefixer
 ```
 
+## How to
+
+### Importing svg files
+
+```ts
+import { ReactComponent as Signature } from '@/images/signature.svg'
+
+const MyComponent: ReactNode = () => <Signature />
+```
+
 ## Contributing
 
 ### Install VSCode extensions

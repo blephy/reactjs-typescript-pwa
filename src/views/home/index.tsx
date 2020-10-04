@@ -5,7 +5,6 @@ import { RouteComponentProps } from 'react-router-dom'
 
 import PwaReact from '@/images/pwa-react-uhd-trans.png'
 
-// import { ReactComponent as Signature } from '@/images/signature.svg'
 import styles from './home.module.scss'
 
 type TMatch = {
@@ -29,11 +28,13 @@ export default function Home({
       </Helmet>
       <div className={styles.container}>
         <h1 className={styles.title}>{appTitle}</h1>
-        <picture>
-          <source srcSet={PwaReact.srcSet} />
-          <img src={PwaReact.src} width={PwaReact.width} height={PwaReact.height} alt={appTitle} />
-        </picture>
-        {/* <Signature className={styles.signature} /> */}
+        <img
+          src={PwaReact.src}
+          srcSet={PwaReact.srcSet}
+          sizes='(max-width: 1024px) 320px,
+            500px'
+          alt='Pwa React'
+        />
       </div>
     </>
   )

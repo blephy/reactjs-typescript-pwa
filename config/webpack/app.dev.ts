@@ -76,7 +76,7 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes',
+        viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
       title: process.env.APP_TITLE,
