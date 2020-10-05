@@ -135,9 +135,7 @@ jobs:
             ${{ runner.OS }}-
 
       - name: Test application
-        run: |
-          npm run test
-          cat ./coverage/tests-executions-report.xml
+        run: npm run test && cat ./coverage/tests-executions-report.xml
         env:
           CI: true
 
