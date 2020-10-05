@@ -1,8 +1,7 @@
 <div align="center">
+  <img src="https://user-images.githubusercontent.com/24233935/95027324-d9de8780-0697-11eb-983e-52c187ba1e62.png" width="350" height="auto" alt="ReactJS Progressive Web App">
 
-<img src="https://user-images.githubusercontent.com/24233935/95027324-d9de8780-0697-11eb-983e-52c187ba1e62.png" width="440" height="auto" alt="ReactJS Progressive Web App">
-
-<h1>ReactJS Progressive Web App</h1>
+  <h1>ReactJS TypeScript Progressive Web App</h1>
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
@@ -22,15 +21,15 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 
+</div>
 <hr>
 
-A fast and secure progressive web app with every best practices for SEO, web performances, and web security issues.
-
-</div>
+<p align=center>
+  A fast and secure Progressive Web App built with ReactJS with every best practices for SEO and web performances. Full TypeScript !
+</p>
 
 <p align=center>
-
-<img width="550" height="auto" alt="Lighthouse report PWA ReacJS" src="https://user-images.githubusercontent.com/24233935/95028011-4f008b80-069d-11eb-9fae-62ed7efb5192.png">
+  <img width="550" height="auto" alt="Lighthouse report PWA ReacJS" src="https://user-images.githubusercontent.com/24233935/95028011-4f008b80-069d-11eb-9fae-62ed7efb5192.png">
 </p>
 
 ## Features
@@ -73,8 +72,8 @@ npm -v
 Fetch sources.
 
 ```shell
-git clone https://github.com/blephy/strict-optimized-react-starter.git
-cd strict-optimized-react-starter
+git clone https://github.com/blephy/reactjs-typescript-pwa.git
+cd reactjs-typescript-pwa
 npm i
 ```
 
@@ -87,33 +86,41 @@ touch .env
 Add these lines and save.
 
 ```txt
-API_URL=localhost:3001/api/v1
+# Needed by the server and the app (CORS / SEO...)
 DOMAIN_NAME=localhost:3001
 PORT=3001
 HTTPS=false
-CT_REPORT_URI=https://allandolle.report-uri.com/r/d/ct/enforce
-CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
+
+# Currently not exploited
+API_URL=localhost:3001/api/v1
+
+# Report URI https://report-uri.com/
+CT_REPORT_URI=https://reactjstypescriptpwa.report-uri.com/r/d/ct/enforce
+CSP_REPORT_URI=https://reactjstypescriptpwa.report-uri.com/r/d/csp/enforce
+API_REPORT_URI=https://reactjstypescriptpwa.report-uri.com/a/d/g
+
+# Will move in a js configuration file later
 APP_TITLE=ReactJS Progressive Web App
 ```
 
 ### Commands
 
-| Command                         | Description                                                  | Note                                                               |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `npm start`                     | Run the development server with live and hot reload          |                                                                    |
-| `npm run build`                 | Build the application and the service-worker                 | Production usage                                                   |
-| `npm run build:local`           | Build the application and the service-worker with debug mode | To debug service-worker. Run in addition with `npm run start:prod` |
-| `npm run start:prod`            | Run the NodeJS production ready server to deliver assets     | Use it also in local development for debugging purpose             |
-| `npm test`                      | Run the application tests                                    | Will produce a coverage report under `coverage/` folder            |
-| `npm run test:watch`            | Run the application tests in watch mode                      | Usefull to iterate over your tests                                 |
-| `npm run lint`                  | Lint the code base and format it                             | With Eslint, Stylelint, Markdownlint, Htmllint, Prettier           |
-| `npm run lint:fix`              | Lint the code base and format it. Autofix issues             | With Eslint, Stylelint, Markdownlint, Prettier                     |
-| `npm run ts:check`              | Typecheck the code base with TypeScript                      |                                                                    |
-| `npm run stats`                 | Build the application and visualize your bundle stats        | Will launch a server with webpack-bundle-analyzer                  |
-| `npm run browsers`              | See your Browserslist targeted browsers                      |                                                                    |
-| `npm run browsers:coverage`     | See how many % you target people in the world                |                                                                    |
-| `npm run browsers:autoprefixer` | See autoprefixer css prefixes used                           |                                                                    |
-| `npm run clean`                 | Delete stats, coverage, and build folders                    |                                                                    |
+| Command                         | Description                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `npm start`                     | Run the development server with live and hot reload.                                                        |
+| `npm run build`                 | Build the application and the service-worker. Production usage                                              |
+| `npm run build:local`           | Build the application and the service-worker with debug mode. Run in conjunction with `npm run start:prod`. |
+| `npm run start:prod`            | Run the NodeJS production ready server to deliver assets. Also for local production debugging purpose.      |
+| `npm test`                      | Run the application tests and produce a coverage report under `coverage/` folder.                           |
+| `npm run test:watch`            | Run the application tests in watch mode. Usefull to iterate over your tests                                 |
+| `npm run lint`                  | Lint and format the code base. With Eslint, Stylelint, Markdownlint, Htmllint, Prettier                     |
+| `npm run lint:fix`              | Autofix Linting and formating the code base. With Eslint, Stylelint, Markdownlint, Prettier                 |
+| `npm run ts:check`              | Typecheck the code base with TypeScript                                                                     |
+| `npm run stats`                 | Build the application and visualize your bundle stats. Will launch a server with webpack-bundle-analyzer    |
+| `npm run browsers`              | See your Browserslist targeted browsers                                                                     |
+| `npm run browsers:coverage`     | See how many % you target people in the world                                                               |
+| `npm run browsers:autoprefixer` | See autoprefixer css prefixes used                                                                          |
+| `npm run clean`                 | Delete stats, coverage, and build folders                                                                   |
 
 ## How to
 

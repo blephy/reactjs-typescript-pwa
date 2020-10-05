@@ -16,7 +16,8 @@ export default function Home({
   const { path } = match
   const canonicalUrl = `${process.env.SERVER_BASE_URL}${path}`
   const appTitle = process.env.APP_TITLE
-  const description = 'A fast and secure progressive web app with every best practices for SEO and web performances'
+  const description =
+    'A fast and secure Progressive Web App built with ReactJS with every best practices for SEO and web performances. Full TypeScript !'
 
   return (
     <>
