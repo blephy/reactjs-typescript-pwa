@@ -109,8 +109,8 @@ module.exports = {
       minSize: 25000,
       maxSize: 200000,
       minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
+      maxAsyncRequests: 20,
+      maxInitialRequests: 20,
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
@@ -139,10 +139,16 @@ module.exports = {
       cwd: process.cwd()
     }),
     new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 80,
-      minChunkSize: 25000
+      maxChunks: 30
     }),
-    new webpack.HashedModuleIdsPlugin(),
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 5000 // Minimum number of characters
+    }),
+    new webpack.HashedModuleIdsPlugin({
+      hashFunction: 'sha256',
+      hashDigest: 'hex',
+      hashDigestLength: 20
+    }),
     new HtmlWebPackPlugin({
       meta: {
         viewport: 'width=device-width, initial-scale=1',
@@ -223,6 +229,7 @@ module.exports = {
       crossorigin: 'anonymous',
       display: 'standalone',
       lang: 'en',
+      dir: 'ltr',
       inject: true,
       fingerprints: true,
       start_url: '.',
@@ -240,13 +247,13 @@ module.exports = {
         },
         {
           src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
-          size: 1024,
+          size: 512,
           destination: 'images/pwa',
           ios: 'startup'
         },
         {
           src: path.resolve(rootDir, 'public/pwa-react-logo.png'),
-          sizes: [270, 512],
+          size: 270,
           destination: 'images/pwa'
           // purpose: 'maskable' Waiting for the plugin to update his declaration files
         }
@@ -356,7 +363,7 @@ module.exports = {
                 adapter: require('responsive-loader/sharp'),
                 name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                sizes: [320, 720, 1024, 1280, 1600, 1920, 3840],
+                sizes: [320, 720, 1024, 1280],
                 quality: 75,
                 format: 'webp',
                 emitFile: true

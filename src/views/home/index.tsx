@@ -36,6 +36,7 @@ export default function Home({
             500px'
           width={PwaReact.width}
           height={PwaReact.height}
+          loading='lazy'
           alt='Pwa React'
         />
       </div>
