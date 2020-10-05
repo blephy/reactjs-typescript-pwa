@@ -34,5 +34,15 @@ module.exports = {
     '!<rootDir>/src/**/*.spec.ts',
     '!<rootDir>/src/**/*.test.ts'
   ],
-  testResultsProcessor: 'jest-sonar-reporter'
+  reporters: [
+    'default',
+    [
+      'jest-sonar',
+      {
+        outputDirectory: 'coverage',
+        outputName: 'test-execution-report.xml',
+        reportedFilePath: 'relative'
+      }
+    ]
+  ]
 }

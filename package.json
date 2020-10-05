@@ -143,7 +143,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "jest-css-modules-transform": "^4.0.1",
-    "jest-sonar-reporter": "^2.0.0",
+    "jest-sonar": "^0.2.11",
     "lint-staged": "^10.4.0",
     "markdownlint-cli": "^0.23.2",
     "mini-css-extract-plugin": "^0.11.3",
@@ -203,10 +203,5 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-window": "^5.1.4"
-  },
-  "jestSonar": {
-    "reportPath": "coverage",
-    "reportFile": "tests-executions-report.xml",
-    "indent": 4
   }
 }
