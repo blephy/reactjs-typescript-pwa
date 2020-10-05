@@ -33,5 +33,6 @@ module.exports = {
     '!<rootDir>/src/**/*.d.ts',
     '!<rootDir>/src/**/*.spec.ts',
     '!<rootDir>/src/**/*.test.ts'
-  ]
+  ],
+  testResultsProcessor: 'jest-sonar-reporter'
 }

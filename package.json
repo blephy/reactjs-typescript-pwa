@@ -204,9 +204,6 @@
     "workbox-strategies": "^5.1.4",
     "workbox-window": "^5.1.4"
   },
-  "jest": {
-    "testResultsProcessor": "jest-sonar-reporter"
-  },
   "jestSonar": {
     "reportPath": "coverage",
     "reportFile": "tests-executions-report.xml",
