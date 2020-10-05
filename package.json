@@ -31,7 +31,7 @@
     "browsers:autoprefixer": "autoprefixer --info",
     "prestats": "mkdir -p stats && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"production\" webpack --profile --json --config config/webpack/app.prod.ts > stats/stats.json",
     "stats": "webpack-bundle-analyzer stats/stats.json build/",
-    "clean": "rm -rf stats && rm -rf reports && rm -rf coverage && rm -rf build"
+    "clean": "rm -rf stats && rm -rf coverage && rm -rf build"
   },
   "repository": {
     "type": "git",

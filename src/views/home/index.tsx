@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { RouteComponentProps } from 'react-router-dom'

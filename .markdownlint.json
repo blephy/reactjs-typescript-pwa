@@ -2,7 +2,7 @@
   "default": true,
   "line-length": false,
   "no-inline-html": {
-    "allowed_elements": ["p", "div", "img", "h1"]
+    "allowed_elements": ["p", "div", "img", "h1", "hr"]
   },
   "first-line-h1": false
 }

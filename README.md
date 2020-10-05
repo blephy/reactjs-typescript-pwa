@@ -22,9 +22,39 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
 
+<hr>
+
+A fast and secure progressive web app with every best practices for SEO, web performances, and web security issues.
+
 </div>
 
-A fast and secure progressive web app with every best practices for SEO and web performances
+<p align=center>
+
+<img width="550" height="auto" alt="Lighthouse report PWA ReacJS" src="https://user-images.githubusercontent.com/24233935/95028011-4f008b80-069d-11eb-9fae-62ed7efb5192.png">
+</p>
+
+## Features
+
+- Full TypeScript project. Even [webpack](https://github.com/webpack/webpack) configuration !
+- Add css prefix on the fly with [autoprefixer](https://github.com/postcss/autoprefixer).
+- Minify your css bundle with [cssnano](https://github.com/cssnano/cssnano) and [css minimizer plugin](https://github.com/webpack-contrib/css-minimizer-webpack-plugin).
+- Css reset (normalize and sanitize) with [postcss-normalize](https://github.com/csstools/postcss-normalize).
+- Add polyfills on the fly with [babel](https://babeljs.io/).
+- Compress and beautify your svg with [svgo](https://github.com/svg/svgo).
+- Transforms your svg into React components with [svgr](https://github.com/gregberge/svgr).
+- Auto lint and format on file save with [eslint](https://github.com/eslint/eslint), [stylelint](https://github.com/stylelint/stylelint), [markdownlint](https://github.com/markdownlint/markdownlint), [prettier](https://prettier.io/).
+- Use under the hood two [browserslist](https://github.com/browserslist/browserslist) configurations for best development performance and good production accessibility.
+- Lazy load components with the recommanded [loadable components](https://loadable-components.com/) package.
+- Convert your png and jpg files into the new modern webp format, compress them, and produce different resolutions for responsive images with [responsive-loader](https://github.com/dazuaz/responsive-loader).
+- Preload fonts, css, and js that are required as quickly as possible by your users with [preload webpack plugin](https://github.com/googlechromelabs/preload-webpack-plugin).
+- Add async and crossorigin attributes to your assets with [script ext html webpack plugin](https://github.com/numical/script-ext-html-webpack-plugin).
+- Prevent circular dependencies with [circular dependencies plugin](https://github.com/aackerman/circular-dependency-plugin).
+- Get notified by linting issue directly on your browser while your are typing code with [eslint webpack plugin](https://github.com/webpack-contrib/eslint-webpack-plugin) and [stylelint webpack plugin](https://github.com/webpack-contrib/stylelint-webpack-plugin).
+- Minify your javascript bundle with [terser webpack plugin](https://github.com/webpack-contrib/terser-webpack-plugin).
+- Produce a web application manifest that is compliant by all web plateform (ios, android, desktop, mobile ...) with [webpack pwa manifest](https://github.com/arthurbergmz/webpack-pwa-manifest)
+- Add a sitemap to your pwa with [sitemap webpack plugin](https://github.com/schneidmaster/sitemap-webpack-plugin)
+- Add a robots.txt, humans.txt, security.txt to your bundle with [copy webpack plugin](https://github.com/webpack-contrib/copy-webpack-plugin)
+- Produce a service worker to precache your files in browsers with [workbox](https://github.com/GoogleChrome/workbox)
 
 ## Getting started
 
@@ -66,113 +96,101 @@ CSP_REPORT_URI=https://allandolle.report-uri.com/r/d/csp/enforce
 APP_TITLE=ReactJS Progressive Web App
 ```
 
-### Run developement server
+### Commands
 
-Start the development server with _live reload_ and _hot module replacement_.
-
-Open the app on `localhost:3000`.
-
-```shell
-npm start
-```
-
-### Build production ready bundle
-
-This will compile your app and the server worker for production
-
-```shell
-npm run build
-```
-
-If you want to debug your service worker (don't use this in production, but only in local)
-
-```shell
-npm run build:local
-```
-
-You can now launch the production server locally
-
-### Start the prodution server
-
-Start the nodejs production server with a SPA fallback.
-
-Server is listening on `localhost:3001`. Port depending on `PORT` informed in `.env` file.
-
-```shell
-npm run start:prod
-```
-
-### Lint and format the code
-
-Lint with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/), [markdownlint](https://github.com/igorshubovych/markdownlint-cli) and [htmlhint](https://htmlhint.com/).
-Format with [prettier](https://prettier.io/).
-
-```shell
-npm run lint
-```
-
-### Autofix lint and format the code
-
-Autofix with [eslint](https://eslint.org/), [stylelint](https://stylelint.io/) and [markdownlint](https://github.com/igorshubovych/markdownlint-cli).
-Format with [prettier](https://prettier.io/).
-
-```shell
-npm run lint:fix
-```
-
-### Test the application
-
-Run [Jest](https://jestjs.io/) with [Enzyme](https://github.com/enzymejs/enzyme/) to test the React application. Collect coverage under `coverage/` folder.
-
-```shell
-npm run test
-```
-
-Run Jest in watch mode without collecting coverage.
-
-```shell
-npm run test:watch
-```
-
-### Types check your typescript files
-
-```shell
-npm run ts:check
-```
-
-### Bundle stats
-
-Visualize your bundle stats with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
-
-```shell
-npm run stats
-```
-
-### Browserslist
-
-Visualize your bundle browsers targets with browserslist queries. You can change queries on `.browserslistrc` file.
-
-```shell
-npm run browsers
-```
-
-Alternatively, you can have more informations with :
-
-```shell
-# See targeted users in the world
-npm run browsers:coverage
-# See autoprefixer rules
-npm run browsers:autoprefixer
-```
+| Command                         | Description                                                  | Note                                                               |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `npm start`                     | Run the development server with live and hot reload          |                                                                    |
+| `npm run build`                 | Build the application and the service-worker                 | Production usage                                                   |
+| `npm run build:local`           | Build the application and the service-worker with debug mode | To debug service-worker. Run in addition with `npm run start:prod` |
+| `npm run start:prod`            | Run the NodeJS production ready server to deliver assets     | Use it also in local development for debugging purpose             |
+| `npm test`                      | Run the application tests                                    | Will produce a coverage report under `coverage/` folder            |
+| `npm run test:watch`            | Run the application tests in watch mode                      | Usefull to iterate over your tests                                 |
+| `npm run lint`                  | Lint the code base and format it                             | With Eslint, Stylelint, Markdownlint, Htmllint, Prettier           |
+| `npm run lint:fix`              | Lint the code base and format it. Autofix issues             | With Eslint, Stylelint, Markdownlint, Prettier                     |
+| `npm run ts:check`              | Typecheck the code base with TypeScript                      |                                                                    |
+| `npm run stats`                 | Build the application and visualize your bundle stats        | Will launch a server with webpack-bundle-analyzer                  |
+| `npm run browsers`              | See your Browserslist targeted browsers                      |                                                                    |
+| `npm run browsers:coverage`     | See how many % you target people in the world                |                                                                    |
+| `npm run browsers:autoprefixer` | See autoprefixer css prefixes used                           |                                                                    |
+| `npm run clean`                 | Delete stats, coverage, and build folders                    |                                                                    |
 
 ## How to
 
-### Importing svg files
+### Use alias in your path
+
+By default, you can use `@/` prefix in your path to resolve `src` folder. Even in `url` directive in `scss` files.
+
+```scss
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans Light';
+  src: url('@/fonts/open-sans/OpenSans-Light.woff2') format('woff2'); // Resolve src/fonts/...
+}
+```
 
 ```ts
+import App from '@/app' // Resolve src/app.tsx
+```
+
+### Use css module
+
+You can convert an `.scss` into a css module simply by suffixing it's name with `module.scss`.
+
+### Use svg files
+
+SVG files can be imported as mentioned below. Note that all svg files are optimized with [svgo](https://github.com/svg/svgo). You can configure svgo in the `.svgo.yml` file.
+
+```tsx
+import React from 'react'
+
 import { ReactComponent as MySvg } from '@/images/signature.svg'
 
-const MyComponent: ReactNode = () => <MySvg />
+import styles from './styles.module.scss'
+
+const MyComponent: React.ReactNode = () => <MySvg className={styles.mySvg} />
+```
+
+```scss
+.mySvg {
+  width: 80px;
+
+  path {
+    stroke: #fff;
+  }
+
+  circle {
+    animation: draw-circle 0.25s ease-in 1.5s forwards;
+  }
+}
+```
+
+### Use images files
+
+You can import `.png` and `.jpe?g` as mentioned below. Note that all this files are processed with [responsive-loader](https://github.com/dazuaz/responsive-loader). This will convert files in optimized web format `webp`, and automatically create multiple sizes for responsive images. Read the responsive-loader documentation.
+
+```tsx
+// Automatic way
+import PwaReact from '@/images/pwa-react-uhd-trans.png'
+// Custom way
+import PwaReact from '@/images/pwa-react-uhd-trans.png?sizes[]=300,sizes[]=600,sizes[]=1024,sizes[]=2048&format=webp'
+// do not convert into webp
+import PwaReact from '@/images/pwa-react-uhd-trans.png?sizes[]=300,sizes[]=600,sizes[]=1024,sizes[]=2048'
+
+import styles from './styles.module.scss'
+
+const MyComponent: React.ReactNode = () => (
+  <img
+    className={styles.image}
+    src={PwaReact.src}
+    srcSet={PwaReact.srcSet}
+    sizes='(max-width: 1024px) 320px,
+      500px'
+    width={PwaReact.width}
+    height={PwaReact.height}
+    alt='Pwa React'
+  />
+)
 ```
 
 ## Contributing
