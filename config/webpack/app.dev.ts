@@ -168,18 +168,6 @@ module.exports = {
               }
             }
           },
-          // {
-          //   test: /\.(png|jp(e*)g|gif|webp)$/,
-          //   use: {
-          //     loader: 'url-loader',
-          //     options: {
-          //       limit: 8192,
-          //       emitFile: true,
-          //       outputPath: 'images/',
-          //       name: '[name].[hash].[ext]'
-          //     }
-          //   }
-          // },
           {
             test: /\.(jpe?g|png|webp)$/i,
             use: {
