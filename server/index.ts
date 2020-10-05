@@ -136,6 +136,20 @@ function initServer() {
     next()
   })
 
+  /** Set Report-To header (Report ) */
+  server.use((req, res, next) => {
+    res.setHeader(
+      'Report-To',
+      JSON.stringify({
+        group: 'default',
+        max_age: 31536000,
+        endpoints: [{ url: process.env.API_REPORT_URI }],
+        include_subdomains: true
+      })
+    )
+    next()
+  })
+
   /**
    * Serve static files
    */
