@@ -215,4 +215,4 @@ In order to lint and format your code while you are typing in VSCode, please ins
 
 - Changing `browserslist` queries are not reflected by `babel`. This is a `babel-loader` cache [issue](https://github.com/babel/babel-loader/issues/690). You can remove yourself `node_modules/.cache/babel-loader/` to clean the cache.
 - Webpack pwa manifest not compatible with typescript. If you set a property `purpose` on an icon, typescript complain about type checking. [issue](https://github.com/arthurbergmz/webpack-pwa-manifest/issues/139)
-- When using css module (`my-module.module.scss`), and insert a `@keyframe`, `css-loader` don't produce an hash very well to the keyframe name. Just rename your keyframe from `draw` to `my-draw`. [issue](https://github.com/webpack-contrib/css-loader/issues/1200)
+- When using css module (`my-module.module.scss`), and insert a `@keyframe`, `cssnano` don't produce an hash very well to the related animation name. Just rename your keyframe from `draw` to `my-draw`. [issue](https://github.com/cssnano/cssnano/issues/909). [PR](https://github.com/cssnano/cssnano/pull/941)
