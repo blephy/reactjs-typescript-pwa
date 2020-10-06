@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { injectManifest } from 'workbox-build'
 
-import workboxConfig from './workbox-config'
+import workboxConfig from './workbox.config'
 
 console.info('*****************************************************')
 console.info('**     Injecting manifest into service worker      **')

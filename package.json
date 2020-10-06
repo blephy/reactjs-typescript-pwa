@@ -1,7 +1,7 @@
 {
-  "name": "strict-optimized-react-starter",
+  "name": "reactjs-typescript-pwa",
   "version": "1.0.0",
-  "description": "Full typescript react webpack starter with strict development process. Secure NodeJs assets server. All web best practices implemented to have well performed SPA.",
+  "description": "A fast and secure Progressive Web App built with ReactJS with every best practices for SEO and web performances. Full TypeScript !",
   "main": "src/index.tsx",
   "scripts": {
     "start": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_ENV=\"development\" webpack-dev-server --color --watch --hot --stdin --config config/webpack/app.dev.ts",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blephy/strict-optimized-react-starter.git"
+    "url": "git+https://github.com/blephy/reactjs-typescript-pwa.git"
   },
   "keywords": [
     "react",
@@ -64,17 +64,18 @@
   ],
   "author": {
     "name": "Allan Dollé",
-    "email": "hello@allandolle.fr"
+    "email": "hello@allandolle.fr",
+    "url": "https://allandolle.fr/"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/blephy/strict-optimized-react-starter/issues"
+    "url": "https://github.com/blephy/reactjs-typescript-pwa/issues"
   },
   "engines": {
-    "node": "12.18.3",
-    "npm": "6.14.8"
+    "node": ">=12",
+    "npm": ">=6"
   },
-  "homepage": "https://github.com/blephy/strict-optimized-react-starter#readme",
+  "homepage": "https://github.com/blephy/reactjs-typescript-pwa#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
@@ -142,7 +143,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "jest-css-modules-transform": "^4.0.1",
-    "jest-sonar-reporter": "^2.0.0",
+    "jest-sonar": "^0.2.11",
     "lint-staged": "^10.4.0",
     "markdownlint-cli": "^0.23.2",
     "mini-css-extract-plugin": "^0.11.3",
@@ -202,10 +203,5 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-window": "^5.1.4"
-  },
-  "jestSonar": {
-    "reportPath": "coverage",
-    "reportFile": "sonarq-report.xml",
-    "indent": 4
   }
 }

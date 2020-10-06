@@ -168,18 +168,6 @@ module.exports = {
               }
             }
           },
-          // {
-          //   test: /\.(png|jp(e*)g|gif|webp)$/,
-          //   use: {
-          //     loader: 'url-loader',
-          //     options: {
-          //       limit: 8192,
-          //       emitFile: true,
-          //       outputPath: 'images/',
-          //       name: '[name].[hash].[ext]'
-          //     }
-          //   }
-          // },
           {
             test: /\.(jpe?g|png|webp)$/i,
             use: {
@@ -189,7 +177,7 @@ module.exports = {
                 adapter: require('responsive-loader/sharp'),
                 name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                sizes: [320, 640, 960, 1200, 1800, 2400],
+                sizes: [320, 720, 1024, 1280],
                 quality: 75,
                 format: 'webp',
                 emitFile: true
