@@ -8,8 +8,7 @@ import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from
 import { NavigationRoute, registerRoute } from 'workbox-routing'
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const self: any
+declare const self: ServiceWorkerGlobalScope
 
 setCacheNameDetails({
   prefix: 'reactpwa-app',
