@@ -23,6 +23,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types", "./src/@types", "./config/@types"],
+    "lib": ["WebWorker", "DOM"],
     "paths": {
       "@/*": ["./src/*"]
     }
