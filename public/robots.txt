@@ -1,3 +1,83 @@
 # Robots permissions
 User-agent: *
 Disallow:
+
+# Google bot
+User-agent: Googlebot
+Disallow:
+
+# Bing bot
+User-agent: Bingbot
+Disallow:
+
+# Baidu bot
+User-agent: Baiduspider
+Disallow:
+
+# Qwant bot
+User-agent: Qwantify
+Disallow:
+
+# Msn bot
+User-agent: Msnbot
+Disallow:
+
+# Yahoo bot
+User-agent: Slurp
+Disallow:
+
+# Twitter bot
+User-agent: Twitterbot
+Disallow:
+
+# Facebook bot
+User-agent: facebookexternalhit
+Disallow:
+
+# Ask Jeeves
+User-agent: Teoma
+Disallow:
+
+# Yandex bot
+User-agent: Yandex
+Disallow:
+
+# Apple bot
+User-agent: Applebot
+Disallow:
+
+# Blekko bot
+User-agent: ScoutJet
+Disallow:
+
+# DuckDuckGo bot
+User-agent: DuckDuckBot
+Disallow:
+
+# Exalead bot
+User-agent: Exabot
+Disallow:
+
+# Google adsense / mediapartners
+User-agent: Mediapartners-Google
+Disallow:
+
+# Voila bot
+User-agent: Voilabot
+Disallow:
+
+# Alexa bot
+User-agent: ia_archiver
+Disallow:
+
+# Volunia bot
+User-agent: Voluniabot
+Disallow:
+
+# Twenga bot
+User-agent: TwengaBot-2.0
+Disallow:
+
+# Wikiwix bot
+User-agent: wikiwix
+Disallow:
