@@ -20,12 +20,6 @@ module.exports = {
           'color-mod-function': { unresolved: 'warn' }
         }
       }
-    ],
-    [
-      'cssnano',
-      {
-        preset: 'default'
-      }
     ]
   ]
 }

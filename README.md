@@ -36,7 +36,7 @@
 
 - Full TypeScript project. Even [webpack](https://github.com/webpack/webpack) configuration !
 - Add css prefix on the fly with [autoprefixer](https://github.com/postcss/autoprefixer).
-- Minify your css bundle with [cssnano](https://github.com/cssnano/cssnano) and [css minimizer plugin](https://github.com/webpack-contrib/css-minimizer-webpack-plugin).
+- Minify your css bundle with [css minimizer webpack plugin](https://github.com/webpack-contrib/css-minimizer-webpack-plugin).
 - Css reset (normalize and sanitize) with [postcss-normalize](https://github.com/csstools/postcss-normalize).
 - Add polyfills on the fly with [babel](https://babeljs.io/).
 - Compress and beautify your svg with [svgo](https://github.com/svg/svgo).
