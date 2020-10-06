@@ -4,19 +4,19 @@
   <h1>ReactJS TypeScript Progressive Web App</h1>
 
 ![ci](https://github.com/blephy/allandolle-portfolio/workflows/ci/badge.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=alert_status)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=security_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=alert_status)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=security_rating)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=coverage)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=ncloc)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=coverage)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=ncloc)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
 
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=bugs)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=code_smells)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=blephy_allandolle-portfolio&metric=sqale_index)](https://sonarcloud.io/dashboard?id=blephy_allandolle-portfolio)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=bugs)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=code_smells)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=reactjs-typescript-pwa&metric=sqale_index)](https://sonarcloud.io/dashboard?id=reactjs-typescript-pwa)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![MIT licensed](https://img.shields.io/github/license/blephy/allandolle-portfolio?style=flat-square)](hhttps://github.com/blephy/allandolle-portfolio/master/LICENSE)
