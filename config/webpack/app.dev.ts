@@ -15,7 +15,7 @@ const serverBaseUrl =
   process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 const rootDir = path.join(__dirname, '..', '..')
 
-module.exports = {
+const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-development',
   mode: 'development',
@@ -56,7 +56,7 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    port: '3000'
+    port: 3000
   },
   optimization: {
     noEmitOnErrors: true,
@@ -82,7 +82,7 @@ module.exports = {
       title: process.env.APP_TITLE,
       preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
+      favicon: path.resolve(rootDir, 'public/favicon.32.png'),
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({
@@ -137,7 +137,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               }
             ]
@@ -151,7 +151,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               },
               'sass-loader'
@@ -193,3 +193,5 @@ module.exports = {
     ]
   }
 }
+
+export default webpackConfig

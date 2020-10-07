@@ -36,7 +36,7 @@ const sitemapPaths: ISitemapPath[] = [
 
 const rootDir = path.join(__dirname, '..', '..')
 
-module.exports = {
+const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-production',
   mode: 'production',
@@ -59,10 +59,10 @@ module.exports = {
     chunkFilename: 'js/[name].[contenthash].chunk.js',
     publicPath: '/',
     crossOriginLoading: 'anonymous',
-    chunkLoadTimeout: 20000,
+    chunkLoadTimeout: 30000,
     pathinfo: false
   },
-  devtool: 'none',
+  devtool: false,
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
     modules: ['src', 'node_modules'],
@@ -77,7 +77,7 @@ module.exports = {
     namedChunks: true,
     namedModules: true,
     runtimeChunk: {
-      name: (entrypoint: { name: string }) => `runtime~${entrypoint.name}`
+      name: (entrypoint: { name: string }): string => `runtime~${entrypoint.name}`
     },
     minimize: true,
     minimizer: [
@@ -106,7 +106,7 @@ module.exports = {
     ],
     splitChunks: {
       chunks: 'all',
-      minSize: 25000,
+      minSize: 15000,
       maxSize: 200000,
       minChunks: 1,
       maxAsyncRequests: 20,
@@ -128,7 +128,7 @@ module.exports = {
   performance: {
     hints: 'error',
     maxEntrypointSize: 250000,
-    maxAssetSize: 200000
+    maxAssetSize: 150000
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -145,7 +145,7 @@ module.exports = {
       minChunkSize: 5000 // Minimum number of characters
     }),
     new webpack.HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
+      hashFunction: 'sha512',
       hashDigest: 'hex',
       hashDigestLength: 20
     }),
@@ -156,8 +156,9 @@ module.exports = {
       },
       title: process.env.TITLE,
       preconnect: serverBaseUrl,
+      lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
+      favicon: path.resolve(rootDir, 'public/favicon.32.png'),
       filename: 'index.html',
       minify: {
         removeComments: true,
@@ -193,7 +194,7 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`,
+          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}\r\n`,
           cacheTransform: false
         },
         {
@@ -311,7 +312,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               }
             ]
@@ -325,7 +326,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               },
               'sass-loader'
@@ -367,3 +368,5 @@ module.exports = {
     ]
   }
 }
+
+export default webpackConfig

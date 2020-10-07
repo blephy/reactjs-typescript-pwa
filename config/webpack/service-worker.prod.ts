@@ -5,11 +5,11 @@ import webpack from 'webpack'
 
 const rootDir = path.join(__dirname, '..', '..')
 
-module.exports = {
+const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'service-worker-production',
   mode: 'production',
-  devtool: 'none',
+  devtool: false,
   entry: {
     index: path.join(rootDir, 'src', 'service-worker.ts')
   },
@@ -61,3 +61,5 @@ module.exports = {
     })
   ]
 }
+
+export default webpackConfig
