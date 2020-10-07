@@ -15,9 +15,9 @@ export default function Home({
 }: RouteComponentProps<TMatch>): React.FunctionComponentElement<RouteComponentProps> {
   const { path } = match
   const canonicalUrl = `${process.env.SERVER_BASE_URL}${path}`
-  const appTitle = process.env.APP_TITLE
+  const appTitle = 'ReactJS Progressive Web App'
   const description =
-    'A fast and secure Progressive Web App built with ReactJS with every best practices for SEO and web performances. Full TypeScript !'
+    'A fast and full TypeScript PWA built with React with every best practices for SEO and web performances'
 
   return (
     <>

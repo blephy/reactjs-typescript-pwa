@@ -151,10 +151,12 @@ const webpackConfig: webpack.Configuration = {
     }),
     new HtmlWebPackPlugin({
       meta: {
+        description:
+          'A fast and full TypeScript PWA built with React with every best practices for SEO and web performances',
         viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
-      title: process.env.TITLE,
+      title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
       lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
@@ -180,10 +182,7 @@ const webpackConfig: webpack.Configuration = {
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
       'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
       'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
-      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
-      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl)
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
@@ -224,7 +223,8 @@ const webpackConfig: webpack.Configuration = {
       name: 'ReactJS Progressive Web App',
       short_name: 'ReactPWA',
       orientation: 'portrait',
-      description: 'A fast and secure progressive web app with every best practices for SEO and web performances',
+      description:
+        'A fast and full TypeScript PWA built with React with every best practices for SEO and web performances',
       background_color: '#FFFFFF',
       theme_color: '#5A0FC8',
       crossorigin: 'anonymous',

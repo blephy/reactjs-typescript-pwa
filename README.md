@@ -25,7 +25,7 @@
 <hr>
 
 <p align=center>
-  A fast and secure Progressive Web App built with ReactJS with every best practices for SEO and web performances. Full TypeScript !
+  A fast and full TypeScript PWA built with React with every best practices for SEO and web performances
 </p>
 
 <p align=center>
@@ -98,9 +98,6 @@ API_URL=localhost:3001/api/v1
 CT_REPORT_URI=https://reactjstypescriptpwa.report-uri.com/r/d/ct/enforce
 CSP_REPORT_URI=https://reactjstypescriptpwa.report-uri.com/r/d/csp/enforce
 API_REPORT_URI=https://reactjstypescriptpwa.report-uri.com/a/d/g
-
-# Will move in a js configuration file later
-APP_TITLE=ReactJS Progressive Web App
 ```
 
 ### Commands
@@ -210,6 +207,13 @@ In order to lint and format your code while you are typing in VSCode, please ins
 
 - [Structured data linter](http://linter.structured-data.org/)
 - [Structured data testing tool](https://search.google.com/structured-data/testing-tool/)
+- [Open Graph protocol](https://ogp.me/)
+- [Open Graph debugger](https://developers.facebook.com/tools/debug/)
+- [Twitter Card docs](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup)
+- [Twitter Card validator](https://cards-dev.twitter.com/validator)
+- [React Helmet for SEO in App](https://github.com/nfl/react-helmet)
+- [Performance budget](https://www.performancebudget.io/)
+- [Speed Curve](https://speedcurve.com/)
 
 ## Known issues
 

@@ -8,6 +8,8 @@ import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from
 import { NavigationRoute, registerRoute } from 'workbox-routing'
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies'
 
+import MessageTypes from './service-worker.constants'
+
 declare const self: ServiceWorkerGlobalScope
 
 setCacheNameDetails({
@@ -125,16 +127,16 @@ registerRoute(
   })
 )
 
-self.addEventListener('message', (event: { data: string }) => {
-  if (!event.data) {
+self.addEventListener('message', (event: { data: { type: string } }) => {
+  if (!event.data || !event.data.type) {
     return
   }
 
-  switch (event.data) {
-    case 'skipWaiting':
+  switch (event.data.type) {
+    case MessageTypes.SKIP_WAITING:
       self.skipWaiting()
       break
-    case 'clientsClaim':
+    case MessageTypes.CLIENTS_CLAIM:
       self.clients.claim()
       break
     default:

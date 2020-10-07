@@ -79,7 +79,7 @@ const webpackConfig: webpack.Configuration = {
         viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
-      title: process.env.APP_TITLE,
+      title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.32.png'),
@@ -90,10 +90,7 @@ const webpackConfig: webpack.Configuration = {
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
       'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
       'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
-      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
-      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl)
     }),
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
