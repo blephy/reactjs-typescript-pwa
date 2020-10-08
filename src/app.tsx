@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 
 import ErrorBoundary from '@/components/error-boundary'
 import Loader from '@/components/loader'
-import myStructuredData from '@/database/rich-snippets/me.json'
 
 import { IRoute } from './app.routes'
 
@@ -27,7 +26,6 @@ export default class App extends React.PureComponent<IProperties> {
         <ErrorBoundary>
           <Helmet defaultTitle={process.env.APP_TITLE} titleTemplate={`%s | ${process.env.APP_TITLE}`}>
             <link rel='canonical' href={process.env.SERVER_BASE_URL} />
-            <script type='application/ld+json'>{JSON.stringify(myStructuredData)}</script>
           </Helmet>
           <Router>
             <Switch>
