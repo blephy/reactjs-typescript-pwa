@@ -34,8 +34,9 @@ export default function Home({
           className={styles.image}
           src={PwaReact.src}
           srcSet={PwaReact.srcSet}
-          sizes='(max-width: 1024px) 320px,
-            500px'
+          sizes='(max-width: 440px) 220px,
+            (max-width: 640px) 320px,
+            (max-width: 1280px) 450px'
           width={PwaReact.width}
           height={PwaReact.height}
           loading='lazy'

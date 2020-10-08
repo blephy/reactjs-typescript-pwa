@@ -352,7 +352,7 @@ const webpackConfig: webpack.Configuration = {
                 adapter: require('responsive-loader/sharp'),
                 name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
-                sizes: [320, 720, 1024, 1280],
+                sizes: [320, 640, 960, 1280],
                 quality: 75,
                 format: 'webp',
                 emitFile: true
