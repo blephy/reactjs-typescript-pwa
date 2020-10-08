@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
@@ -49,8 +49,7 @@ const webpackConfig: webpack.Configuration = {
     clientLogLevel: 'info',
     contentBase: path.resolve(rootDir, 'build'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github'],
-      aggregateTimeout: 150
+      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github']
     },
     overlay: {
       warnings: false,
@@ -98,7 +97,8 @@ const webpackConfig: webpack.Configuration = {
     }),
     new StylelintPlugin({
       lintDirtyModulesOnly: true
-    })
+    }),
+    new ReactRefreshWebpackPlugin()
   ],
   module: {
     rules: [
@@ -108,7 +108,8 @@ const webpackConfig: webpack.Configuration = {
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true
+            cacheDirectory: true,
+            plugins: [require.resolve('react-refresh/babel')]
           }
         }
       },
@@ -170,7 +171,7 @@ const webpackConfig: webpack.Configuration = {
             use: {
               loader: 'responsive-loader',
               options: {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                // eslint-disable-next-line global-require, @typescript-eslint/no-unsafe-assignment
                 adapter: require('responsive-loader/sharp'),
                 name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
