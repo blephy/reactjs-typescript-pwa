@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
+<html lang="<%= htmlWebpackPlugin.options.lang %>" prefix="og: http://ogp.me/ns#">
   <head>
     <base href="/" />
     <meta charset="utf-8" />
@@ -10,8 +10,11 @@
   </head>
   <body>
     <noscript>
-      You need to enable JavaScript to run this application. Please visit this page for more informations :
-      <a src="https://www.enable-javascript.com/">https://www.enable-javascript.com/</a>
+      <h1>Javascript is not enabled on your browser</h1>
+      <p align="center">
+        You need to enable JavaScript to run this application. Please visit this page for more informations :<br />
+        <a src="https://www.enable-javascript.com/">https://www.enable-javascript.com/</a>
+      </p>
     </noscript>
     <main class="appWrapper"></main>
   </body>

@@ -6,7 +6,8 @@ export interface IRoute {
   name: string
   exact?: boolean
   path: string
-  component: LoadableComponent<unknown>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: LoadableComponent<any>
 }
 
 const routes: IRoute[] = [

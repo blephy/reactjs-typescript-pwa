@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
@@ -15,7 +15,7 @@ const serverBaseUrl =
   process.env.HTTPS === 'true' ? `https://${process.env.DOMAIN_NAME}` : `http://${process.env.DOMAIN_NAME}`
 const rootDir = path.join(__dirname, '..', '..')
 
-module.exports = {
+const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-development',
   mode: 'development',
@@ -49,14 +49,13 @@ module.exports = {
     clientLogLevel: 'info',
     contentBase: path.resolve(rootDir, 'build'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github'],
-      aggregateTimeout: 150
+      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github']
     },
     overlay: {
       warnings: false,
       errors: true
     },
-    port: '3000'
+    port: 3000
   },
   optimization: {
     noEmitOnErrors: true,
@@ -79,10 +78,10 @@ module.exports = {
         viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
-      title: process.env.APP_TITLE,
+      title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
+      favicon: path.resolve(rootDir, 'public/favicon.32.png'),
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({
@@ -90,10 +89,7 @@ module.exports = {
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
       'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
       'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
-      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
-      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl)
     }),
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
@@ -101,7 +97,8 @@ module.exports = {
     }),
     new StylelintPlugin({
       lintDirtyModulesOnly: true
-    })
+    }),
+    new ReactRefreshWebpackPlugin()
   ],
   module: {
     rules: [
@@ -111,7 +108,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true
+            cacheDirectory: true,
+            plugins: [require.resolve('react-refresh/babel')]
           }
         }
       },
@@ -137,7 +135,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               }
             ]
@@ -151,7 +149,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               },
               'sass-loader'
@@ -173,7 +171,7 @@ module.exports = {
             use: {
               loader: 'responsive-loader',
               options: {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                // eslint-disable-next-line global-require, @typescript-eslint/no-unsafe-assignment
                 adapter: require('responsive-loader/sharp'),
                 name: '[name].[width].[hash].[ext]',
                 outputPath: 'images/',
@@ -193,3 +191,5 @@ module.exports = {
     ]
   }
 }
+
+export default webpackConfig

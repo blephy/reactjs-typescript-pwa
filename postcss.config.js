@@ -16,15 +16,8 @@ module.exports = {
           cascade: true
         },
         features: {
-          'nesting-rules': true,
-          'color-mod-function': { unresolved: 'warn' }
+          'nesting-rules': true
         }
-      }
-    ],
-    [
-      'cssnano',
-      {
-        preset: 'default'
       }
     ]
   ]

@@ -1,4 +1,3 @@
-/* eslint-disable global-require, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires */
 import React from 'react'
 import { render } from 'react-dom'
 
@@ -10,6 +9,9 @@ const DOM_NODE: HTMLElement = document.querySelector('.appWrapper')
 
 render(<App routes={routes} />, DOM_NODE)
 
+/**
+ * Service worker register and event listeners
+ */
 async function registerSw(): Promise<void> {
   if ('serviceWorker' in navigator) {
     const { Workbox } = await import(/* webpackChunkName: 'workbox-window' */ 'workbox-window')
@@ -22,15 +24,4 @@ async function registerSw(): Promise<void> {
 
 if (process.env.NODE_ENV === 'production') {
   registerSw()
-}
-
-/**
- * Hot module replacement snippet for local development
- * */
-if (process.env.NODE_ENV !== 'production' && module && module.hot) {
-  module.hot.accept('./app', () => {
-    const NewApp = require('./app').default
-
-    render(<NewApp />, DOM_NODE)
-  })
 }

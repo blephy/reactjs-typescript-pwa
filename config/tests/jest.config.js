@@ -30,6 +30,7 @@ module.exports = {
     '!<rootDir>/src/index.tsx',
     '!<rootDir>/src/views/index.tsx',
     '!<rootDir>/src/service-worker.ts',
+    '!<rootDir>/src/database/rich-snippets/**/*',
     '!<rootDir>/src/**/*.d.ts',
     '!<rootDir>/src/**/*.spec.ts',
     '!<rootDir>/src/**/*.test.ts'

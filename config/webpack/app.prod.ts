@@ -36,7 +36,7 @@ const sitemapPaths: ISitemapPath[] = [
 
 const rootDir = path.join(__dirname, '..', '..')
 
-module.exports = {
+const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-production',
   mode: 'production',
@@ -59,10 +59,10 @@ module.exports = {
     chunkFilename: 'js/[name].[contenthash].chunk.js',
     publicPath: '/',
     crossOriginLoading: 'anonymous',
-    chunkLoadTimeout: 20000,
+    chunkLoadTimeout: 30000,
     pathinfo: false
   },
-  devtool: 'none',
+  devtool: false,
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
     modules: ['src', 'node_modules'],
@@ -77,7 +77,7 @@ module.exports = {
     namedChunks: true,
     namedModules: true,
     runtimeChunk: {
-      name: (entrypoint: { name: string }) => `runtime~${entrypoint.name}`
+      name: (entrypoint: { name: string }): string => `runtime~${entrypoint.name}`
     },
     minimize: true,
     minimizer: [
@@ -106,7 +106,7 @@ module.exports = {
     ],
     splitChunks: {
       chunks: 'all',
-      minSize: 25000,
+      minSize: 15000,
       maxSize: 200000,
       minChunks: 1,
       maxAsyncRequests: 20,
@@ -128,7 +128,7 @@ module.exports = {
   performance: {
     hints: 'error',
     maxEntrypointSize: 250000,
-    maxAssetSize: 200000
+    maxAssetSize: 150000
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -145,19 +145,22 @@ module.exports = {
       minChunkSize: 5000 // Minimum number of characters
     }),
     new webpack.HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
+      hashFunction: 'sha512',
       hashDigest: 'hex',
       hashDigestLength: 20
     }),
     new HtmlWebPackPlugin({
       meta: {
+        description:
+          'A fast and full TypeScript PWA built with React with every best practices for SEO and web performances',
         viewport: 'width=device-width, initial-scale=1',
         robots: 'noodp'
       },
-      title: process.env.TITLE,
+      title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
+      lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
-      favicon: path.resolve(rootDir, 'public/favicon-32x32.png'),
+      favicon: path.resolve(rootDir, 'public/favicon.32.png'),
       filename: 'index.html',
       minify: {
         removeComments: true,
@@ -179,10 +182,7 @@ module.exports = {
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
       'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
       'process.env.HTTPS': JSON.stringify(process.env.HTTPS),
-      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl),
-      'process.env.CT_REPORT_URI': JSON.stringify(process.env.CT_REPORT_URI),
-      'process.env.CSP_REPORT_URI': JSON.stringify(process.env.CSP_REPORT_URI),
-      'process.env.APP_TITLE': JSON.stringify(process.env.APP_TITLE)
+      'process.env.SERVER_BASE_URL': JSON.stringify(serverBaseUrl)
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
@@ -193,7 +193,7 @@ module.exports = {
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
           to: path.resolve(rootDir, 'build'),
-          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}`,
+          transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}\r\n`,
           cacheTransform: false
         },
         {
@@ -223,7 +223,8 @@ module.exports = {
       name: 'ReactJS Progressive Web App',
       short_name: 'ReactPWA',
       orientation: 'portrait',
-      description: 'A fast and secure progressive web app with every best practices for SEO and web performances',
+      description:
+        'A fast and full TypeScript PWA built with React with every best practices for SEO and web performances',
       background_color: '#FFFFFF',
       theme_color: '#5A0FC8',
       crossorigin: 'anonymous',
@@ -311,7 +312,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               }
             ]
@@ -325,7 +326,7 @@ module.exports = {
                 loader: 'postcss-loader',
                 options: {
                   ident: 'postcss',
-                  plugins: () => [postcssNormalize()]
+                  plugins: (): Record<string, unknown>[] => [postcssNormalize()]
                 }
               },
               'sass-loader'
@@ -367,3 +368,5 @@ module.exports = {
     ]
   }
 }
+
+export default webpackConfig

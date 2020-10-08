@@ -5,7 +5,7 @@ declare module 'postcss-normalize' {
     browsers?: string
   }
 
-  function postcssNormalize(options?: PostCssOptions): unknown
+  function postcssNormalize(options?: PostCssOptions): Record<string, unknown>
 
   export = postcssNormalize
 }

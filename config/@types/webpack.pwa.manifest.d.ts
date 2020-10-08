@@ -73,6 +73,7 @@ declare module 'webpack-pwa-manifest' {
 
   class WebpackPwaManifest {
     constructor(options?: IOptions)
+    apply(): () => void
   }
 
   export default WebpackPwaManifest

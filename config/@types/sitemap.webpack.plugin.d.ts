@@ -19,6 +19,7 @@ declare module 'sitemap-webpack-plugin' {
 
   class SitemapPlugin {
     constructor(baseUrl: string, sitemapPaths: ISitemapPath[], options: ISitemapOptions)
+    apply(): () => void
   }
 
   export default SitemapPlugin
