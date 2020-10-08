@@ -9,6 +9,9 @@ const DOM_NODE: HTMLElement = document.querySelector('.appWrapper')
 
 render(<App routes={routes} />, DOM_NODE)
 
+/**
+ * Service worker register and event listeners
+ */
 async function registerSw(): Promise<void> {
   if ('serviceWorker' in navigator) {
     const { Workbox } = await import(/* webpackChunkName: 'workbox-window' */ 'workbox-window')

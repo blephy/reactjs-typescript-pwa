@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import ErrorBoundary from '@/components/error-boundary'
-import Loader from '@/components/loader'
 
 import { IRoute } from './app.routes'
 
@@ -34,7 +33,7 @@ export default class App extends React.PureComponent<IProperties> {
                   exact={rest.exact || false}
                   path={rest.path}
                   key={`${rest.name}_${rest.path}`}
-                  render={routeProperties => <Component {...routeProperties} fallback={<Loader />} />}
+                  render={routeProperties => <Component {...routeProperties} />}
                 />
               ))}
               <Redirect to='/404' />
