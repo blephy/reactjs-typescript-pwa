@@ -31,7 +31,6 @@
   "exclude": [
     "build",
     "stats",
-    "reports",
     "public",
     "coverage",
     "server",

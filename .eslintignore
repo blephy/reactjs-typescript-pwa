@@ -2,7 +2,6 @@
 /node_modules/*
 /build/*
 /stats/*
-/reports/*
 /server/*
 /coverage/*
 /config/test/*
