@@ -223,10 +223,9 @@ const webpackConfig: webpack.Configuration = {
     new PreloadWebpackPlugin({
       rel: 'modulepreload',
       include: 'initial',
-      fileBlacklist: [/^(?!.*(runtime|app|home))/, /\.css$/]
+      fileBlacklist: [/^(?!.*(runtime|app))/, /\.css$/]
     }),
     new ScriptExtHtmlWebpackPlugin({
-      sync: /^runtime.*\.mjs$/,
       module: /\.mjs$/,
       defaultAttribute: 'async',
       custom: [

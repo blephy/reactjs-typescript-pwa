@@ -17,13 +17,15 @@ export default class App extends React.PureComponent<IProperties> {
     routes: [{}]
   }
 
+  appTitle = 'ReactJS Progressive Web App'
+
   render(): ReactNode {
     const { routes } = this.props
 
     return (
       <>
         <ErrorBoundary>
-          <Helmet defaultTitle={process.env.APP_TITLE} titleTemplate={`%s | ${process.env.APP_TITLE}`}>
+          <Helmet defaultTitle={this.appTitle} titleTemplate={`%s | ${this.appTitle}`}>
             <link rel='canonical' href={process.env.SERVER_BASE_URL} />
           </Helmet>
           <Router>
