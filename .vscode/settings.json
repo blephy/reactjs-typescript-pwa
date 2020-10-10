@@ -38,5 +38,6 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "htmlhint.documentSelector": ["html", "htm", "ejs", "twig"]
 }
