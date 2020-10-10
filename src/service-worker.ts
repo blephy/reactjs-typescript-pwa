@@ -64,7 +64,7 @@ const YEAR_IN_SECONDS = DAY_IN_SECONDS * 365
 
 /** Scripts cache */
 registerRoute(
-  new RegExp('.*.js'),
+  new RegExp('.*.(js|mjs)'),
   new StaleWhileRevalidate({
     cacheName: 'js-cache',
     plugins: [

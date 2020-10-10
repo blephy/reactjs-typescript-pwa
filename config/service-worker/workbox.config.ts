@@ -1,7 +1,7 @@
 const config = {
   globDirectory: 'build/',
   globPatterns: [
-    '**/*.{html,css,js}',
+    '**/*.{html,css,js,mjs}',
     '**/*.{json,xml}',
     '**/*.{woff,woff2,eot,ttf,otf}',
     '**/*.{webp,ico,jpg,jpeg,png,svg,gif,txt,webmanifest,webm}'

@@ -7,6 +7,9 @@ const loadableOptions = {
   fallback: <Loader />
 }
 
-export const Home = loadable(() => import(/* webpackChunkName: 'home' */ './home'), loadableOptions)
+export const Home = loadable(
+  () => import(/* webpackChunkName: 'home', webpackPreload: true */ './home'),
+  loadableOptions
+)
 
 export const NotFound = loadable(() => import(/* webpackChunkName: 'notFound' */ './not-found'), loadableOptions)
