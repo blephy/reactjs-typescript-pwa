@@ -1,7 +1,7 @@
 import loadable from '@loadable/component'
 import React from 'react'
 
-import Loader from '@/components/loader'
+import Loader from '@/frontend/components/loader'
 
 const loadableOptions = {
   fallback: <Loader />

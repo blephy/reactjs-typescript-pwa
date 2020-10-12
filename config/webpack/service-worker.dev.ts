@@ -10,7 +10,7 @@ const webpackConfig: webpack.Configuration = {
   mode: 'development',
   devtool: 'eval-source-map',
   entry: {
-    index: path.join(rootDir, 'src', 'service-worker.ts')
+    index: path.join(rootDir, 'src', 'frontend', 'service-worker.ts')
   },
   resolve: {
     extensions: ['.js', '.ts'],

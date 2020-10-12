@@ -1,6 +1,6 @@
 import { LoadableComponent } from '@loadable/component'
 
-import { Home, NotFound } from '@/views'
+import { Home, NotFound } from '@/frontend/views'
 
 export interface IRoute {
   name: string

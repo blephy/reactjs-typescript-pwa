@@ -5,6 +5,7 @@
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
     "davidanson.vscode-markdownlint",
-    "mkaufman.htmlhint"
+    "mkaufman.htmlhint",
+    "csstools.postcss"
   ]
 }

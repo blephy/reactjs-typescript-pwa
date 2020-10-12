@@ -1,10 +1,10 @@
-import '@/styles/index.scss'
+// import '@/frontend/styles/index.scss'
 
 import React, { ReactNode } from 'react'
 import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
-import ErrorBoundary from '@/components/error-boundary'
+import ErrorBoundary from '@/frontend/components/error-boundary'
 
 import { IRoute } from './app.routes'
 

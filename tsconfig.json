@@ -22,21 +22,11 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./node_modules/@types", "./src/@types", "./config/@types"],
+    "typeRoots": ["./node_modules/@types", "./src/frontend/@types"],
     "lib": ["WebWorker", "DOM"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "exclude": [
-    "build",
-    "stats",
-    "public",
-    "coverage",
-    "server",
-    ".vscode",
-    ".github",
-    "**/node_modules/**",
-    "config/test/**"
-  ]
+  "exclude": ["build", "stats", "public", "coverage", ".vscode", ".github", "**/node_modules/**", "config/test/**"]
 }

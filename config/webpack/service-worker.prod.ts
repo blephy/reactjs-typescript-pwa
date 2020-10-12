@@ -11,7 +11,7 @@ const webpackConfig: webpack.Configuration = {
   mode: 'production',
   devtool: false,
   entry: {
-    index: path.join(rootDir, 'src', 'service-worker.ts')
+    index: path.join(rootDir, 'src', 'frontend', 'service-worker.ts')
   },
   resolve: {
     extensions: ['.js', '.ts'],
@@ -27,6 +27,7 @@ const webpackConfig: webpack.Configuration = {
   optimization: {
     minimize: true,
     minimizer: [
+      /** @ts-ignore */
       new TerserPlugin({
         cache: true,
         parallel: true,
