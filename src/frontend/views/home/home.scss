@@ -1,0 +1,59 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.title {
+  letter-spacing: 0.4rem;
+  margin: 6rem 0;
+  text-align: center;
+}
+
+.image {
+  height: auto;
+  width: 220px;
+
+  @media screen and (min-width: 640px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 450px;
+  }
+}
+
+// .signature {
+//   width: 80px;
+
+//   path {
+//     animation: draw-path 3.3s ease-in-out forwards;
+//     stroke: #fff;
+//     stroke-dasharray: 450;
+//     stroke-dashoffset: 450;
+//   }
+
+//   circle {
+//     animation: draw-circle 0.25s ease-in 1.5s forwards;
+//   }
+// }
+
+// @keyframes draw-path {
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }
+
+// @keyframes draw-circle {
+//   from {
+//     fill: #fff;
+//     opacity: 0;
+//   }
+
+//   to {
+//     fill: #fff;
+//     opacity: 1;
+//   }
+// }

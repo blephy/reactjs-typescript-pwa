@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ReactComponent as LoaderSVG } from '@/images/loader.svg'
+import { ReactComponent as LoaderSVG } from '@/frontend/images/loader.svg'
 
-import styles from './loader.module.scss'
+import styles from './loader.scss'
 
 export default function Loader(): JSX.Element {
   return (

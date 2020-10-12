@@ -1,12 +1,14 @@
-const path = require('path')
-const express = require('express')
-const fallback = require('express-history-api-fallback')
-const compression = require('compression')
-const helmet = require('helmet')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const hpp = require('hpp')
-require('dotenv').config()
+import bodyParser from 'body-parser'
+import compression from 'compression'
+import history from 'connect-history-api-fallback'
+import cors from 'cors'
+import { config } from 'dotenv'
+import express from 'express'
+import helmet from 'helmet'
+import hpp from 'hpp'
+import path from 'path'
+
+config()
 
 /**
  * Instance configuration. Needed by express
@@ -131,13 +133,13 @@ function initServer() {
   )
 
   /** Set Permissions-Policy header */
-  server.use((req, res, next) => {
+  server.use((_req, res, next) => {
     res.setHeader('Permissions-Policy', 'geolocation=(self), microphone=(), fullscreen=(self)')
     next()
   })
 
   /** Set Report-To header (Report ) */
-  server.use((req, res, next) => {
+  server.use((_req, res, next) => {
     res.setHeader(
       'Report-To',
       JSON.stringify({
@@ -151,6 +153,17 @@ function initServer() {
   })
 
   /**
+   * Redirect to HTTPS
+   */
+  // server.use((req, res, next) => {
+  //   if (process.env.NODE_ENV === 'production') {
+  //     if (req.headers['x-forwarded-proto'] !== 'https') return res.redirect('https://' + req.headers.host + req.url)
+  //     return next()
+  //   }
+  //   return next()
+  // })
+
+  /**
    * Serve static files
    */
   server.use(express.static(distPathToServe, staticExpressOption))
@@ -160,14 +173,7 @@ function initServer() {
    * Allow to serve static files and redirect to .html for not found assets / routes
    * Needed for SPA / PWA
    */
-  server.use(
-    fallback('index.html', {
-      root: distPathToServe,
-      lastModified: staticExpressOption.lastModified,
-      maxAge: staticExpressOption.maxAge,
-      dotfiles: staticExpressOption.dotfiles
-    })
-  )
+  server.use(history())
 
   /**
    * Permit preflight request
@@ -178,6 +184,7 @@ function initServer() {
    * Server start
    */
   server.listen(serverPort, () => {
+    // eslint-disable-next-line no-console
     console.log('Listening on port:', serverPort)
   })
 }

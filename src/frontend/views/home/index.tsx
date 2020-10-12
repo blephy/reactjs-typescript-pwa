@@ -2,10 +2,9 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { RouteComponentProps } from 'react-router-dom'
 
-import RSAllanDolle from '@/database/rich-snippets/me'
-import PwaReact from '@/images/pwa-react-uhd-trans.png'
+import RSAllanDolle from '@/frontend/database/rich-snippets/me'
 
-import styles from './home.module.scss'
+import styles from './home.scss'
 
 type TMatch = {
   path: string
@@ -30,18 +29,6 @@ export default function Home({
       </Helmet>
       <div className={styles.container}>
         <h1 className={styles.title}>{appTitle}</h1>
-        <img
-          className={styles.image}
-          src={PwaReact.src}
-          srcSet={PwaReact.srcSet}
-          sizes='(max-width: 440px) 220px,
-            (max-width: 640px) 320px,
-            (max-width: 1280px) 450px'
-          width={PwaReact.width}
-          height={PwaReact.height}
-          loading='lazy'
-          alt='Pwa React'
-        />
       </div>
     </>
   )

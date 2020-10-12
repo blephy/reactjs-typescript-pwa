@@ -1,5 +1,5 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
-import CircularDependencyPlugin from 'circular-dependency-plugin'
+// import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
 import ESLintWebpackPlugin from 'eslint-webpack-plugin'
@@ -22,7 +22,7 @@ const webpackConfig: webpack.Configuration = {
   bail: false,
   cache: true,
   entry: {
-    app: path.resolve(rootDir, 'src/index.tsx')
+    app: path.resolve(rootDir, 'src/frontend/index.tsx')
   },
   output: {
     path: path.resolve(rootDir, 'build'),
@@ -49,7 +49,7 @@ const webpackConfig: webpack.Configuration = {
     clientLogLevel: 'info',
     contentBase: path.resolve(rootDir, 'build'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github']
+      ignored: ['node_modules', 'build', 'public', 'config', 'coverage', 'stats', '.vscode', '.github']
     },
     overlay: {
       warnings: false,
@@ -57,22 +57,17 @@ const webpackConfig: webpack.Configuration = {
     },
     port: 3000
   },
-  optimization: {
-    noEmitOnErrors: true,
-    namedModules: true,
-    splitChunks: false
-  },
   performance: {
     hints: false
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CircularDependencyPlugin({
-      exclude: /node_modules/,
-      failOnError: true,
-      allowAsyncCycles: true,
-      cwd: process.cwd()
-    }),
+    // new CircularDependencyPlugin({
+    //   exclude: /node_modules/,
+    //   failOnError: true,
+    //   allowAsyncCycles: true,
+    //   cwd: process.cwd()
+    // }),
     new HtmlWebPackPlugin({
       meta: {
         viewport: 'width=device-width, initial-scale=1',
