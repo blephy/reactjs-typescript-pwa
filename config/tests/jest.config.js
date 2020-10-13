@@ -29,7 +29,7 @@ module.exports = {
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/src/index.tsx',
     '!<rootDir>/src/views/index.tsx',
-    '!<rootDir>/src/service-worker.ts',
+    '!<rootDir>/src/service-worker/index.ts',
     '!<rootDir>/src/database/rich-snippets/**/*',
     '!<rootDir>/src/**/*.d.ts',
     '!<rootDir>/src/**/*.spec.ts',
