@@ -127,6 +127,9 @@ registerRoute(
   })
 )
 
+/**
+ * Listen to messages
+ */
 self.addEventListener('message', (event: { data: { type: string } }) => {
   if (!event.data || !event.data.type) {
     return

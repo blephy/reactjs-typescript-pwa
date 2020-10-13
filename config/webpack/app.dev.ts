@@ -19,10 +19,11 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-development',
   mode: 'development',
+  context: path.resolve(rootDir, 'src'),
   bail: false,
   cache: true,
   entry: {
-    app: path.resolve(rootDir, 'src/index.tsx')
+    app: path.resolve(rootDir, 'src', 'index.tsx')
   },
   output: {
     path: path.resolve(rootDir, 'build'),
@@ -36,7 +37,7 @@ const webpackConfig: webpack.Configuration = {
   devtool: 'eval-source-map',
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
-    modules: ['src', 'node_modules'],
+    modules: ['node_modules', 'src'],
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
@@ -49,7 +50,18 @@ const webpackConfig: webpack.Configuration = {
     clientLogLevel: 'info',
     contentBase: path.resolve(rootDir, 'build'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github']
+      ignored: [
+        'node_modules',
+        'build',
+        'server',
+        'reports',
+        'public',
+        'config',
+        'coverage',
+        'stats',
+        '.vscode',
+        '.github'
+      ]
     },
     overlay: {
       warnings: false,

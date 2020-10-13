@@ -9,13 +9,14 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'service-worker-production',
   mode: 'production',
+  context: path.resolve(rootDir, 'src', 'service-worker'),
   devtool: false,
   entry: {
-    index: path.join(rootDir, 'src', 'service-worker.ts')
+    index: path.join(rootDir, 'src', 'service-worker', 'index.ts')
   },
   resolve: {
-    extensions: ['.js', '.ts'],
-    modules: ['src', 'node_modules'],
+    extensions: ['.ts'],
+    modules: ['node_modules', 'src'],
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
@@ -54,10 +55,13 @@ const webpackConfig: webpack.Configuration = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new ESLintWebpackPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      extensions: ['ts'],
       emitError: true,
       emitWarning: true,
-      failOnError: true
+      failOnError: true,
+      outputReport: {
+        filePath: path.resolve(rootDir, 'reports', 'service-worker.eslint.json')
+      }
     })
   ]
 }

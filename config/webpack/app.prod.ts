@@ -43,7 +43,7 @@ const webpackConfig: webpack.Configuration = {
   context: path.resolve(rootDir, 'src'),
   bail: true,
   entry: {
-    app: path.resolve(rootDir, 'src/index.tsx')
+    app: path.resolve(rootDir, 'src', 'index.tsx')
   },
   stats: {
     assets: true,
@@ -65,7 +65,7 @@ const webpackConfig: webpack.Configuration = {
   devtool: false,
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
-    modules: ['src', 'node_modules'],
+    modules: ['node_modules', 'src'],
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
@@ -271,7 +271,10 @@ const webpackConfig: webpack.Configuration = {
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       emitError: true,
       emitWarning: true,
-      failOnError: true
+      failOnError: true,
+      outputReport: {
+        filePath: path.resolve(rootDir, 'reports', 'app.eslint.json')
+      }
     }),
     new StylelintPlugin({
       emitError: true,

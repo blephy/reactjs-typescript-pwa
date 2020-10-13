@@ -25,35 +25,35 @@
   }
 }
 
-.signature {
-  width: 80px;
+// .signature {
+//   width: 80px;
 
-  path {
-    animation: draw-path 3.3s ease-in-out forwards;
-    stroke: #fff;
-    stroke-dasharray: 450;
-    stroke-dashoffset: 450;
-  }
+//   path {
+//     animation: draw-path 3.3s ease-in-out forwards;
+//     stroke: #fff;
+//     stroke-dasharray: 450;
+//     stroke-dashoffset: 450;
+//   }
 
-  circle {
-    animation: draw-circle 0.25s ease-in 1.5s forwards;
-  }
-}
+//   circle {
+//     animation: draw-circle 0.25s ease-in 1.5s forwards;
+//   }
+// }
 
-@keyframes draw-path {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+// @keyframes draw-path {
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }
 
-@keyframes draw-circle {
-  from {
-    fill: #fff;
-    opacity: 0;
-  }
+// @keyframes draw-circle {
+//   from {
+//     fill: #fff;
+//     opacity: 0;
+//   }
 
-  to {
-    fill: #fff;
-    opacity: 1;
-  }
-}
+//   to {
+//     fill: #fff;
+//     opacity: 1;
+//   }
+// }

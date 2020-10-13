@@ -8,13 +8,14 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'service-worker-development',
   mode: 'development',
+  context: path.resolve(rootDir, 'src', 'service-worker'),
   devtool: 'eval-source-map',
   entry: {
-    index: path.join(rootDir, 'src', 'service-worker.ts')
+    index: path.join(rootDir, 'src', 'service-worker', 'index.ts')
   },
   resolve: {
-    extensions: ['.js', '.ts'],
-    modules: ['src', 'node_modules'],
+    extensions: ['.ts'],
+    modules: ['node_modules', 'src'],
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
@@ -37,7 +38,7 @@ const webpackConfig: webpack.Configuration = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new ESLintWebpackPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      extensions: ['ts'],
       lintDirtyModulesOnly: true
     })
   ]

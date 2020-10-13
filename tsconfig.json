@@ -22,7 +22,7 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./node_modules/@types", "./src/@types", "./config/@types"],
+    "typeRoots": ["./node_modules/@types", "./src/@types"],
     "lib": ["WebWorker", "DOM"],
     "paths": {
       "@/*": ["./src/*"]
