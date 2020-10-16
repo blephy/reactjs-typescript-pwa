@@ -8,7 +8,7 @@ import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from
 import { NavigationRoute, registerRoute } from 'workbox-routing'
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies'
 
-import MessageTypes from './service-worker.constants'
+import { MessageTypes } from './service-worker.constants'
 
 declare const self: ServiceWorkerGlobalScope
 

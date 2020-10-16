@@ -19,7 +19,7 @@ export default class ErrorBoundary extends React.Component<IProperties, IState> 
     this.state = { hasError: false }
   }
 
-  render(): React.ReactElement | React.ReactNode {
+  render(): JSX.Element | React.ReactNode {
     const { hasError, error } = this.state
     const { children } = this.props
 

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import ErrorBoundary from '@/components/error-boundary'
 
 import { IRoute } from './app.routes'
+import NewVersionPopup from './components/new-version-popup'
 
 export interface IProperties {
   routes: IRoute[]
@@ -28,6 +29,7 @@ export default class App extends React.PureComponent<IProperties> {
           <Helmet defaultTitle={this.appTitle} titleTemplate={`%s | ${this.appTitle}`}>
             <link rel='canonical' href={process.env.SERVER_BASE_URL} />
           </Helmet>
+          <NewVersionPopup />
           <Router>
             <Switch>
               {routes.map(({ component: Component, ...rest }) => (
