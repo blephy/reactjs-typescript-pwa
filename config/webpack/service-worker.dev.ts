@@ -9,7 +9,7 @@ const webpackConfig: webpack.Configuration = {
   name: 'service-worker-development',
   mode: 'development',
   context: path.resolve(rootDir, 'src', 'service-worker'),
-  devtool: 'eval-source-map',
+  devtool: false,
   entry: {
     index: path.join(rootDir, 'src', 'service-worker', 'index.ts')
   },
