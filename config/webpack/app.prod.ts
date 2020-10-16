@@ -55,8 +55,8 @@ const webpackConfig: webpack.Configuration = {
   },
   output: {
     path: path.resolve(rootDir, 'build'),
-    filename: '[name].[contenthash].js',
-    chunkFilename: 'js/[name].[contenthash].chunk.js',
+    filename: '[name].[contenthash].mjs',
+    chunkFilename: 'js/[name].[contenthash].chunk.mjs',
     publicPath: '/',
     crossOriginLoading: 'anonymous',
     chunkLoadTimeout: 30000,
@@ -213,11 +213,28 @@ const webpackConfig: webpack.Configuration = {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'allAssets',
-      fileBlacklist: [/^(?!.*(runtime|app|home|fonts))/]
+      fileBlacklist: [/^(?!.*(fonts))/]
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'initial',
+      fileBlacklist: [/^(?!.*(css))/]
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'modulepreload',
+      include: 'initial',
+      fileBlacklist: [/^(?!.*(runtime|app))/, /\.css$/]
     }),
     new ScriptExtHtmlWebpackPlugin({
-      sync: /^runtime.*\.js$/,
-      defaultAttribute: 'async'
+      module: /\.mjs$/,
+      defaultAttribute: 'async',
+      custom: [
+        {
+          test: /\.mjs$/,
+          attribute: 'crossorigin',
+          value: 'anonymous'
+        }
+      ]
     }),
     new WebpackPwaManifest({
       name: 'ReactJS Progressive Web App',
@@ -270,7 +287,6 @@ const webpackConfig: webpack.Configuration = {
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       emitError: true,
-      emitWarning: true,
       failOnError: true,
       outputReport: {
         filePath: path.resolve(rootDir, 'reports', 'app.eslint.json')
