@@ -8,10 +8,10 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'service-worker-development',
   mode: 'development',
-  context: path.resolve(rootDir, 'src', 'service-worker'),
+  context: path.resolve(rootDir, 'src', 'frontend', 'service-worker'),
   devtool: false,
   entry: {
-    index: path.join(rootDir, 'src', 'service-worker', 'index.ts')
+    index: path.join(rootDir, 'src', 'frontend', 'service-worker', 'index.ts')
   },
   resolve: {
     extensions: ['.ts'],
@@ -21,7 +21,7 @@ const webpackConfig: webpack.Configuration = {
     }
   },
   output: {
-    path: path.join(rootDir, 'build'),
+    path: path.join(rootDir, 'build', 'frontend'),
     filename: 'service-worker.js'
   },
   module: {

@@ -1,5 +1,5 @@
 const config = {
-  globDirectory: 'build/',
+  globDirectory: 'build/frontend/',
   globPatterns: [
     '**/*.{html,css,js,mjs}',
     '**/*.{json,xml}',
@@ -10,8 +10,8 @@ const config = {
   globStrict: true,
   globIgnores: ['humans.txt', 'robots.txt', '.well-known/*'],
   maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
-  swSrc: 'build/service-worker.js',
-  swDest: 'build/service-worker.js'
+  swSrc: 'build/frontend/service-worker.js',
+  swDest: 'build/frontend/service-worker.js'
 }
 
 export default config

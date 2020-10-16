@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs'
 import { share } from 'rxjs/operators'
 
-import { MessageTypes } from '@/service-worker/service-worker.constants'
+import { MessageTypes } from '@/frontend/service-worker/service-worker.constants'
 
 export default class ServiceWorkerService {
   /**

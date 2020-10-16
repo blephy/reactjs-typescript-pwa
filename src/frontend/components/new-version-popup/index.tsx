@@ -1,7 +1,7 @@
 import React from 'react'
 import { Subscription } from 'rxjs'
 
-import ServiceWorkerService from '@/services/service-worker'
+import ServiceWorkerService from '@/frontend/services/service-worker'
 
 interface IProperties {
   title: string

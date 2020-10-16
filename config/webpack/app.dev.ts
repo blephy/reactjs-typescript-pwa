@@ -19,14 +19,14 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-development',
   mode: 'development',
-  context: path.resolve(rootDir, 'src'),
+  context: path.resolve(rootDir, 'src', 'frontend'),
   bail: false,
   cache: true,
   entry: {
-    app: path.resolve(rootDir, 'src', 'index.tsx')
+    app: path.resolve(rootDir, 'src', 'frontend', 'index.tsx')
   },
   output: {
-    path: path.resolve(rootDir, 'build'),
+    path: path.resolve(rootDir, 'build', 'frontend'),
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     publicPath: '/',
@@ -48,7 +48,7 @@ const webpackConfig: webpack.Configuration = {
     openPage: '',
     compress: true,
     clientLogLevel: 'info',
-    contentBase: path.resolve(rootDir, 'build'),
+    contentBase: path.resolve(rootDir, 'build', 'frontend'),
     watchOptions: {
       ignored: [
         'node_modules',

@@ -40,10 +40,10 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-production',
   mode: 'production',
-  context: path.resolve(rootDir, 'src'),
+  context: path.resolve(rootDir, 'src', 'frontend'),
   bail: true,
   entry: {
-    app: path.resolve(rootDir, 'src', 'index.tsx')
+    app: path.resolve(rootDir, 'src', 'frontend', 'index.tsx')
   },
   stats: {
     assets: true,
@@ -54,7 +54,7 @@ const webpackConfig: webpack.Configuration = {
     hash: true
   },
   output: {
-    path: path.resolve(rootDir, 'build'),
+    path: path.resolve(rootDir, 'build', 'frontend'),
     filename: '[name].[contenthash].mjs',
     chunkFilename: 'js/[name].[contenthash].chunk.mjs',
     publicPath: '/',
@@ -192,20 +192,20 @@ const webpackConfig: webpack.Configuration = {
       patterns: [
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
-          to: path.resolve(rootDir, 'build'),
+          to: path.resolve(rootDir, 'build', 'frontend'),
           transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}\r\n`,
           cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
-          to: path.resolve(rootDir, 'build'),
+          to: path.resolve(rootDir, 'build', 'frontend'),
           transform: (content: Buffer) =>
             `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
           cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'security.txt'),
-          to: path.resolve(rootDir, 'build/.well-known'),
+          to: path.resolve(rootDir, 'build', 'frontend', '.well-known'),
           cacheTransform: false
         }
       ]
@@ -217,8 +217,8 @@ const webpackConfig: webpack.Configuration = {
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
-      include: 'initial',
-      fileBlacklist: [/^(?!.*(css))/]
+      include: 'asyncChunks',
+      fileBlacklist: [/^(?!.*(home|app|css))/, /\.mjs$/]
     }),
     new PreloadWebpackPlugin({
       rel: 'modulepreload',
