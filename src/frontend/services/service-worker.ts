@@ -8,12 +8,14 @@ export default class ServiceWorkerService {
    * Service worker registration
    */
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  private static registration: BehaviorSubject<ServiceWorkerRegistration | undefined> = new BehaviorSubject(undefined)
+  private static readonly registration: BehaviorSubject<ServiceWorkerRegistration | undefined> = new BehaviorSubject(
+    undefined
+  )
 
   /**
    * Is new service-worker version available
    */
-  private static newVersionAvailable: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  private static readonly newVersionAvailable: BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   /**
    * Message service worker utils
