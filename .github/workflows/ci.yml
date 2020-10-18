@@ -9,7 +9,7 @@ env:
   PORT: 3001
   DOMAIN_NAME: localhost:3001
   API_URL: https://localhost:3001/api/v1
-  HTTPS: true
+  HTTPS: false
 
 jobs:
   install:
