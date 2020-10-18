@@ -12,7 +12,8 @@ module.exports = {
       preset: 'lighthouse:recommended',
       assertions: {
         'maskable-icon': 'warn',
-        'maskable-icon-audit': 'warn'
+        'maskable-icon-audit': 'warn',
+        'non-composited-animations': 'warn'
       }
     }
   }
