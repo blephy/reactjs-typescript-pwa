@@ -27,10 +27,11 @@ module.exports = {
   coverageDirectory: 'coverage/',
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
-    '!<rootDir>/src/index.tsx',
-    '!<rootDir>/src/views/index.tsx',
-    '!<rootDir>/src/service-worker.ts',
-    '!<rootDir>/src/database/rich-snippets/**/*',
+    '!<rootDir>/src/backend/**/*',
+    '!<rootDir>/src/frontend/index.tsx',
+    '!<rootDir>/src/frontend/views/index.tsx',
+    '!<rootDir>/src/frontend/service-worker/index.ts',
+    '!<rootDir>/src/frontend/database/rich-snippets/**/*',
     '!<rootDir>/src/**/*.d.ts',
     '!<rootDir>/src/**/*.spec.ts',
     '!<rootDir>/src/**/*.test.ts'

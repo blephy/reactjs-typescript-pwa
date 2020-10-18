@@ -40,10 +40,10 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-production',
   mode: 'production',
-  context: path.resolve(rootDir, 'src'),
+  context: path.resolve(rootDir, 'src', 'frontend'),
   bail: true,
   entry: {
-    app: path.resolve(rootDir, 'src/index.tsx')
+    app: path.resolve(rootDir, 'src', 'frontend', 'index.tsx')
   },
   stats: {
     assets: true,
@@ -54,9 +54,9 @@ const webpackConfig: webpack.Configuration = {
     hash: true
   },
   output: {
-    path: path.resolve(rootDir, 'build'),
-    filename: '[name].[contenthash].js',
-    chunkFilename: 'js/[name].[contenthash].chunk.js',
+    path: path.resolve(rootDir, 'build', 'frontend'),
+    filename: '[name].[contenthash].mjs',
+    chunkFilename: 'js/[name].[contenthash].chunk.mjs',
     publicPath: '/',
     crossOriginLoading: 'anonymous',
     chunkLoadTimeout: 30000,
@@ -65,7 +65,7 @@ const webpackConfig: webpack.Configuration = {
   devtool: false,
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
-    modules: ['src', 'node_modules'],
+    modules: ['node_modules', 'src'],
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
@@ -158,6 +158,7 @@ const webpackConfig: webpack.Configuration = {
       },
       title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
+      dnsprefetch: serverBaseUrl,
       lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.32.png'),
@@ -192,20 +193,20 @@ const webpackConfig: webpack.Configuration = {
       patterns: [
         {
           from: path.resolve(rootDir, 'public', 'humans.txt'),
-          to: path.resolve(rootDir, 'build'),
+          to: path.resolve(rootDir, 'build', 'frontend'),
           transform: (content: Buffer) => `${content.toString()}  Last update: ${new Date().toUTCString()}\r\n`,
           cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'robots.txt'),
-          to: path.resolve(rootDir, 'build'),
+          to: path.resolve(rootDir, 'build', 'frontend'),
           transform: (content: Buffer) =>
             `${content.toString()}\r\n# Sitemap\r\nSitemap: ${serverBaseUrl}/.well-known/sitemap.xml\r\n`,
           cacheTransform: false
         },
         {
           from: path.resolve(rootDir, 'public', 'security.txt'),
-          to: path.resolve(rootDir, 'build/.well-known'),
+          to: path.resolve(rootDir, 'build', 'frontend', '.well-known'),
           cacheTransform: false
         }
       ]
@@ -213,11 +214,28 @@ const webpackConfig: webpack.Configuration = {
     new PreloadWebpackPlugin({
       rel: 'preload',
       include: 'allAssets',
-      fileBlacklist: [/^(?!.*(runtime|app|home|fonts))/]
+      fileBlacklist: [/^(?!.*(fonts))/]
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'allAssets',
+      fileBlacklist: [/^(?!.*(home|app))/, /\.mjs$/]
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'modulepreload',
+      include: 'initial',
+      fileBlacklist: [/^(?!.*(runtime|app))/, /\.css$/]
     }),
     new ScriptExtHtmlWebpackPlugin({
-      sync: /^runtime.*\.js$/,
-      defaultAttribute: 'async'
+      module: /\.mjs$/,
+      defaultAttribute: 'async',
+      custom: [
+        {
+          test: /\.mjs$/,
+          attribute: 'crossorigin',
+          value: 'anonymous'
+        }
+      ]
     }),
     new WebpackPwaManifest({
       name: 'ReactJS Progressive Web App',
@@ -270,8 +288,10 @@ const webpackConfig: webpack.Configuration = {
     new ESLintWebpackPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       emitError: true,
-      emitWarning: true,
-      failOnError: true
+      failOnError: true,
+      outputReport: {
+        filePath: path.resolve(rootDir, 'reports', 'app.eslint.json')
+      }
     }),
     new StylelintPlugin({
       emitError: true,

@@ -214,6 +214,7 @@ In order to lint and format your code while you are typing in VSCode, please ins
 - [React Helmet for SEO in App](https://github.com/nfl/react-helmet)
 - [Performance budget](https://www.performancebudget.io/)
 - [Speed Curve](https://speedcurve.com/)
+- [Serve module an nomodule script attributes](https://web.dev/codelab-serve-modern-code/)
 
 ## Known issues
 

@@ -19,13 +19,14 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   name: 'app-development',
   mode: 'development',
+  context: path.resolve(rootDir, 'src', 'frontend'),
   bail: false,
   cache: true,
   entry: {
-    app: path.resolve(rootDir, 'src/index.tsx')
+    app: path.resolve(rootDir, 'src', 'frontend', 'index.tsx')
   },
   output: {
-    path: path.resolve(rootDir, 'build'),
+    path: path.resolve(rootDir, 'build', 'frontend'),
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     publicPath: '/',
@@ -36,7 +37,7 @@ const webpackConfig: webpack.Configuration = {
   devtool: 'eval-source-map',
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.png', '.gif', '.jpeg', '.jpg', '.svg'],
-    modules: ['src', 'node_modules'],
+    modules: ['node_modules', 'src'],
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
@@ -47,9 +48,20 @@ const webpackConfig: webpack.Configuration = {
     openPage: '',
     compress: true,
     clientLogLevel: 'info',
-    contentBase: path.resolve(rootDir, 'build'),
+    contentBase: path.resolve(rootDir, 'build', 'frontend'),
     watchOptions: {
-      ignored: ['node_modules', 'build', 'server', 'public', 'config', 'coverage', 'stats', '.vscode', '.github']
+      ignored: [
+        'node_modules',
+        'build',
+        'reports',
+        'public',
+        'config',
+        'coverage',
+        'stats',
+        '.vscode',
+        '.github',
+        'src/backend'
+      ]
     },
     overlay: {
       warnings: false,
@@ -80,6 +92,8 @@ const webpackConfig: webpack.Configuration = {
       },
       title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
+      dnsprefetch: serverBaseUrl,
+      lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.32.png'),
       filename: 'index.html'

@@ -1,0 +1,46 @@
+@import '@/frontend/styles/theme';
+
+.loaderContainer {
+  align-items: center;
+  background: $background-color;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.loader {
+  display: inline-block;
+  height: 80px;
+  position: relative;
+  width: 80px;
+}
+
+.loader div {
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  border: 4px solid $primary-color;
+  border-radius: 50%;
+  opacity: 1;
+  position: absolute;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    height: 0;
+    left: 36px;
+    opacity: 1;
+    top: 36px;
+    width: 0;
+  }
+
+  100% {
+    height: 72px;
+    left: 0;
+    opacity: 0;
+    top: 0;
+    width: 72px;
+  }
+}

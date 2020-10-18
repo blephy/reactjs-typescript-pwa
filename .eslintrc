@@ -79,7 +79,8 @@
     "react/static-property-placement": ["warn", "static public field"],
     "react/jsx-uses-react": "error",
     "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/no-floating-promises": "off"
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   },
   "globals": {
     "window": true,
@@ -88,7 +89,6 @@
     "FormData": true,
     "FileReader": true,
     "Blob": true,
-    "navigator": true,
-    "workbox": true
+    "navigator": true
   }
 }

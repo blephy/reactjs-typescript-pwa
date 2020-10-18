@@ -1,8 +1,8 @@
 # Convert text file line endings to lf
-* text=auto
+* text eol=lf
 
-*.js text eol=lf
-*.ts text eol=lf
+#*.js text eol=lf
+#*.ts text eol=lf
 
 *.jpg binary
 *.jpeg binary

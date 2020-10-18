@@ -2,8 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { RouteComponentProps } from 'react-router-dom'
 
-import RSAllanDolle from '@/database/rich-snippets/me'
-import PwaReact from '@/images/pwa-react-uhd-trans.png'
+import RSAllanDolle from '@/frontend/database/rich-snippets/me'
+import PwaReact from '@/frontend/images/pwa-react-uhd-trans.png'
 
 import styles from './home.module.scss'
 

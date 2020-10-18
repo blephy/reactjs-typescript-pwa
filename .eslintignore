@@ -3,6 +3,5 @@
 /build/*
 /stats/*
 /reports/*
-/server/*
 /coverage/*
 /config/test/*
