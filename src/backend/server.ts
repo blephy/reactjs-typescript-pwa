@@ -5,7 +5,10 @@ import express from 'express'
 import historyFallback from 'express-history-api-fallback'
 import helmet from 'helmet'
 import hpp from 'hpp'
+import morgan from 'morgan'
 import path from 'path'
+
+import logger from './logger'
 
 const distPathToServe = path.resolve(__dirname, '../frontend')
 
@@ -14,6 +17,13 @@ const distPathToServe = path.resolve(__dirname, '../frontend')
  */
 const server = express()
 
+/** Logs */
+server.use(
+  morgan(
+    ':remote-addr - :remote-user ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" - :response-time ms',
+    { stream: { write: (message: string) => logger.info(message) } }
+  )
+)
 /** Set port */
 server.set('port', process.env.PORT || 3001)
 /** Set compression */
@@ -30,17 +40,6 @@ server.use(bodyParser.urlencoded({ extended: true }))
  * Security
  */
 
-/** Set force https */
-if (process.env.HTTPS === 'true') {
-  server.use((req, res, next) => {
-    const header = req.get('x-forwarded-proto')
-
-    return req.secure || !header || header === 'https'
-      ? next()
-      : res.redirect(`https://${req.get('host')}${req.url}`, 301)
-  })
-}
-
 /** Set HTTP parameter pollution */
 server.use(hpp())
 
@@ -48,7 +47,7 @@ server.use(hpp())
 server.use(
   cors({
     origin: process.env.SERVER_BASE_URL,
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 204
   })
 )
 
@@ -150,6 +149,19 @@ server.use((_req, res, next) => {
   next()
 })
 
+/** Set force https */
+if (process.env.HTTPS === 'true') {
+  server.use((req, res, next) => {
+    const header = req.get('x-forwarded-proto')
+    const redirecting = !req.secure || !header || header !== 'https'
+
+    if (redirecting) {
+      logger.debug('Middleware: https redirect')
+    }
+    return redirecting ? res.redirect(301, `https://${req.get('host')}${req.url}`) : next()
+  })
+}
+
 /**
  * Serve static files
  */
@@ -176,10 +188,5 @@ server.use(
     dotfiles: 'ignore'
   })
 )
-
-/**
- * Permit preflight request
- */
-server.options('*', cors())
 
 export default server

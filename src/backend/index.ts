@@ -1,10 +1,10 @@
-/* eslint-disable no-console */
+import logger from './logger'
 import server from './server'
 
 /**
  * Server start
  */
 server.listen(server.get('port'), () => {
-  console.log('Listening on port:', server.get('port'))
-  console.log('Environment:', server.get('env'))
+  logger.info(`Listening on port: ${server.get('port') as string}`)
+  logger.info(`Environment: ${server.get('env') as string}`)
 })

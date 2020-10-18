@@ -3,7 +3,6 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { config } from 'dotenv'
 import ESLintWebpackPlugin from 'eslint-webpack-plugin'
 import path from 'path'
-import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
 
 config()
@@ -15,8 +14,8 @@ const rootDir = path.join(__dirname, '..', '..')
 
 const webpackConfig: webpack.Configuration = {
   target: 'node',
-  name: 'server-production',
-  mode: 'production',
+  name: 'server-development',
+  mode: 'development',
   context: path.resolve(rootDir, 'src', 'backend'),
   bail: true,
   entry: {
@@ -44,32 +43,6 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       '@': path.resolve(rootDir, 'src')
     }
-  },
-  node: {
-    console: false,
-    global: false,
-    process: false,
-    Buffer: false,
-    __filename: false,
-    __dirname: false
-  },
-  optimization: {
-    namedChunks: true,
-    namedModules: true,
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false,
-        extractComments: false,
-        terserOptions: {
-          output: {
-            comments: false
-          }
-        }
-      })
-    ]
   },
   plugins: [
     new CleanWebpackPlugin(),
