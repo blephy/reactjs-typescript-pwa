@@ -218,8 +218,8 @@ const webpackConfig: webpack.Configuration = {
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
-      include: 'asyncChunks',
-      fileBlacklist: [/^(?!.*(home|app|css))/, /\.mjs$/]
+      include: 'allAssets',
+      fileBlacklist: [/^(?!.*(home|app))/, /\.mjs$/]
     }),
     new PreloadWebpackPlugin({
       rel: 'modulepreload',
