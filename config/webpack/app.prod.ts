@@ -158,6 +158,7 @@ const webpackConfig: webpack.Configuration = {
       },
       title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
+      dnsprefetch: serverBaseUrl,
       lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.32.png'),

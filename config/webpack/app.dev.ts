@@ -53,14 +53,14 @@ const webpackConfig: webpack.Configuration = {
       ignored: [
         'node_modules',
         'build',
-        'server',
         'reports',
         'public',
         'config',
         'coverage',
         'stats',
         '.vscode',
-        '.github'
+        '.github',
+        'src/backend'
       ]
     },
     overlay: {
@@ -92,6 +92,8 @@ const webpackConfig: webpack.Configuration = {
       },
       title: 'ReactJS Progressive Web App',
       preconnect: serverBaseUrl,
+      dnsprefetch: serverBaseUrl,
+      lang: 'en',
       template: path.resolve(rootDir, 'public/templates/index.ejs'),
       favicon: path.resolve(rootDir, 'public/favicon.32.png'),
       filename: 'index.html'

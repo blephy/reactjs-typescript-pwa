@@ -27,7 +27,7 @@ module.exports = {
   coverageDirectory: 'coverage/',
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
-    '!<rootDir>/src/backend/index.ts',
+    '!<rootDir>/src/backend/**/*',
     '!<rootDir>/src/frontend/index.tsx',
     '!<rootDir>/src/frontend/views/index.tsx',
     '!<rootDir>/src/frontend/service-worker/index.ts',

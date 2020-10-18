@@ -4,8 +4,11 @@
     <base href="/" />
     <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <% if (htmlWebpackPlugin.options.preconnect) { %>
     <link rel="preconnect" href="<%= htmlWebpackPlugin.options.preconnect %>" />
-    <link rel="dns-prefetch" href="<%= htmlWebpackPlugin.options.preconnect %>" />
+    <% } %> <% if (htmlWebpackPlugin.options.dnsprefetch) { %>
+    <link rel="dns-prefetch" href="<%= htmlWebpackPlugin.options.dnsprefetch %>" />
+    <% } %>
     <link rel="author" href="/humans.txt" type="text/plain" />
   </head>
   <body>
